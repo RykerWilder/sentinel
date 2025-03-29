@@ -32,7 +32,7 @@ def main():
               elif choice == 3:
                      print('scelta 4 - Network sniffer')
               if choice == 4: 
-                     print('Thanks for using Sentinel, hope to see you again soon!')
+                     print('Thanks for using Sentinel, hope to see you soon!')
                      break
 
 if __name__ == "__main__":
