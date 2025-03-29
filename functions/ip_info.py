@@ -1,4 +1,8 @@
+from colorama import init, Fore
 import requests
+
+init() # ANSI support for windows
+print(Fore.GREEN)
 def get_ip_info(ip_address):
     try:
         response = requests.get(f"http://ip-api.com/json/{ip_address}")
@@ -18,7 +22,6 @@ def get_ip_info(ip_address):
     except Exception as e:
         print(f"Error: {e}")
 
-# --- Main ---
 if __name__ == "__main__": 
     user_ip = input('Inserisci l ip: ')
     get_ip_info(user_ip)

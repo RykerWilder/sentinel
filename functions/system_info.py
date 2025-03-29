@@ -3,12 +3,11 @@ import socket
 import psutil
 import requests
 from datetime import datetime
+from colorama import init, Fore
 
-#DIPENDENZE codice per restituire le informazioni legate ad una macchina
-#pip install psutil
-#pip install requests
+init() # ANSI support for windows
+print(Fore.GREEN)
 
-# --- Funzioni per ottenere i dati ---
 def get_public_ip():
     try:
         return requests.get("https://api.ipify.org?format=json").json().get("ip", "Non disponibile")
@@ -53,7 +52,6 @@ def get_disk_usage():
             continue
     return disks
 
-# --- Stampa le informazioni ---
 def print_system_info():
     print("\n" + "="*40 + " System Info " + "="*40)
     print(f"OS: {get_os_info()}")
@@ -72,6 +70,5 @@ def print_system_info():
     print(f"\n🕒 Data/Ora: {datetime.now().strftime('%d/%m/%Y %H:%M:%S')}")
     print("=" * 45 + "\n")
 
-# --- Main ---
 if __name__ == "__main__":
     print_system_info()

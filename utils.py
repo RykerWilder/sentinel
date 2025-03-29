@@ -1,5 +1,9 @@
 from simple_term_menu import TerminalMenu
+from colorama import init, Fore
 import subprocess
+
+init() # ANSI support for windows
+print(Fore.GREEN)
 
 def print_logo():
     print(""" 
