@@ -12,6 +12,7 @@ def get_ip_info(ip_address):
             print(f"ISP: {data.get('isp', 'N/A')}")
             print(f"Organization: {data.get('org', 'N/A')}")
             print(f"AS: {data.get('as', 'N/A')}")
+            print("=" * 55 + "\n")
         else:
             print("Unable to get information for this IP")
     except Exception as e:

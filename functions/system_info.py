@@ -70,7 +70,7 @@ def print_system_info():
         print(f"    Total: {disk['total']} GB, Used: {disk['used']} GB ({disk['percent']}%)")
 
     print(f"\n🕒 Data/Ora: {datetime.now().strftime('%d/%m/%Y %H:%M:%S')}")
-    print("=" * 100 + "\n")
+    print("=" * 45 + "\n")
 
 # --- Main ---
 if __name__ == "__main__":
