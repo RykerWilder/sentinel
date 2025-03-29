@@ -1,6 +1,6 @@
 from colorama import init, Fore
 
-def printLogo():
+def print_logo():
 
     init()
 
