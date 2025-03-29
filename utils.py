@@ -1,11 +1,6 @@
-from colorama import init, Fore
+from simple_term_menu import TerminalMenu
 
 def print_logo():
-
-    init() # ANSI support for windows
-
-    print(Fore.GREEN)
-
     print(""" 
     ___________________________________________________________________________
     |     ______         _                 _    _  _  _      _                 |
@@ -31,15 +26,13 @@ def print_logo():
     |__________________________________________________________________________|                                               
     """)
 
-from simple_term_menu import TerminalMenu
-
 def print_menu():
     options = [
         "[1] Scanner di porte",
         "[2] Analisi vulnerabilità",
         "[3] Password cracking",
         "[4] Network sniffer",
-        "[0] Esci"
+        "[5] Esci"
     ]
     
     terminal_menu = TerminalMenu(
@@ -51,7 +44,14 @@ def print_menu():
     
     choice_index = terminal_menu.show()
     
-    if choice_index == 0:
-        pass
-    elif choice_index == 1:
-        pass
+    return choice_index
+
+def select_choise(choise):
+    if choise == 0:
+        print('scelta 1 - Scanner di porte')
+    elif choise == 1:
+        print('scelta 2 - Analisi vulnerabilità')
+    elif choise == 2:
+        print('scelta 3 - Password cracking')
+    elif choise == 3:
+        print('scelta 4 - Network sniffer')
