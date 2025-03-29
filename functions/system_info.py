@@ -62,7 +62,7 @@ def print_system_info():
     print(f"RAM: {round(psutil.virtual_memory().total / (1024 ** 3), 2)} GB")
 
     # Spazio su disco
-    print("\n💾 Disco:")
+    print("\n Storage")
     for disk in get_disk_usage():
         print(f"  {disk['device']} ({disk['mountpoint']}):")
         print(f"    Total: {disk['total']} GB, Used: {disk['used']} GB ({disk['percent']}%)")

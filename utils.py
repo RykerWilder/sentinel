@@ -31,7 +31,7 @@ def print_menu():
     options = [
         "[1] Port Scanner",
         "[2] System Info",
-        "[3] IP Info",
+        "[3] IP Adress Info",
         "[4] Network sniffer",
         "[5] Exit"
     ]
