@@ -2,7 +2,7 @@ from colorama import init, Fore
 
 def print_logo():
 
-    init()
+    init() # ANSI support for windows
 
     print(Fore.GREEN)
 
@@ -30,3 +30,28 @@ def print_logo():
     |                                                             ░            |
     |__________________________________________________________________________|                                               
     """)
+
+from simple_term_menu import TerminalMenu
+
+def print_menu():
+    options = [
+        "[1] Scanner di porte",
+        "[2] Analisi vulnerabilità",
+        "[3] Password cracking",
+        "[4] Network sniffer",
+        "[0] Esci"
+    ]
+    
+    terminal_menu = TerminalMenu(
+        options,
+        menu_cursor="❯ ",
+        menu_cursor_style=("fg_red", "bold"),
+        menu_highlight_style=("standout",)
+    )
+    
+    choice_index = terminal_menu.show()
+    
+    if choice_index == 0:
+        pass
+    elif choice_index == 1:
+        pass
