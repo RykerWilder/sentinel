@@ -12,6 +12,5 @@ if __name__ == "__main__":
               if user_choise == 4:
                      print('Bye!')
                      break
-
               select_choise(user_choise)
 

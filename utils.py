@@ -1,4 +1,5 @@
 from simple_term_menu import TerminalMenu
+import subprocess
 
 def print_logo():
     print(""" 
@@ -29,8 +30,8 @@ def print_logo():
 def print_menu():
     options = [
         "[1] Scanner di porte",
-        "[2] Analisi vulnerabilità",
-        "[3] Password cracking",
+        "[2] System Info",
+        "[3] IP Info",
         "[4] Network sniffer",
         "[5] Esci"
     ]
@@ -50,8 +51,8 @@ def select_choise(choise):
     if choise == 0:
         print('scelta 1 - Scanner di porte')
     elif choise == 1:
-        print('scelta 2 - Analisi vulnerabilità')
+        subprocess.run(["python3", "functions/system_info.py"])
     elif choise == 2:
-        print('scelta 3 - Password cracking')
+        subprocess.run(["python3", "functions/ip_info.py"])
     elif choise == 3:
         print('scelta 4 - Network sniffer')
