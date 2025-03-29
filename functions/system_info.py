@@ -3,10 +3,6 @@ import socket
 import psutil
 import requests
 from datetime import datetime
-from colorama import init, Fore
-
-init() # ANSI support for windows
-print(Fore.GREEN)
 
 def get_public_ip():
     try:

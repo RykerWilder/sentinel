@@ -1,8 +1,5 @@
-from colorama import init, Fore
 import requests
 
-init() # ANSI support for windows
-print(Fore.GREEN)
 def get_ip_info(ip_address):
     try:
         response = requests.get(f"http://ip-api.com/json/{ip_address}")
