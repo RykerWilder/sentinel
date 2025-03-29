@@ -23,5 +23,5 @@ def get_ip_info(ip_address):
         print(f"Error: {e}")
 
 if __name__ == "__main__": 
-    user_ip = input('Inserisci l ip: ')
+    user_ip = input('Insert IP Adress: ')
     get_ip_info(user_ip)

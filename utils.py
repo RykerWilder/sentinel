@@ -33,11 +33,11 @@ def print_logo():
 
 def print_menu():
     options = [
-        "[1] Scanner di porte",
+        "[1] Port Scanner",
         "[2] System Info",
         "[3] IP Info",
         "[4] Network sniffer",
-        "[5] Esci"
+        "[5] Exit"
     ]
     
     terminal_menu = TerminalMenu(

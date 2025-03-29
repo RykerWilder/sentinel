@@ -10,9 +10,9 @@ print(Fore.GREEN)
 
 def get_public_ip():
     try:
-        return requests.get("https://api.ipify.org?format=json").json().get("ip", "Non disponibile")
+        return requests.get("https://api.ipify.org?format=json").json().get("ip", "not available")
     except:
-        return "Non disponibile"
+        return "not available"
 
 def get_local_ip():
     try:
@@ -67,7 +67,6 @@ def print_system_info():
         print(f"  {disk['device']} ({disk['mountpoint']}):")
         print(f"    Total: {disk['total']} GB, Used: {disk['used']} GB ({disk['percent']}%)")
 
-    print(f"\n🕒 Data/Ora: {datetime.now().strftime('%d/%m/%Y %H:%M:%S')}")
     print("=" * 45 + "\n")
 
 if __name__ == "__main__":
