@@ -8,7 +8,7 @@ print(Fore.CYAN)
 def main():
        while True:
               options = [
-              "[1] Port Scanner",
+              "[1] PortBlitz",
               "[2] SysInsider",
               "[3] IP GlobeTracker",
               "[4] Network Sniffer",
