@@ -1,2 +1,9 @@
-# pip install colorama
-# pip install simple-term-menu
+![logo](./img/logo.jpeg)
+### Dependencies
+
+```bash
+pip install colorama
+```
+```bash
+pip install simple-term-menu
+```
