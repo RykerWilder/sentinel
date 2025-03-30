@@ -7,12 +7,16 @@ def get_ip_info(ip_address):
         
         if data['status'] == 'success':
             print("\n" + "="*40 + " IP Adress info " + "="*40)
-            print(f"Country: {data.get('country', 'N/A')}")
-            print(f"Region: {data.get('regionName', 'N/A')}")
-            print(f"City: {data.get('city', 'N/A')}")
-            print(f"ISP: {data.get('isp', 'N/A')}")
-            print(f"Organization: {data.get('org', 'N/A')}")
-            print(f"AS: {data.get('as', 'N/A')}")
+            print(f"Country: {data.get('country')}")
+            print(f"Country code: {data.get('countryCode')}")
+            print(f"Region: {data.get('regionName')}")
+            print(f"City: {data.get('city')}")
+            print(f"Latitude: {data.get('lat')}")
+            print(f"Longitude: {data.get('lon')}")
+            print(f"Timezone: {data.get('timezone')}")
+            print(f"ISP: {data.get('isp')}")
+            print(f"Organization: {data.get('org')}")
+            print(f"AS: {data.get('as')}")
             print("=" * 55 + "\n")
         else:
             print("Unable to get information for this IP")
