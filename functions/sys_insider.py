@@ -4,6 +4,7 @@ import psutil
 import requests
 import shutil
 from colorama import Style, Fore
+from utils import print_dynamic_dots
 
 def get_public_ip():
     try:
@@ -50,13 +51,13 @@ def get_disk_usage():
     return disks
 
 def print_system_info():
-    print(f"\n{'='*40}{Fore.CYAN} SysInsider {Style.RESET_ALL}{'='*40}")    
-    print(f"OS: {get_os_info()}")
-    print(f"Hostname: {socket.gethostname()}")
-    print(f"Public IP: {get_public_ip()}")
-    print(f"Local IP: {get_local_ip()}")
-    print(f"CPU: {platform.processor()} ({psutil.cpu_count(logical=True)} cores)")
-    print(f"RAM: {round(psutil.virtual_memory().total / (1024 ** 3), 2)} GB")
+    print(f"\n{'='*40}{Fore.CYAN} SysInsider {Style.RESET_ALL}{'='*40}")
+    print_dynamic_dots('OS', get_os_info())
+    print_dynamic_dots('Hostname', socket.gethostname())
+    print_dynamic_dots('Public IP', get_public_ip())
+    print_dynamic_dots('Local IP', get_local_ip())
+    print_dynamic_dots('CPU', f"platform.processor() (psutil.cpu_count(logical=True) cores)")
+    print_dynamic_dots('RAM', f"round(psutil.virtual_memory().total / (1024 ** 3), 2) GB")
 
     # Spazio su disco
     print("Storage: ")
