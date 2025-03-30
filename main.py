@@ -33,7 +33,7 @@ def main():
               elif choice == 3:
                      print('scelta 4 - Network sniffer')
               elif choice == 4:
-                     print('CVE Hunter')
+                     subprocess.run(["python3", "functions/cve_hunter.py"])
               if choice == 5: 
                      print('Thanks for using Sentinel, hope to see you soon!')
                      break
