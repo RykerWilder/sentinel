@@ -1,6 +1,6 @@
 import requests
-from colorama import init, Fore, Style
-init(autoreset=True)
+import shutil
+from colorama import Fore, Style
 
 def check_cves_for_software(software_name):
     url = f"https://services.nvd.nist.gov/rest/json/cves/2.0?keywordSearch={software_name}"
@@ -8,9 +8,10 @@ def check_cves_for_software(software_name):
         response = requests.get(url)
         response.raise_for_status()  # Verifica errori HTTP
         data = response.json()
-        
+        terminal_width = shutil.get_terminal_size().columns #terminal width
+
         if data.get("totalResults", 0) > 0:
-            print("\n" + "="*40 + " CVE Hunter " + "="*40)
+            print(f"\n{'='*40}{Fore.CYAN} CVE Hunter {Style.RESET_ALL}{'='*40}")
             print(f"Found {Fore.RED}{data['totalResults']} CVE{Style.RESET_ALL} for {software_name}:")
             for vuln in data["vulnerabilities"]:
                 cve_id = vuln["cve"]["id"]
@@ -21,7 +22,7 @@ def check_cves_for_software(software_name):
     except Exception as e:
         print(f"Error while requesting: {e}")
     
-    print("=" * 100 + "\n")
+    print("=" * terminal_width + "\n")
 
 if __name__ == "__main__":
     user_software = input('Enter a software to analyze: ')

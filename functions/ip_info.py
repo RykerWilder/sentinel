@@ -1,13 +1,15 @@
 import requests
+import shutil
+from colorama import Style, Fore
 from utils import print_dynamic_dots
 
 def get_ip_info(ip_address):
     try:
         response = requests.get(f"http://ip-api.com/json/{ip_address}")
         data = response.json()
-        
+        terminal_width = shutil.get_terminal_size().columns #terminal width
         if data['status'] == 'success':
-            print("\n" + "="*40 + " IP Adress Info " + "="*40)
+            print(f"\n{'='*40}{Fore.CYAN} IP Adress Info {Style.RESET_ALL}{'='*40}")
             print_dynamic_dots('Country', data.get('country'))
             print_dynamic_dots('Country code', data.get('countryCode'))
             print_dynamic_dots('Region', data.get('regionName'))
@@ -18,7 +20,7 @@ def get_ip_info(ip_address):
             print_dynamic_dots('ISP', data.get('isp'))
             print_dynamic_dots('Organization', data.get('org'))
             print_dynamic_dots('AS', data.get('as'))
-            print("=" * 100 + "\n")
+            print("=" * terminal_width + "\n")
         else:
             print("Unable to get information for this IP")
     except Exception as e:

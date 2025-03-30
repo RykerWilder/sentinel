@@ -2,6 +2,8 @@ import platform
 import socket
 import psutil
 import requests
+import shutil
+from colorama import Style, Fore
 
 def get_public_ip():
     try:
@@ -48,7 +50,7 @@ def get_disk_usage():
     return disks
 
 def print_system_info():
-    print("\n" + "="*40 + " System Info " + "="*40)
+    print(f"\n{'='*40}{Fore.CYAN} System Info {Style.RESET_ALL}{'='*40}")    
     print(f"OS: {get_os_info()}")
     print(f"Hostname: {socket.gethostname()}")
     print(f"Public IP: {get_public_ip()}")
@@ -61,8 +63,9 @@ def print_system_info():
     for disk in get_disk_usage():
         print(f"  {disk['device']} ({disk['mountpoint']}):")
         print(f"    Total: {disk['total']} GB, Used: {disk['used']} GB ({disk['percent']}%)")
-
-    print("=" * 100 + "\n")
+    
+    terminal_width = shutil.get_terminal_size().columns #terminal width
+    print("=" * terminal_width + "\n")
 
 if __name__ == "__main__":
     print_system_info()
