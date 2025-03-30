@@ -22,12 +22,12 @@ def print_logo():
      ░▒▓███████▓▒░░▒▓████████▓▒░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░   ░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓████████▓▒░▒▓████████▓▒░ 
     """)
 
-def print_with_dynamic_dots(key, value):
+def print_dynamic_dots(key, value):
         # Ottieni la larghezza corrente del terminale
         cols = shutil.get_terminal_size().columns
-    
+        
         #Calcola la lunghezza disponibile per i puntini
-        available_space = cols - len(key) - len(str(value)) - 3  # -3 per ": " e lo spazio finale
-    
+        available_space = cols - len(key) - len(str(value)) - 2  # -3 per ": " e lo spazio finale
+        
         # Stampa la chiave, i puntini e il valore
         print(f"{key}: {'.' * available_space} {value}")
