@@ -2,7 +2,6 @@ import platform
 import socket
 import psutil
 import requests
-from datetime import datetime
 
 def get_public_ip():
     try:
@@ -63,7 +62,7 @@ def print_system_info():
         print(f"  {disk['device']} ({disk['mountpoint']}):")
         print(f"    Total: {disk['total']} GB, Used: {disk['used']} GB ({disk['percent']}%)")
 
-    print("=" * 45 + "\n")
+    print("=" * 100 + "\n")
 
 if __name__ == "__main__":
     print_system_info()

@@ -6,7 +6,7 @@ def get_ip_info(ip_address):
         data = response.json()
         
         if data['status'] == 'success':
-            print("\n" + "="*71 + " IP Adress Info " + "="*71)
+            print("\n" + "="*40 + " IP Adress Info " + "="*40)
             print(f"Country: {data.get('country')}")
             print(f"Country code: {data.get('countryCode')}")
             print(f"Region: {data.get('regionName')}")
@@ -17,7 +17,7 @@ def get_ip_info(ip_address):
             print(f"ISP: {data.get('isp')}")
             print(f"Organization: {data.get('org')}")
             print(f"AS: {data.get('as')}")
-            print("=" * 158 + "\n")
+            print("=" * 100 + "\n")
         else:
             print("Unable to get information for this IP")
     except Exception as e:

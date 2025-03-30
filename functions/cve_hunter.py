@@ -10,7 +10,7 @@ def check_cves_for_software(software_name):
         data = response.json()
         
         if data.get("totalResults", 0) > 0:
-            print("\n" + "="*73 + " CVE Hunter " + "="*73)
+            print("\n" + "="*40 + " CVE Hunter " + "="*40)
             print(f"Found {Fore.RED}{data['totalResults']} CVE{Style.RESET_ALL} for {software_name}:")
             for vuln in data["vulnerabilities"]:
                 cve_id = vuln["cve"]["id"]
@@ -21,7 +21,7 @@ def check_cves_for_software(software_name):
     except Exception as e:
         print(f"Error while requesting: {e}")
     
-    print("=" * 158 + "\n")
+    print("=" * 100 + "\n")
 
 if __name__ == "__main__":
     user_software = input('Enter a software to analyze: ')
