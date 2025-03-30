@@ -2,7 +2,7 @@ from colorama import init, Fore
 from utils import print_logo
 from simple_term_menu import TerminalMenu
 import subprocess
-init() #windows
+init() # for windows
 print(Fore.CYAN)
 
 def main():
@@ -12,7 +12,8 @@ def main():
               "[2] System Info",
               "[3] IP Address Info",
               "[4] Network Sniffer",
-              "[5] Exit"
+              "[5] CVE Hunter",
+              "[6] Exit"
               ]
 
               terminal_menu = TerminalMenu(
@@ -31,7 +32,9 @@ def main():
                      subprocess.run(["python3", "functions/ip_info.py"])
               elif choice == 3:
                      print('scelta 4 - Network sniffer')
-              if choice == 4: 
+              elif choice == 4:
+                     print('CVE Hunter')
+              if choice == 5: 
                      print('Thanks for using Sentinel, hope to see you soon!')
                      break
 
