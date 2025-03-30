@@ -7,6 +7,7 @@ def get_ip_info(ip_address):
         
         if data['status'] == 'success':
             print("\n" + "="*40 + " IP Adress Info " + "="*40)
+            print_with_dynamic_dots('Country', data.get('country'))
             print(f"Country: {data.get('country')}")
             print(f"Country code: {data.get('countryCode')}")
             print(f"Region: {data.get('regionName')}")
@@ -23,6 +24,6 @@ def get_ip_info(ip_address):
     except Exception as e:
         print(f"Error: {e}")
 
-if __name__ == "__main__": 
+if __name__ == "__main__":
     user_ip = input('Insert IP Adress: ')
     get_ip_info(user_ip)
