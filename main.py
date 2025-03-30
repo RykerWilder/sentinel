@@ -1,5 +1,5 @@
 from colorama import init, Fore
-from utils import print_logo
+from functions.utils import print_logo
 from simple_term_menu import TerminalMenu
 import subprocess
 init() # for windows

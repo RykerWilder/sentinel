@@ -1,4 +1,5 @@
 import requests
+from utils import print_dynamic_dots
 
 def get_ip_info(ip_address):
     try:
@@ -7,17 +8,16 @@ def get_ip_info(ip_address):
         
         if data['status'] == 'success':
             print("\n" + "="*40 + " IP Adress Info " + "="*40)
-            print_with_dynamic_dots('Country', data.get('country'))
-            print(f"Country: {data.get('country')}")
-            print(f"Country code: {data.get('countryCode')}")
-            print(f"Region: {data.get('regionName')}")
-            print(f"City: {data.get('city')}")
-            print(f"Latitude: {data.get('lat')}")
-            print(f"Longitude: {data.get('lon')}")
-            print(f"Timezone: {data.get('timezone')}")
-            print(f"ISP: {data.get('isp')}")
-            print(f"Organization: {data.get('org')}")
-            print(f"AS: {data.get('as')}")
+            print_dynamic_dots('Country', data.get('country'))
+            print_dynamic_dots('Country code', data.get('countryCode'))
+            print_dynamic_dots('Region', data.get('regionName'))
+            print_dynamic_dots('City', data.get('city'))
+            print_dynamic_dots('Latitude', data.get('lat'))
+            print_dynamic_dots('Longitude', data.get('lon'))
+            print_dynamic_dots('Timezone', data.get('timezone'))
+            print_dynamic_dots('ISP', data.get('isp'))
+            print_dynamic_dots('Organization', data.get('org'))
+            print_dynamic_dots('AS', data.get('as'))
             print("=" * 100 + "\n")
         else:
             print("Unable to get information for this IP")
