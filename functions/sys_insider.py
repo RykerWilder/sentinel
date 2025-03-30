@@ -50,7 +50,7 @@ def get_disk_usage():
     return disks
 
 def print_system_info():
-    print(f"\n{'='*40}{Fore.CYAN} System Info {Style.RESET_ALL}{'='*40}")    
+    print(f"\n{'='*40}{Fore.CYAN} SysInsider {Style.RESET_ALL}{'='*40}")    
     print(f"OS: {get_os_info()}")
     print(f"Hostname: {socket.gethostname()}")
     print(f"Public IP: {get_public_ip()}")

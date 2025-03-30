@@ -9,7 +9,7 @@ def get_ip_info(ip_address):
         data = response.json()
         terminal_width = shutil.get_terminal_size().columns #terminal width
         if data['status'] == 'success':
-            print(f"\n{'='*40}{Fore.CYAN} IP Adress Info {Style.RESET_ALL}{'='*40}")
+            print(f"\n{'='*40}{Fore.CYAN} IP GlobeTracker {Style.RESET_ALL}{'='*40}")
             print_dynamic_dots('Country', data.get('country'))
             print_dynamic_dots('Country code', data.get('countryCode'))
             print_dynamic_dots('Region', data.get('regionName'))

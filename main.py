@@ -9,8 +9,8 @@ def main():
        while True:
               options = [
               "[1] Port Scanner",
-              "[2] System Info",
-              "[3] IP Address Info",
+              "[2] SysInsider",
+              "[3] IP GlobeTracker",
               "[4] Network Sniffer",
               "[5] CVE Hunter",
               "[6] Exit"
@@ -27,9 +27,9 @@ def main():
               if choice == 0:
                      print('scelta 1 - Scanner di porte')
               elif choice == 1:
-                     subprocess.run(["python3", "functions/system_info.py"])
+                     subprocess.run(["python3", "functions/sys_insider.py"])
               elif choice == 2:
-                     subprocess.run(["python3", "functions/ip_info.py"])
+                     subprocess.run(["python3", "functions/ip_globetracker.py"])
               elif choice == 3:
                      print('scelta 4 - Network sniffer')
               elif choice == 4:
