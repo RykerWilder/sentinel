@@ -1,5 +1,5 @@
 from colorama import init, Fore
-from utils import print_logo
+from src.utils import print_logo
 from simple_term_menu import TerminalMenu
 import subprocess
 init() # for windows
@@ -27,13 +27,13 @@ def main():
               if choice == 0:
                      print('scelta 1 - Scanner di porte')
               elif choice == 1:
-                     subprocess.run(["python3", "functions/sys_insider.py"])
+                     subprocess.run(["python3", "modules/sys_insider.py"])
               elif choice == 2:
-                     subprocess.run(["python3", "functions/ip_globetracker.py"])
+                     subprocess.run(["python3", "modules/ip_globetracker.py"])
               elif choice == 3:
                      print('scelta 4 - Network sniffer')
               elif choice == 4:
-                     subprocess.run(["python3", "functions/cve_hunter.py"])
+                     subprocess.run(["python3", "modules/cve_hunter.py"])
               if choice == 5: 
                      print('Thanks for using Sentinel, hope to see you soon!')
                      break
