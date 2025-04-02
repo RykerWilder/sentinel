@@ -14,3 +14,6 @@ pip install colorama
 ```bash
 pip install simple-term-menu
 ```
+```bash
+pip install -e .
+```
