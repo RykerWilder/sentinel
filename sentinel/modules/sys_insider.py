@@ -22,16 +22,41 @@ def get_local_ip():
     except:
         return socket.gethostbyname(socket.gethostname())
 
-def get_os_info():
+def get_os_details():
     system = platform.system()
+    details = {
+        "system": system,
+        "release": platform.release(),
+        "version": platform.version(),
+        "architecture": platform.architecture()[0],
+        "machine": platform.machine()
+    }
+    
     if system == "Darwin":
-        return f"macOS {platform.mac_ver()[0]}"
+        details["version"] = f"macOS {platform.mac_ver()[0]}"
     elif system == "Windows":
-        return f"Windows {platform.release()}"
+        details["version"] = f"Windows {platform.release()}"
     elif system == "Linux":
-        return f"Linux {platform.release()}"
-    else:
-        return system
+        details["version"] = f"Linux {platform.release()}"
+    
+    return details
+
+def get_cpu_info():
+    return {
+        "name": platform.processor(),
+        "cores": psutil.cpu_count(logical=False),
+        "threads": psutil.cpu_count(logical=True),
+        "usage": psutil.cpu_percent(interval=1)
+    }
+
+def get_ram_info():
+    mem = psutil.virtual_memory()
+    return {
+        "total": round(mem.total / (1024 ** 3), 2),
+        "available": round(mem.available / (1024 ** 3), 2),
+        "used": round(mem.used / (1024 ** 3), 2),
+        "percent": mem.percent
+    }
 
 def get_disk_usage():
     disks = []
@@ -50,22 +75,61 @@ def get_disk_usage():
             continue
     return disks
 
+def get_network_info():
+    interfaces = psutil.net_if_addrs()
+    stats = psutil.net_if_stats()
+    return {
+        "interfaces": {
+            name: {
+                "addresses": [addr.address for addr in addrs if addr.family == socket.AF_INET],
+                "is_up": stats[name].isup if name in stats else False
+            } for name, addrs in interfaces.items()
+        }
+    }
+
+def get_battery_info():
+    try:
+        battery = psutil.sensors_battery()
+        if battery:
+            return {
+                "percent": battery.percent,
+                "plugged": battery.power_plugged
+            }
+        return "Not available"
+    except:
+        return "Not available"
+
 def print_system_info():
+    terminal_width = shutil.get_terminal_size().columns
     print(f"\n{'='*40}{Fore.CYAN} SysInsider {Style.RESET_ALL}{'='*40}")
-    print_dynamic_dots('OS', get_os_info())
+    
+    # OS Information
+    os_details = get_os_details()
+    print_dynamic_dots('OS', f"{os_details['version']} ({os_details['architecture']})")
     print_dynamic_dots('Hostname', socket.gethostname())
+
+    # Network Information
     print_dynamic_dots('Public IP', get_public_ip())
     print_dynamic_dots('Local IP', get_local_ip())
-    print_dynamic_dots('CPU', f"platform.processor() (psutil.cpu_count(logical=True) cores)")
-    print_dynamic_dots('RAM', f"round(psutil.virtual_memory().total / (1024 ** 3), 2) GB")
-
-    # Spazio su disco
-    print("Storage: ")
+    
+    network_info = get_network_info()
+    print("  Network Interfaces:")
+    for name, data in network_info["interfaces"].items():
+        if data["is_up"] and data["addresses"]:
+            print(f"    {name}: {', '.join(data['addresses'])}")
+    
+    # Hardware Information
+    cpu = get_cpu_info()
+    print_dynamic_dots('CPU', f"{cpu['name']} ({cpu['cores']} cores, {cpu['threads']} threads) - {cpu['usage']}% usage")
+    
+    ram = get_ram_info()
+    print_dynamic_dots('RAM', f"{ram['total']} GB total, {ram['used']} GB used ({ram['percent']}%)")
+    
+    # Storage Information
+    print("\nStorage:")
     for disk in get_disk_usage():
         print(f"  {disk['device']} ({disk['mountpoint']}):")
         print(f"    Total: {disk['total']} GB, Used: {disk['used']} GB ({disk['percent']}%)")
-    
-    terminal_width = shutil.get_terminal_size().columns #terminal width
     print("=" * terminal_width + "\n")
 
 if __name__ == "__main__":
