@@ -3,7 +3,7 @@ from sentinel import print_logo
 from simple_term_menu import TerminalMenu
 import subprocess
 init() # for windows
-print(Fore.CYAN)
+print(Fore.GREEN)
 
 def main():
        while True:
