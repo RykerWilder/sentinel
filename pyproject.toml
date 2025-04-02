@@ -26,6 +26,3 @@ dependencies = [
 
 [project.scripts]
 sentinel = "sentinel.main:main"
-
-[tool.setuptools.packages]
-find = {}
