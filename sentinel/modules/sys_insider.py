@@ -10,17 +10,7 @@ def get_public_ip():
     try:
         return requests.get("https://api.ipify.org?format=json").json().get("ip", "not available")
     except:
-        return "not available"
-
-def get_local_ip():
-    try:
-        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        s.connect(("8.8.8.8", 80))
-        local_ip = s.getsockname()[0]
-        s.close()
-        return local_ip
-    except:
-        return socket.gethostbyname(socket.gethostname())
+        return "Not available"
 
 def get_os_details():
     system = platform.system()
@@ -124,7 +114,7 @@ def print_system_info():
             print_dynamic_dots(f"  {name}", f"{', '.join(data['addresses'])}")
     
     # Storage Information
-    print("\nStorage:")
+    print("Storage:")
     for disk in get_disk_usage():
         print(f"  {disk['device']} ({disk['mountpoint']}):")
         print(f"    Total: {disk['total']} GB, Used: {disk['used']} GB ({disk['percent']}%)")
