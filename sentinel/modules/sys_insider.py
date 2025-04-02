@@ -108,22 +108,20 @@ def print_system_info():
     print_dynamic_dots('OS', f"{os_details['version']} ({os_details['architecture']})")
     print_dynamic_dots('Hostname', socket.gethostname())
 
-    # Network Information
-    print_dynamic_dots('Public IP', get_public_ip())
-    print_dynamic_dots('Local IP', get_local_ip())
-    
-    network_info = get_network_info()
-    print("  Network Interfaces:")
-    for name, data in network_info.get("interfaces", {}).items():
-        if data.get("is_up", False) and data.get("addresses", []):
-            print_dynamic_dots(f"  {name}", f"{', '.join(data['addresses'])}")
-    
     # Hardware Information
     cpu = get_cpu_info()
     print_dynamic_dots('CPU', f"{cpu['name']} ({cpu['cores']} cores, {cpu['threads']} threads) - {cpu['usage']}% usage")
     
     ram = get_ram_info()
     print_dynamic_dots('RAM', f"{ram['total']} GB total, {ram['used']} GB used ({ram['percent']}%)")
+
+    # Network Information
+    print("Network:")
+    print_dynamic_dots('  Public IP', get_public_ip())
+    network_info = get_network_info()
+    for name, data in network_info.get("interfaces", {}).items():
+        if data.get("is_up", False) and data.get("addresses", []):
+            print_dynamic_dots(f"  {name}", f"{', '.join(data['addresses'])}")
     
     # Storage Information
     print("\nStorage:")
