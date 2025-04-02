@@ -1,7 +1,7 @@
 import requests
 import shutil
 from colorama import Style, Fore
-from utils import print_dynamic_dots
+from sentinel import print_dynamic_dots
 
 def get_ip_info(ip_address):
     try:

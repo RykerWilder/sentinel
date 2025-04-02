@@ -4,7 +4,7 @@ import psutil
 import requests
 import shutil
 from colorama import Style, Fore
-from utils import print_dynamic_dots
+from sentinel import print_dynamic_dots
 
 def get_public_ip():
     try:
