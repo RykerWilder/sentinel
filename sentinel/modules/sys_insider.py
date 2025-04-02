@@ -114,9 +114,9 @@ def print_system_info():
     
     network_info = get_network_info()
     print("  Network Interfaces:")
-    for name, data in network_info["interfaces"].items():
-        if data["is_up"] and data["addresses"]:
-            print(f"    {name}: {', '.join(data['addresses'])}")
+    for name, data in network_info.get("interfaces", {}).items():
+        if data.get("is_up", False) and data.get("addresses", []):
+            print_dynamic_dots(f"  {name}", f"{', '.join(data['addresses'])}")
     
     # Hardware Information
     cpu = get_cpu_info()
