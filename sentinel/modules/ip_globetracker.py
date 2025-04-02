@@ -4,9 +4,6 @@ from colorama import Style, Fore
 from sentinel import print_dynamic_dots
 
 class IPGlobeTracker:
-    
-    def __init__(self):
-        pass
 
     def get_ip_info(self, ip_address):
         try:
