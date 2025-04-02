@@ -1,6 +1,7 @@
 from colorama import init, Fore
 from sentinel import print_logo
 from simple_term_menu import TerminalMenu
+from sentinel.modules.ip_globetracker import IPGlobeTracker
 import subprocess
 init() # for windows
 print(Fore.GREEN)
@@ -29,7 +30,9 @@ def main():
               elif choice == 1:
                      subprocess.run(["python3", "sentinel/modules/sys_insider.py"])
               elif choice == 2:
-                     subprocess.run(["python3", "sentinel/modules/ip_globetracker.py"])
+                     ip_adress = input('Insert IP Adress: ')
+                     globe_tracker = IPGlobeTracker()
+                     globe_tracker.get_ip_info(ip_adress)
               elif choice == 3:
                      print('scelta 4 - Network sniffer')
               elif choice == 4:
