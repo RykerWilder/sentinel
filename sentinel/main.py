@@ -6,6 +6,7 @@ init() # for windows
 print(Fore.GREEN)
 
 def main():
+       print_logo()
        while True:
               options = [
               "[1] PortBlitz",
@@ -30,9 +31,9 @@ def main():
                      sys_insider = SysInsider()
                      sys_insider.print_system_info()
               elif choice == 2:
-                     ip_adress = input('Insert IP Adress: ')
+                     ip_address = input('Insert IP Adress: ')
                      globe_tracker = IPGlobeTracker()
-                     globe_tracker.get_ip_info(ip_adress)
+                     globe_tracker.get_ip_info(ip_address)
               elif choice == 3:
                      print('scelta 4 - Network sniffer')
               elif choice == 4:
@@ -41,7 +42,3 @@ def main():
               if choice == 5: 
                      print('Thanks for using Sentinel, hope to see you soon!')
                      break
-
-if __name__ == "__main__":
-       print_logo()
-       main()
