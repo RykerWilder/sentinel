@@ -17,3 +17,8 @@ pip install simple-term-menu
 ```bash
 pip install -e .
 ```
+
+Now to start Sentinel run:
+```bash
+sentinel
+```
