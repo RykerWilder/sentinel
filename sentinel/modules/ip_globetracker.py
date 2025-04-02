@@ -18,7 +18,7 @@ class IPGlobeTracker:
 
     def print_ip_info(self, data):
         terminal_width = shutil.get_terminal_size().columns #terminal width
-        print(f"\n{'='*40}{Fore.CYAN} IP GlobeTracker {Style.RESET_ALL}{'='*40}")
+        print(f"\n{'='*40}{Fore.GREEN} IP GlobeTracker {Style.RESET_ALL}{'='*40}")
         print_dynamic_dots('Country', data.get('country'))
         print_dynamic_dots('Country code', data.get('countryCode'))
         print_dynamic_dots('Region', data.get('regionName'))
