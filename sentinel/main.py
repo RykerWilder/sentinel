@@ -30,6 +30,7 @@ def main():
                      ports = input("Enter ports to scan (1-1000, 22,80,443): ") or "1-1000"
                      arguments = input("Enter additional arguments (-sV, -A): ") or "-sV"
                      port_blitz = PortBlitz()
+                     port_blitz.nmap_port_scan(target, ports, arguments)
               elif choice == 1:
                      sys_insider = SysInsider()
                      sys_insider.print_system_info()

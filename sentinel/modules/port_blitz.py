@@ -15,23 +15,19 @@ class PortBlitz:
         
         # Esegue la scansione
         scanner.scan(target, ports=ports, arguments=arguments)
+        self.print_scanned_port(scanner)
         
+    def print_scanned_port(self, arg):
         # Stampa i risultati
-        for host in scanner.all_hosts():
-            print(f"\nHost: {host} ({scanner[host].hostname()})")
-            print(f"State: {scanner[host].state()}")
+        for host in arg.all_hosts():
+            print(f"\nHost: {host} ({arg[host].hostname()})")
+            print(f"State: {arg[host].state()}")
             
-            for proto in scanner[host].all_protocols():
+            for proto in arg[host].all_protocols():
                 print(f"\nProtocol: {proto}")
-                ports = scanner[host][proto].keys()
+                ports = arg[host][proto].keys()
                 
                 for port in sorted(ports):
-                    port_info = scanner[host][proto][port]
+                    port_info = arg[host][proto][port]
                     print(f"Port: {port}\tState: {port_info['state']}\tService: {port_info['name']}\tVersion: {port_info.get('version', 'N/A')}")
 
-if __name__ == "__main__":
-    target = input("Enter target (IP or domain): ")
-    ports = input("Enter ports to scan (e.g. 1-1000, 22,80,443): ") or "1-1000"
-    arguments = input("Enter additional arguments (e.g. -sV, -A): ") or "-sV"
-
-    nmap_port_scan(target, ports, arguments)
