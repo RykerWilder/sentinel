@@ -8,17 +8,21 @@
 
 ### Dependencies
 
+1. First of all you have to create yout virtual enviroment with:
 ```bash
-pip install colorama
-```
-```bash
-pip install simple-term-menu
-```
-```bash
-pip install -e .
+python3 -m venv venv
 ```
 
-Now to start Sentinel run:
+2. Now you have to activate it with:
+```bash
+source venv/bin/activate
+```
+3. To install all dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+Now to start Sentinel:
 ```bash
 sentinel start
 ```
