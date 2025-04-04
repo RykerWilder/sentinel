@@ -7,7 +7,7 @@ name = "sentinel"
 version = "0.1.0"
 description = "Swiss Army Knife for Cybersecurity"
 authors = [
-    {name = "Ryker Wilder"}
+    {name = "RykerWilder"}
 ]
 readme = "README.md"
 license = {text = "MIT"}
