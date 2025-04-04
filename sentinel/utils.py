@@ -26,16 +26,15 @@ def print_dynamic_dots(key, value):
   print(f"{key}: {'.' * available_space} {value}")
 
 def create_venv_and_install_deps():
-    # Nome della cartella dell'ambiente virtuale
     venv_dir = "venv"
     venv_path = Path(venv_dir)
 
-    # Controlla se il venv esiste già
+    # 1. Controlla se il venv esiste già
     if venv_path.exists():
         print(f"⚠️ La cartella '{venv_dir}' esiste già. Eliminala prima di riprovare.")
         sys.exit(1)
 
-    # 1. Crea l'ambiente virtuale
+    # 2. Crea il venv
     print(f"\n🐍 Creazione ambiente virtuale in '{venv_dir}'...")
     try:
         subprocess.run([sys.executable, "-m", "venv", venv_dir], check=True)
@@ -43,26 +42,22 @@ def create_venv_and_install_deps():
         print(f"❌ Errore durante la creazione del venv: {e}")
         sys.exit(1)
 
-    # 2. Percorsi dei comandi pip/python (cross-OS)
-    if os.name == "nt":  # Windows
-        pip_path = str(venv_path / "Scripts" / "pip.exe")
-        python_path = str(venv_path / "Scripts" / "python.exe")
-    else:  # Linux/macOS
-        pip_path = str(venv_path / "bin" / "pip")
-        python_path = str(venv_path / "bin" / "python")
+    # 3. Percorsi dei comandi (cross-OS)
+    pip_path = str(venv_path / "Scripts" / "pip") if os.name == "nt" else str(venv_path / "bin" / "pip")
 
-    # 3. Installa le dipendenze
-    print("\n📦 Installazione delle dipendenze da requirements.txt...")
+    # 4. Installa le dipendenze + pacchetto in editable mode
+    print("\n📦 Installazione delle dipendenze...")
     try:
         subprocess.run([pip_path, "install", "-r", "requirements.txt"], check=True)
+        subprocess.run([pip_path, "install", "-e", "."], check=True)  # Aggiunto questo!
     except subprocess.CalledProcessError as e:
-        print(f"❌ Errore durante l'installazione delle dipendenze: {e}")
+        print(f"❌ Errore durante l'installazione: {e}")
         sys.exit(1)
 
-    # Messaggio di completamento
-    print("\n✅ Ambiente virtuale configurato con successo!")
-    print("\nPer attivarlo, esegui:")
-    if os.name == "nt":
-        print(f"  {venv_dir}\\Scripts\\activate")
-    else:
-        print(f"  source {venv_dir}/bin/activate")
+    # 5. Messaggio di completamento
+    print("\n✅ Configurazione completata!")
+    print("\nPer attivare il venv:")
+    print(f"  {'venv\\Scripts\\activate' if os.name == 'nt' else 'source venv/bin/activate'}")
+
+if __name__ == "__main__":
+    create_venv_and_install_deps()
