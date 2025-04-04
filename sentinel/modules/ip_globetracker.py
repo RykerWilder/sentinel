@@ -20,9 +20,9 @@ class IPGlobeTracker:
             if data['status'] == 'success':
                 self.print_ip_info(data);
             else:
-                print("Unable to get information for this IP")
+                print(f"{Fore.RED}Unable to get information for this IP{Style.RESET_ALL}")
         except Exception as e:
-            print(f"Error: {e}")
+            print(f"{Fore.RED}Error: {e}{Style.RESET_ALL}")
 
     def print_ip_info(self, data):
         terminal_width = shutil.get_terminal_size().columns #terminal width
