@@ -119,5 +119,7 @@ class SysInsider:
         print("Storage:")
         for disk in self.get_disk_usage():
             print(f"  {disk['device']} ({disk['mountpoint']}):")
-            print(f"    Total: {disk['total']} GB, Used: {disk['used']} GB ({disk['percent']}%)")
+            print_dynamic_dots('    Total', disk['total'])
+            print_dynamic_dots('    Used', disk['used'])
+            print_dynamic_dots('    Percent', disk['percent'])
         print("=" * terminal_width + "\n")
