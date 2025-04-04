@@ -8,18 +8,15 @@
 
 ### Dependencies
 
-1. First of all you have to create yout virtual enviroment with:
+First of all run the command:
 ```bash
-python3 -m venv venv
+pip install -e .
 ```
 
-2. Now you have to activate it with:
+To configure the environment and install dependencies you can run the command:
+
 ```bash
-source venv/bin/activate
-```
-3. To install all dependencies:
-```bash
-pip install -r requirements.txt
+sentinel initialize
 ```
 
 Now to start Sentinel:

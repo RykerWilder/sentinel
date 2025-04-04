@@ -26,5 +26,5 @@ dependencies = [
 ]
 
 [project.scripts]
-sentinel initialize = "sentinel.utils:sentinel_initializer"
+sentinel initialize = "sentinel.utils:create_venv_and_install_deps"
 sentinel start = "sentinel.main:main"
