@@ -12,7 +12,7 @@ def main():
               "[1] PortBlitz",
               "[2] SysInsider",
               "[3] IP GlobeTracker",
-              "[4] Network Sniffer",
+              "[4] PacketHound",
               "[5] CVE Hunter",
               "[6] Exit"
               ]
