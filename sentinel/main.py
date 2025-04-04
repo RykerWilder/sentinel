@@ -1,7 +1,7 @@
 from colorama import init, Fore
 from sentinel import print_logo
 from simple_term_menu import TerminalMenu
-from sentinel.modules import IPGlobeTracker, SysInsider
+from sentinel.modules import IPGlobeTracker, SysInsider, PortBlitz
 init() # for windows
 print(Fore.GREEN)
 
@@ -26,7 +26,10 @@ def main():
 
               choice = terminal_menu.show()
               if choice == 0:
-                     print('scelta 1 - Scanner di porte')
+                     target = input("Enter target (IP or domain): ")
+                     ports = input("Enter ports to scan (1-1000, 22,80,443): ") or "1-1000"
+                     arguments = input("Enter additional arguments (-sV, -A): ") or "-sV"
+                     port_blitz = PortBlitz()
               elif choice == 1:
                      sys_insider = SysInsider()
                      sys_insider.print_system_info()
