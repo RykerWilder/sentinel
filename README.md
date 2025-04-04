@@ -20,5 +20,5 @@ pip install -e .
 
 Now to start Sentinel run:
 ```bash
-sentinel
+sentinel start
 ```

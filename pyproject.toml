@@ -25,4 +25,4 @@ dependencies = [
 ]
 
 [project.scripts]
-sentinel = "sentinel.main:main"
+sentinel start = "sentinel.main:main"
