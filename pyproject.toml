@@ -8,6 +8,7 @@ version = "0.1.0"
 description = "Swiss Army Knife for Cybersecurity"
 authors = [
     {name = "RykerWilder"}
+    {name = "pavvvz"}
 ]
 readme = "README.md"
 license = {text = "MIT"}
