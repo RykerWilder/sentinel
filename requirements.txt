@@ -1,0 +1,4 @@
+colorama==0.4.6
+psutil==7.0.0
+Requests==2.32.3
+simple_term_menu==1.6.6
