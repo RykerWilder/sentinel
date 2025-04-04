@@ -1,6 +1,5 @@
 import requests
 import shutil
-import re
 from simple_term_menu import TerminalMenu
 from colorama import Style, Fore
 from sentinel import print_dynamic_dots
