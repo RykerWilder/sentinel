@@ -18,10 +18,10 @@ def main():
               ]
 
               terminal_menu = TerminalMenu(
-              options,
-              menu_cursor=">",
-              menu_cursor_style=("fg_red", "bold"),
-              menu_highlight_style=("standout",)
+                     options,
+                     menu_cursor=">",
+                     menu_cursor_style=("fg_red", "bold"),
+                     menu_highlight_style=("standout",)
               )
 
               choice = terminal_menu.show()
@@ -35,9 +35,8 @@ def main():
                      sys_insider = SysInsider()
                      sys_insider.print_system_info()
               elif choice == 2:
-                     ip_address = input('Insert IP Adress: ')
                      globe_tracker = IPGlobeTracker()
-                     globe_tracker.get_ip_info(ip_address)
+                     globe_tracker.ip_globetracker_menu()
               elif choice == 3:
                      print('scelta 4 - Network sniffer')
               elif choice == 4:

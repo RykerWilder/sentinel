@@ -1,9 +1,18 @@
 import requests
 import shutil
+import re
+from simple_term_menu import TerminalMenu
 from colorama import Style, Fore
 from sentinel import print_dynamic_dots
 
 class IPGlobeTracker:
+    def get_own_ip(self):
+        try:
+            response = requests.get('https://api.ipify.org')
+            return response.text
+        except Exception as e:
+            print(f"{Fore.RED}Error getting your public IP: {e}{Style.RESET_ALL}")
+            return None
 
     def get_ip_info(self, ip_address):
         try:
@@ -30,3 +39,26 @@ class IPGlobeTracker:
         print_dynamic_dots('Organization', data.get('org'))
         print_dynamic_dots('AS', data.get('as'))
         print("=" * terminal_width + "\n")
+
+    def ip_globetracker_menu(self):
+        options = [
+            "[1] Check my public IP",
+            "[2] Check a specific IP/domain"
+        ]
+
+        terminal_menu = TerminalMenu(
+            options,
+            menu_cursor=">",
+            menu_cursor_style=("fg_red", "bold"),
+            menu_highlight_style=("standout",)
+        )
+
+        choice = terminal_menu.show()
+        
+        if choice == 0:
+            my_ip_address = self.get_own_ip()
+            print(f'Your public IP address is: {Fore.GREEN}{my_ip_address}{Style.RESET_ALL}')
+            self.get_ip_info(my_ip_address)
+        if choice == 1:
+            ip_address = input('Insert IP address or domain: ')
+            self.get_ip_info(ip_address)
