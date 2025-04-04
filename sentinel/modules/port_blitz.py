@@ -32,3 +32,9 @@ class PortBlitz:
                     port_info = arg[host][proto][port]
                     print(f"{Fore.GREEN}Port{Style.RESET_ALL}: {port}\t{Fore.GREEN}State{Style.RESET_ALL}: {port_info['state']}\t{Fore.GREEN}Service{Style.RESET_ALL}: {port_info['name']}\t{Fore.GREEN}Version{Style.RESET_ALL}: {port_info.get('version', 'N/A')}")
 
+    def port_blitz_manager(self):
+        target = input("Enter IP or domain: ")
+        ports = input("Enter ports to scan: ")
+        arguments = input("Enter additional arguments (-sV, -A): ")
+        self.nmap_port_scan(target, ports, arguments)
+
