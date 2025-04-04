@@ -8,16 +8,12 @@
 
 ### Dependencies
 
-First of all run the command:
-```bash
-pip install -e .
-```
+# 1. Crea e attiva il venv
+python -m venv venv
+source venv/bin/activate  # o venv\Scripts\activate su Windows
 
-To configure the environment and install dependencies you can run the command:
-
-```bash
-sentinel initialize
-```
+# 2. Installa le dipendenze del progetto (se presenti)
+pip install -r requirements.txt
 
 Now to start Sentinel:
 ```bash
