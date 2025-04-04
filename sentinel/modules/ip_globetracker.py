@@ -39,7 +39,7 @@ class IPGlobeTracker:
         print_dynamic_dots('AS', data.get('as'))
         print("=" * terminal_width + "\n")
 
-    def ip_globetracker_menu(self):
+    def ip_globetracker_manager(self):
         options = [
             "[1] Check my public IP",
             "[2] Check a specific IP/domain"

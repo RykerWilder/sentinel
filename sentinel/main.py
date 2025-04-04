@@ -36,7 +36,7 @@ def main():
                      sys_insider.print_system_info()
               elif choice == 2:
                      globe_tracker = IPGlobeTracker()
-                     globe_tracker.ip_globetracker_menu()
+                     globe_tracker.ip_globetracker_manager()
               elif choice == 3:
                      print('scelta 4 - Network sniffer')
               elif choice == 4:
