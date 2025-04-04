@@ -15,8 +15,11 @@ class PortBlitz:
         print(f"Scanning {Fore.GREEN}{target}{Style.RESET_ALL} on ports {Fore.GREEN}{ports}{Style.RESET_ALL}...")
         
         # Esegue la scansione
-        scanner.scan(target, ports=ports, arguments=arguments)
-        self.print_scanned_port(scanner)
+        try:
+            scanner.scan(target, ports=ports, arguments=arguments)
+            self.print_scanned_port(scanner)
+        except nmap.PortScannerError as e:
+            print(f"Errore durante la scansione: {e}")
         
     def print_scanned_port(self, arg):
         # Stampa i risultati
