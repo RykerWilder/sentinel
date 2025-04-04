@@ -58,6 +58,3 @@ def create_venv_and_install_deps():
     print("\n✅ Configurazione completata!")
     print("\nPer attivare il venv:")
     print(f"  {'venv\\Scripts\\activate' if os.name == 'nt' else 'source venv/bin/activate'}")
-
-if __name__ == "__main__":
-    create_venv_and_install_deps()
