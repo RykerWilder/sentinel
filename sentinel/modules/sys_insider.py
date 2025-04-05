@@ -37,8 +37,7 @@ class SysInsider:
         return {
             "name": platform.processor(),
             "cores": psutil.cpu_count(logical=False),
-            "threads": psutil.cpu_count(logical=True),
-            "usage": psutil.cpu_percent(interval=1)
+            "threads": psutil.cpu_count(logical=True)
         }
 
     def get_ram_info(self):
@@ -102,7 +101,7 @@ class SysInsider:
 
         # Hardware Information
         cpu = self.get_cpu_info()
-        print_dynamic_dots('CPU', f"{cpu['name']} ({cpu['cores']} cores, {cpu['threads']} threads) - {cpu['usage']}% usage")
+        print_dynamic_dots('CPU', f"{cpu['name']} ({cpu['cores']} cores, {cpu['threads']} threads)")
         
         ram = self.get_ram_info()
         print_dynamic_dots('RAM', f"{ram['total']} GB total, {ram['used']} GB used ({ram['percent']}%)")
