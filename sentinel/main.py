@@ -1,28 +1,19 @@
 from colorama import init, Fore
 from sentinel import print_logo
 from simple_term_menu import TerminalMenu
-from sentinel.modules import IPGlobeTracker, SysInsider, PortBlitz
+from sentinel.modules import IPGlobeTracker, SysInsider, PortBlitz, KeyboardHandler
 from pynput import keyboard
-import sys
-init() # for windows
 print(Fore.GREEN)
 
 def main():
-       should_exit = False  # Usiamo un nome più esplicito
-
-       def on_press(key):
-              nonlocal should_exit  # Importante per modificare la variabile esterna
-              if key == keyboard.Key.esc:
-                     should_exit = True
-                     return False  # Ferma il listener
-
+       keyboard_handler = KeyboardHandler()
        # Avvia il listener
-       listener = keyboard.Listener(on_press=on_press)
+       listener = keyboard.Listener(on_press=keyboard_handler.on_press)
        listener.start()
 
        print_logo()
 
-       while not should_exit:
+       while not keyboard_handler.should_exit:
               options = [
               "[1] PortBlitz",
               "[2] SysInsider",
