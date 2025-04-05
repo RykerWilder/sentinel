@@ -8,14 +8,34 @@
 
 ### Dependencies
 
-# 1. Crea e attiva il venv
-python -m venv venv
-source venv/bin/activate  # o venv\Scripts\activate su Windows
+1. **Create venv**
+```zsh
+python3 -m venv venv
+```
 
-# 2. Installa le dipendenze del progetto (se presenti)
+2. **Activate venv**
+
+MacOS/Linux
+```zsh
+source venv/bin/activate
+```
+Windows
+```zsh
+venv\Scripts\activate
+```
+
+3. **Install project dependencies**
+```zsh
 pip install -r requirements.txt
+```
+
+4. **Install your package in "editable mode"**
+```zsh
+pip install -e .
+```
+
 
 Now to start Sentinel:
-```bash
-sentinel start
+```
+sentinel-start
 ```
