@@ -35,7 +35,7 @@ pip install -e .
 ```
 
 
-Now to start Sentinel:
+Now you are ready! Run:
 ```
 sentinel-start
 ```
