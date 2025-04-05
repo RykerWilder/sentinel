@@ -3,7 +3,7 @@
 
 ---
 
-To read documentation click here [sentinel documentation]()
+To read documentation click here [sentinel documentation](./markdown/documentation.md)
 
 ### Dependencies
 
