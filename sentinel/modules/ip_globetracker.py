@@ -3,15 +3,9 @@ import shutil
 from simple_term_menu import TerminalMenu
 from colorama import Style, Fore
 from sentinel import print_dynamic_dots
+from sentinel.modules.sys_insider import SysInsider
 
-class IPGlobeTracker:
-    def get_own_ip(self):
-        try:
-            response = requests.get('https://api.ipify.org')
-            return response.text
-        except Exception as e:
-            print(f"{Fore.RED}Error getting your public IP: {e}{Style.RESET_ALL}")
-            return None
+class IPGlobeTracker(SysInsider):
 
     def get_ip_info(self, ip_address):
         try:
@@ -55,7 +49,7 @@ class IPGlobeTracker:
         choice = terminal_menu.show()
         
         if choice == 0:
-            my_ip_address = self.get_own_ip()
+            my_ip_address = self.get_public_ip()
             print(f'Your public IP address is: {Fore.GREEN}{my_ip_address}{Style.RESET_ALL}')
             self.get_ip_info(my_ip_address)
         if choice == 1:
