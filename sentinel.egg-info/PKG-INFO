@@ -2,17 +2,20 @@ Metadata-Version: 2.4
 Name: sentinel
 Version: 0.1.0
 Summary: Swiss Army Knife for Cybersecurity
-Author: Ryker Wilder
-License: MIT
+Author: RykerWilder, pavvvz
+License-Expression: MIT
 Classifier: Development Status :: 3 - Alpha
 Classifier: Intended Audience :: Information Technology
-Classifier: License :: OSI Approved :: MIT License
 Classifier: Programming Language :: Python :: 3
 Classifier: Topic :: Security
 Requires-Python: >=3.8
 Description-Content-Type: text/markdown
+License-File: LICENSE
 Requires-Dist: requests>=2.26.0
 Requires-Dist: python-whois>=0.8.0
+Requires-Dist: colorama>=0.4.6
+Requires-Dist: psutil>=5.9.0
+Dynamic: license-file
 
 # Sentinel
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
@@ -24,9 +27,14 @@ Requires-Dist: python-whois>=0.8.0
 
 ### Dependencies
 
+# 1. Crea e attiva il venv
+python -m venv venv
+source venv/bin/activate  # o venv\Scripts\activate su Windows
+
+# 2. Installa le dipendenze del progetto (se presenti)
+pip install -r requirements.txt
+
+Now to start Sentinel:
 ```bash
-pip install colorama
-```
-```bash
-pip install simple-term-menu
+sentinel start
 ```
