@@ -1,4 +1,4 @@
-from colorama import init, Fore
+from colorama import Fore
 from sentinel import print_logo
 from simple_term_menu import TerminalMenu
 from sentinel.modules import IPGlobeTracker, SysInsider, PortBlitz, KeyboardHandler

@@ -1,7 +1,7 @@
 import shutil
 
 def clickable_link(url, text):
-    return f"\033]8;;{url}\a{text}\033]8;;\a"
+    return f"\033]8;;{url}\033\\{text}\033]8;;\033\\"
 
 def print_logo():
   logo = r"""
