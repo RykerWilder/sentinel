@@ -1,11 +1,10 @@
 import shutil
-import os
-import sys
-import subprocess
-from pathlib import Path
+
+def clickable_link(url, text):
+    return f"\033]8;;{url}\a{text}\033]8;;\a"
 
 def print_logo():
-    print(""" 
+  logo = r"""
       ░▒▓███████▓▒░▒▓████████▓▒░▒▓███████▓▒░▒▓████████▓▒░▒▓█▓▒░▒▓███████▓▒░░▒▓████████▓▒░▒▓█▓▒░        
      ░▒▓█▓▒░      ░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░   ░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░        
      ░▒▓█▓▒░      ░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░   ░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░        
@@ -13,7 +12,16 @@ def print_logo():
             ░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░   ░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░        
             ░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░   ░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░        
      ░▒▓███████▓▒░░▒▓████████▓▒░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░   ░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓████████▓▒░▒▓████████▓▒░
-    """)
+    """
+
+  welcome_message = f"""Welcome to 
+    {logo}  
+    If you want to learn more about sentinel's features, go read the documentation {clickable_link('https://github.com/RykerWilder/sentinel', 'sentinel documentation')}
+  """
+
+  return print(welcome_message)
+
+
 
 def print_dynamic_dots(key, value):
   # Ottieni la larghezza corrente del terminale
