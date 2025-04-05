@@ -2,34 +2,49 @@ from colorama import init, Fore
 from sentinel import print_logo
 from simple_term_menu import TerminalMenu
 from sentinel.modules import IPGlobeTracker, SysInsider, PortBlitz
+from pynput import keyboard
+import sys
 init() # for windows
 print(Fore.GREEN)
 
 def main():
+       should_exit = False  # Usiamo un nome più esplicito
+
+       def on_press(key):
+              nonlocal should_exit  # Importante per modificare la variabile esterna
+              if key == keyboard.Key.esc:
+                     should_exit = True
+                     return False  # Ferma il listener
+
+       # Avvia il listener
+       listener = keyboard.Listener(on_press=on_press)
+       listener.start()
+
        print_logo()
-       while True:
+
+       while not should_exit:
               options = [
               "[1] PortBlitz",
               "[2] SysInsider",
-              "[3] IP GlobeTracker",
+              "[3] IP GlobeTracker", 
               "[4] PacketHound",
-              "[5] CVE Hunter",
-              "[6] Exit"
+              "[5] CVE Hunter"
               ]
 
               terminal_menu = TerminalMenu(
-                     options,
-                     menu_cursor=">",
-                     menu_cursor_style=("fg_red", "bold"),
-                     menu_highlight_style=("standout",)
+              options,
+              menu_cursor=">",
+              menu_cursor_style=("fg_green", "bold"),
+              menu_highlight_style=("standout",)
               )
 
               choice = terminal_menu.show()
+              
               if choice == 0:
                      port_blitz = PortBlitz()
                      port_blitz.port_blitz_manager()
               elif choice == 1:
-                     sys_insider = SysInsider()
+                     sys_insider = SysInsider() 
                      sys_insider.print_system_info()
               elif choice == 2:
                      globe_tracker = IPGlobeTracker()
@@ -38,7 +53,7 @@ def main():
                      print('scelta 4 - Network sniffer')
               elif choice == 4:
                      pass
-                     # subprocess.run(["python3", "sentinel/modules/cve_hunter.py"])
-              if choice == 5: 
-                     print('Thanks for using Sentinel, hope to see you soon!')
-                     break
+              # subprocess.run(["python3", "sentinel/modules/cve_hunter.py"])
+
+       listener.stop()  # Ferma correttamente il listener
+       print('Thanks for using Sentinel, hope to see you soon!')
