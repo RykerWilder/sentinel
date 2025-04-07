@@ -1,34 +1,50 @@
-import shutil
+# import shutil
 
-def clickable_link(url, text):
-    return f"\033]8;;{url}\033\\{text}\033]8;;\033\\"
+# def clickable_link(url, text):
+#     return f"\033]8;;{url}\033\\{text}\033]8;;\033\\"
 
-def print_logo():
-  logo = r"""
-      ░▒▓███████▓▒░▒▓████████▓▒░▒▓███████▓▒░▒▓████████▓▒░▒▓█▓▒░▒▓███████▓▒░░▒▓████████▓▒░▒▓█▓▒░        
-     ░▒▓█▓▒░      ░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░   ░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░        
-     ░▒▓█▓▒░      ░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░   ░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░        
-      ░▒▓██████▓▒░░▒▓██████▓▒░ ░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░   ░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓██████▓▒░ ░▒▓█▓▒░        
-            ░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░   ░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░        
-            ░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░   ░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░        
-     ░▒▓███████▓▒░░▒▓████████▓▒░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░   ░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓████████▓▒░▒▓████████▓▒░
-    """
+# def print_logo():
+#   logo = r"""
+#       ░▒▓███████▓▒░▒▓████████▓▒░▒▓███████▓▒░▒▓████████▓▒░▒▓█▓▒░▒▓███████▓▒░░▒▓████████▓▒░▒▓█▓▒░        
+#      ░▒▓█▓▒░      ░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░   ░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░        
+#      ░▒▓█▓▒░      ░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░   ░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░        
+#       ░▒▓██████▓▒░░▒▓██████▓▒░ ░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░   ░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓██████▓▒░ ░▒▓█▓▒░        
+#             ░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░   ░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░        
+#             ░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░   ░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░        
+#      ░▒▓███████▓▒░░▒▓████████▓▒░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░   ░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓████████▓▒░▒▓████████▓▒░
+#     """
 
-  welcome_message = f"""Welcome to 
-    {logo}  
-    If you want to learn more about sentinel's features, go read the documentation {clickable_link('https://github.com/RykerWilder/sentinel', 'sentinel documentation')}
-  """
+#   welcome_message = f"""Welcome to 
+#     {logo}  
+#     If you want to learn more about sentinel's features, go read the documentation {clickable_link('https://github.com/RykerWilder/sentinel', 'sentinel documentation')}
+#   """
 
-  return print(welcome_message)
+#   return print(welcome_message)
 
 
 
-def print_dynamic_dots(key, value):
-  # Ottieni la larghezza corrente del terminale
-  cols = shutil.get_terminal_size().columns
+# def print_dynamic_dots(key, value):
+#   # Ottieni la larghezza corrente del terminale
+#   cols = shutil.get_terminal_size().columns
         
-  #Calcola la lunghezza disponibile per i puntini
-  available_space = cols - len(key) - len(str(value)) - 3  
+#   #Calcola la lunghezza disponibile per i puntini
+#   available_space = cols - len(key) - len(str(value)) - 3  
         
-  # Stampa la chiave, i puntini e il valore
-  print(f"{key}: {'.' * available_space} {value}")
+#   # Stampa la chiave, i puntini e il valore
+#   print(f"{key}: {'.' * available_space} {value}")
+
+
+import time
+from colorama import Fore
+
+def loader():
+    chars = ["[=     ]", "[ =    ]", "[  =   ]", "[   =  ]", "[    = ]", "[     =]", "[    = ]", "[   =  ]", "[  =   ]", "[ =    ]"]
+    is_loading = False
+    while is_loading:
+        if is_loading:
+          for c in chars:
+              print(Fore.GREEN + f"\rLoading... {c}", end="", flush=True)
+              time.sleep(.2)
+        else:
+            break
+loader()
