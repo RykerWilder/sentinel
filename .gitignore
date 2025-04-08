@@ -1,1 +1,11 @@
-sentinel.txt
+# Ignora le cartelle __pycache__
+__pycache__/
+
+# Ignora i file compilati di Python
+*.pyc
+*.pyo
+*.pyd
+
+# Ignora le cartelle di ambiente virtuale (opzionale, ma consigliato)
+venv/
+env/
