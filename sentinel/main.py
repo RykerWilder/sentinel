@@ -48,3 +48,7 @@ def main():
 
        listener.stop()  # Ferma correttamente il listener
        print('Thanks for using Sentinel, hope to see you soon!')
+
+if __name__ == "__main__":
+       # installer
+       main()

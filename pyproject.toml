@@ -26,8 +26,5 @@ dependencies = [
     "psutil>=5.9.0"
 ]
 
-[project.scripts]
-sentinel-start = "sentinel.main:main"
-
 [tool.setuptools]
 packages = ["sentinel", "assets"]  # Se mantieni la struttura flat
