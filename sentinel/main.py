@@ -1,3 +1,4 @@
+import subprocess
 from colorama import Fore
 from sentinel import print_logo
 from simple_term_menu import TerminalMenu
@@ -44,11 +45,17 @@ def main():
                      print('scelta 4 - Network sniffer')
               elif choice == 4:
                      pass
-              # subprocess.run(["python3", "sentinel/modules/cve_hunter.py"])
+              
 
        listener.stop()  # Ferma correttamente il listener
        print('Thanks for using Sentinel, hope to see you soon!')
 
 if __name__ == "__main__":
-       # installer
+       # Esegui lo script .sh
+       result = subprocess.run(["/bin/bash", "installer.sh"], capture_output=True, text=True)
+
+       # Stampa l'output e gli errori
+       print("Output:", result.stdout)
+       print("Errori:", result.stderr)
+       print("Codice di uscita:", result.returncode)
        main()
