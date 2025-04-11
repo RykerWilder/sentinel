@@ -27,4 +27,4 @@ dependencies = [
 ]
 
 [tool.setuptools]
-packages = ["sentinel", "assets"]  # Se mantieni la struttura flat
+packages = ["sentinel"] 

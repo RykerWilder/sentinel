@@ -1,2 +1,0 @@
-[console_scripts]
-sentinel-start = sentinel.main:main
