@@ -28,13 +28,3 @@ venv\Scripts\activate
 ```zsh
 pip install -r requirements.txt
 ```
-
-4. **Install your package in "editable mode"**
-```zsh
-pip install -e .
-```
-
-5. Now you are ready! Run:
-```zsh
-sentinel-start
-```
