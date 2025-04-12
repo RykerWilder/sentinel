@@ -20,7 +20,7 @@ class PortBlitz:
             scanner.scan(target, ports=ports, arguments=arguments)
             self.print_scanned_port(scanner)
         except nmap.PortScannerError as e:
-            print(f"Errore durante la scansione: {e}")
+            print(f"Error during the scanning: {e}")
         
     def print_scanned_port(self, arg):
         # Stampa i risultati
