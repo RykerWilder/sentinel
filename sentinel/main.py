@@ -1,5 +1,5 @@
 from colorama import Fore
-from sentinel.utils import print_logo
+from sentinel import print_logo
 from simple_term_menu import TerminalMenu
 from sentinel.modules import IPGlobeTracker, SysInsider, PortBlitz, KeyboardHandler
 from pynput import keyboard

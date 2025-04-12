@@ -1,11 +1,12 @@
-# Ignora le cartelle __pycache__
+# Cartelle di cache Python
 __pycache__/
+*.py[cod]
+*$py.class
 
-# Ignora i file compilati di Python
-*.pyc
-*.pyo
-*.pyd
-
-# Ignora le cartelle di ambiente virtuale (opzionale, ma consigliato)
+# Altri file/directory da ignorare
+*.egg-info/
+*.log
+*.sqlite3
+.env
 venv/
-env/
+.venv/
