@@ -1,4 +1,5 @@
 import shutil
+from colorama import Style, Fore
 
 def clickable_link(url, text):
     return f"\033]8;;{url}\033\\{text}\033]8;;\033\\"
@@ -31,4 +32,4 @@ def print_dynamic_dots(key, value):
     available_space = cols - len(key) - len(str(value)) - 3  
     
     # Stampa la chiave, i puntini e il valore
-    print(f"{key}: {'.' * available_space} {value}")
+    print(f"{Fore.BLUE}{key}{Style.RESET_ALL}: {'.' * available_space} {value}")
