@@ -1,5 +1,6 @@
 import nmap
 from colorama import Style, Fore
+from sentinel import print_dynamic_dots
 
 class PortBlitz:
     def nmap_port_scan(self, target, ports="1-1000", arguments="-sV"):
@@ -24,16 +25,16 @@ class PortBlitz:
     def print_scanned_port(self, arg):
         # Stampa i risultati
         for host in arg.all_hosts():
-            print(f"\n{Fore.GREEN}Host{Style.RESET_ALL}: {host} ({arg[host].hostname()})")
-            print(f"{Fore.GREEN}State{Style.RESET_ALL}: {arg[host].state()}")
+            print_dynamic_dots('Host', host)
+            print_dynamic_dots('State', arg[host].state())
             
             for proto in arg[host].all_protocols():
-                print(f"\n{Fore.GREEN}Protocol{Style.RESET_ALL}: {proto}")
+                print_dynamic_dots('Protocol', proto)
                 ports = arg[host][proto].keys()
                 
                 for port in sorted(ports):
                     port_info = arg[host][proto][port]
-                    print(f"{Fore.GREEN}Port{Style.RESET_ALL}: {port}\t{Fore.GREEN}State{Style.RESET_ALL}: {port_info['state']}\t{Fore.GREEN}Service{Style.RESET_ALL}: {port_info['name']}\t{Fore.GREEN}Version{Style.RESET_ALL}: {port_info.get('version', 'N/A')}")
+                    print(f"Port: {port}\tState: {port_info['state']}\tService: {port_info['name']}\tVersion: {port_info.get('version', 'N/A')}")
 
     def port_blitz_manager(self):
         target = input("Enter IP or domain: ")
