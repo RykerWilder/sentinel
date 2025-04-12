@@ -1,6 +1,8 @@
 import nmap
 from colorama import Style, Fore
 from sentinel import print_dynamic_dots
+import shutil
+from tabulate import tabulate
 
 class PortBlitz:
     def nmap_port_scan(self, target, ports="1-1000", arguments="-sV"):
@@ -21,7 +23,7 @@ class PortBlitz:
             self.print_scanned_port(scanner)
         except nmap.PortScannerError as e:
             print(f"Error during the scanning: {e}")
-        
+
     def print_scanned_port(self, arg):
         # Stampa i risultati
         for host in arg.all_hosts():
@@ -32,13 +34,31 @@ class PortBlitz:
                 print_dynamic_dots('Protocol', proto)
                 ports = arg[host][proto].keys()
                 
+                # Prepara i dati per la tabella
+                table_data = []
+                headers = ["Port", "State", "Service", "Version"]
+                
                 for port in sorted(ports):
                     port_info = arg[host][proto][port]
-                    print(f"Port: {port}\tState: {port_info['state']}\tService: {port_info['name']}\tVersion: {port_info.get('version', 'N/A')}")
+                    table_data.append([
+                        port,
+                        port_info['state'],
+                        port_info['name'],
+                        port_info.get('version', 'N/A')
+                    ])
+                
+                # Stampa la tabella formattata
+                print(tabulate(table_data, headers=headers, tablefmt="grid"))
+                print()  # Spazio vuoto per separare i protocolli
 
     def port_blitz_manager(self):
+        terminal_width = shutil.get_terminal_size().columns #terminal width
+        print(f"\n{'='*40}{Fore.GREEN} PortBlitz{Style.RESET_ALL}{'='*40}")
+
         target = input("Enter IP or domain: ")
         ports = input("Enter ports to scan: ")
         arguments = input("Enter additional arguments (-sV, -A): ")
+
         self.nmap_port_scan(target, ports, arguments)
+        print("=" * terminal_width + "\n")
 
