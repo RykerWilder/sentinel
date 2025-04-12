@@ -1,5 +1,13 @@
+certifi==2025.1.31
+charset-normalizer==3.4.1
 colorama==0.4.6
+evdev==1.9.1
+idna==3.10
 psutil==7.0.0
-python_nmap==0.7.1
-Requests==2.32.3
-simple_term_menu==1.6.6
+pynput==1.8.1
+python-nmap==0.7.1
+python-xlib==0.33
+requests==2.32.3
+simple-term-menu==1.6.6
+six==1.17.0
+urllib3==2.4.0
