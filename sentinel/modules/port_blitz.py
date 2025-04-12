@@ -14,7 +14,7 @@ class PortBlitz:
             arguments (str): Argomenti aggiuntivi per Nmap (es. "-sV" per version detection).
         """
         scanner = nmap.PortScanner()
-        print(f"Scanning {Fore.GREEN}{target}{Style.RESET_ALL} on ports {Fore.GREEN}{ports}{Style.RESET_ALL}...")
+        print(f"{Fore.YELLOW}Scanning \"{target}\" on ports {ports}")
         
         # Esegue la scansione
         try:
@@ -35,7 +35,7 @@ class PortBlitz:
                     
                     for port in sorted(ports):
                         port_info = arg[host][proto][port]
-                        print(f"Port: {port:<10}\t| State: {port_info['state']:<10}\t| Service: {port_info['name']:<20}\t| Version: {port_info.get('version', 'N/A')}") 
+                        print(f"{Fore.BLUE}Port{Style.RESET_ALL}: {port:<10}\t| {Fore.BLUE}State{Style.RESET_ALL}: {port_info['state']:<10}\t| {Fore.BLUE}Service{Style.RESET_ALL}: {port_info['name']:<20}\t| {Fore.BLUE}Version{Style.RESET_ALL}: {port_info.get('version', 'N/A')}") 
 
     def port_blitz_manager(self):
         terminal_width = shutil.get_terminal_size().columns #terminal width
