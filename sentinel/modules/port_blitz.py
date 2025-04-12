@@ -44,7 +44,7 @@ class PortBlitz:
                         port,
                         port_info['state'],
                         port_info['name'],
-                        port_info.get('version', 'N/A')
+                        port_info.get('version')
                     ])
                 
                 # Stampa la tabella formattata
