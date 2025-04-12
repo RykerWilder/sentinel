@@ -35,7 +35,7 @@ class PortBlitz:
                     
                     for port in sorted(ports):
                         port_info = arg[host][proto][port]
-                        print(f"Port: {port}\tState: {port_info['state']}\tService: {port_info['name']}\tVersion: {port_info.get('version', 'N/A')}") 
+                        print(f"Port: {port:<10}\t| State: {port_info['state']:<10}\t| Service: {port_info['name']:<20}\t| Version: {port_info.get('version', 'N/A')}") 
 
     def port_blitz_manager(self):
         terminal_width = shutil.get_terminal_size().columns #terminal width
