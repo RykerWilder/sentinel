@@ -2,7 +2,6 @@ import nmap
 from colorama import Style, Fore
 from sentinel import print_dynamic_dots
 import shutil
-from tabulate import tabulate
 
 class PortBlitz:
     def nmap_port_scan(self, target, ports="1-1000", arguments="-sV"):
@@ -25,31 +24,18 @@ class PortBlitz:
             print(f"Error during the scanning: {e}")
 
     def print_scanned_port(self, arg):
-        # Stampa i risultati
-        for host in arg.all_hosts():
-            print_dynamic_dots('Host', host)
-            print_dynamic_dots('State', arg[host].state())
-            
-            for proto in arg[host].all_protocols():
-                print_dynamic_dots('Protocol', proto)
-                ports = arg[host][proto].keys()
+            # Stampa i risultati
+            for host in arg.all_hosts():
+                print_dynamic_dots('Host', host)
+                print_dynamic_dots('State', arg[host].state())
                 
-                # Prepara i dati per la tabella
-                table_data = []
-                headers = ["Port", "State", "Service", "Version"]
-                
-                for port in sorted(ports):
-                    port_info = arg[host][proto][port]
-                    table_data.append([
-                        port,
-                        port_info['state'],
-                        port_info['name'],
-                        port_info.get('version')
-                    ])
-                
-                # Stampa la tabella formattata
-                print(tabulate(table_data, headers=headers, tablefmt="grid"))
-                print()  # Spazio vuoto per separare i protocolli
+                for proto in arg[host].all_protocols():
+                    print_dynamic_dots('Protocol', proto)
+                    ports = arg[host][proto].keys()
+                    
+                    for port in sorted(ports):
+                        port_info = arg[host][proto][port]
+                        print(f"Port: {port}\tState: {port_info['state']}\tService: {port_info['name']}\tVersion: {port_info.get('version', 'N/A')}") 
 
     def port_blitz_manager(self):
         terminal_width = shutil.get_terminal_size().columns #terminal width
