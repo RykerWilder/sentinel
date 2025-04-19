@@ -21,6 +21,7 @@ class IPGlobeTracker(SysInsider):
     def print_ip_info(self, data):
         terminal_width = shutil.get_terminal_size().columns #terminal width
         print(f"\n{'='*40}{Fore.GREEN} IP GlobeTracker {Style.RESET_ALL}{'='*40}")
+        print(f'Your public IP address is: {Fore.BLUE}{data.get('query')}{Style.RESET_ALL}')
         print_dynamic_dots('Country', data.get('country'))
         print_dynamic_dots('Country code', data.get('countryCode'))
         print_dynamic_dots('Region', data.get('regionName'))
@@ -50,7 +51,6 @@ class IPGlobeTracker(SysInsider):
         
         if choice == 0:
             my_ip_address = self.get_public_ip()
-            print(f'Your public IP address is: {Fore.GREEN}{my_ip_address}{Style.RESET_ALL}')
             self.get_ip_info(my_ip_address)
         if choice == 1:
             ip_address = input('Insert IP address or domain: ')
