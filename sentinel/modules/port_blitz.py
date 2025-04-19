@@ -4,7 +4,7 @@ from sentinel import print_dynamic_dots
 import shutil
 
 class PortBlitz:
-    def nmap_port_scan(self, target, ports="1-1000", arguments="-sV"):
+    def nmap_port_scan(self, target, ports, arguments):
         """
         Esegue una scansione delle porte con Nmap.
         
@@ -42,8 +42,8 @@ class PortBlitz:
         print(f"\n{'='*40}{Fore.GREEN} PortBlitz{Style.RESET_ALL}{'='*40}")
 
         target = input("Enter IP or domain: ")
-        ports = input("Enter ports to scan: ")
-        arguments = input("Enter additional arguments (-sV, -A): ")
+        ports = input("Enter ports to scan: ") or "1-1000"
+        arguments = input("Enter additional arguments (-A, -oN scan.txt): ") or "-sV"
 
         self.nmap_port_scan(target, ports, arguments)
         print("=" * terminal_width + "\n")
