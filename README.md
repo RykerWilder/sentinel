@@ -20,7 +20,9 @@ is a Python program designed to collect and display detailed information about t
 
 #### 3. IPGlobeTracker
 is a Python program that extends the functionality of SysInsider to provide detailed information about public IP addresses and domains. Use the [ip-api.com](https://ip-api.com/) public API to get geographic data, ISPs, and other useful information.
-
+![IPGlobeTrackerOutput](./sentinel/assets/ip-globetracker-output.png)
+With IPGlobeTracker you can view the information relating to your IP address or by choosing the second option you can view another IP address.
+![IPGlobeTrackerMenu](./sentinel/assets/ip-globetracker-menu.png)
 
 ## Commands
 
