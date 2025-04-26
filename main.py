@@ -8,7 +8,7 @@ print(Fore.GREEN)
 def main():
        keyboard_handler = KeyboardHandler()
        # Avvia il listener
-       listener = keyboard.Listener(on_press=keyboard_handler.on_press)
+       listener = keyboard.Listener(on_press=keyboard_handler.on_press_exit)
        listener.start()
 
        print_logo()
