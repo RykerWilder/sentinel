@@ -19,8 +19,8 @@ def main():
               "[2] SysInsider",
               "[3] IP GlobeTracker",
               "[4] PacketHound",
-              "[5] CVE Hunter",
-              "[6] MAC Doppelg"
+              "[5] MAC Doppelganger"
+              "[6] CVE Hunter"
               ]
 
               terminal_menu = TerminalMenu(
@@ -42,9 +42,9 @@ def main():
                      globe_tracker = IPGlobeTracker()
                      globe_tracker.ip_globetracker_manager()
               elif choice == 3:
-                     print('scelta 4 - Network sniffer')
+                     print('scelta 4 - PacketHound')
               elif choice == 4:
-                     pass
+                     print('scelta 5 - MAC Doppelganger')
               
 
        listener.stop()  # Ferma correttamente il listener
