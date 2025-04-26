@@ -19,7 +19,8 @@ def main():
               "[2] SysInsider",
               "[3] IP GlobeTracker",
               "[4] PacketHound",
-              "[5] CVE Hunter"
+              "[5] CVE Hunter",
+              "[6] MAC Doppelg"
               ]
 
               terminal_menu = TerminalMenu(
