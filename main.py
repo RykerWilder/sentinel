@@ -1,4 +1,4 @@
-from colorama import Fore
+from colorama import Fore, Style
 from sentinel.utils import print_logo
 from simple_term_menu import TerminalMenu
 from sentinel.modules import IPGlobeTracker, SysInsider, PortBlitz, KeyboardHandler
@@ -47,7 +47,7 @@ def main():
               
 
        listener.stop()  # Ferma correttamente il listener
-       print('Thanks for using Sentinel, hope to see you soon!')
+       print(f'{Fore.GREEN}Thanks for using Sentinel, hope to see you soon!{Style.RESET_ALL}')
 
 if __name__ == "__main__":
        main()
