@@ -17,7 +17,7 @@ def main():
               options = [
               "[1] PortBlitz",
               "[2] SysInsider",
-              "[3] IP GlobeTracker", 
+              "[3] IP GlobeTracker",
               "[4] PacketHound",
               "[5] CVE Hunter"
               ]
