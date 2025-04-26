@@ -19,7 +19,7 @@ def main():
               "[2] SysInsider",
               "[3] IP GlobeTracker",
               "[4] PacketHound",
-              "[5] MAC Doppelganger"
+              "[5] MAC Doppelganger",
               "[6] CVE Hunter"
               ]
 

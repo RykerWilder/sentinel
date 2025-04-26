@@ -3,6 +3,7 @@ import socket
 import psutil
 import requests
 import shutil
+import uuid
 from colorama import Style, Fore
 from sentinel import print_dynamic_dots
 
@@ -78,6 +79,11 @@ class SysInsider:
             }
         }
 
+    def get_mac_address(self):
+        mac_num = hex(uuid.getnode()).replace('0x', '').upper()
+        mac = '-'.join(mac_num[i:i+2] for i in range(0, 11, 2))
+        return mac
+
     def get_battery_info(self):
         try:
             battery = psutil.sensors_battery()
@@ -108,6 +114,7 @@ class SysInsider:
 
         # Network Information
         print("Network:")
+        print_dynamic_dots('  MAC Address', self.get_mac_address())
         print_dynamic_dots('  Public IP', self.get_public_ip())
         network_info = self.get_network_info()
         for name, data in network_info.get("interfaces", {}).items():
