@@ -5,6 +5,39 @@ Sentinel is a Swiss Army knife for cybersecurity, available only for unix operat
 ![sentinel](./sentinel/assets/welcome.png)
 
 ---
+## Installation
+
+1. clone repository from github
+```bash
+git clone https://github.com/RykerWilder/sentinel.git
+```
+
+2. change directory in sentinel
+```bash
+cd sentinel
+```
+
+3. create a virtual environment (venv)
+```bash
+python3 -m venv venv
+```
+
+4. activate venv
+```bash
+source venv/bin/activate
+```
+
+5. install dependencies from requirements.txt
+```bash
+pip install -r requirements.txt
+```
+
+6. start project
+```bash
+python3 main.py
+```
+
+---
 
 **Please note**, only tools are present in the menu, to see all the other commands on sentinel, scroll down to [commands](#commands).
 
@@ -23,6 +56,8 @@ is a Python program that extends the functionality of SysInsider to provide deta
 ![IPGlobeTrackerOutput](./sentinel/assets/ip-globetracker-output.png)
 With IPGlobeTracker you can view the information relating to your IP address or by choosing the second option you can view another IP address.
 ![IPGlobeTrackerMenu](./sentinel/assets/ip-globetracker-menu.png)
+
+---
 
 ## Commands
 
