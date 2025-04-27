@@ -19,7 +19,7 @@ def main():
               "[2] SysInsider",
               "[3] IP GlobeTracker",
               "[4] PacketHound",
-              "[5] MAC Doppelganger",
+              "[5] Not Your MAC",
               "[6] CVE Hunter"
               ]
 
@@ -44,7 +44,7 @@ def main():
               elif choice == 3:
                      print('scelta 4 - PacketHound')
               elif choice == 4:
-                     print('scelta 5 - MAC Doppelganger')
+                     print('scelta 5 - Not Your MAC')
               
 
        listener.stop()  # Ferma correttamente il listener
