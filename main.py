@@ -1,7 +1,7 @@
 from colorama import Fore, Style
 from sentinel.utils import print_logo
 from simple_term_menu import TerminalMenu
-from sentinel.modules import IPGlobeTracker, SysInsider, PortBlitz, KeyboardHandler
+from sentinel.modules import IPGlobeTracker, SysInsider, PortBlitz, MACPhantom
 from pynput import keyboard
 print(Fore.GREEN)
 
@@ -44,7 +44,8 @@ def main():
               elif choice == 3:
                      print('scelta 4 - PacketHound')
               elif choice == 4:
-                     print('scelta 5 - MAC Phantom')
+                     mac_phantom = MACPhantom()
+                     mac_phantom.mac_phantom_manager()
               
 
        listener.stop()  # Ferma correttamente il listener
