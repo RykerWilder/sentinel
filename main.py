@@ -1,7 +1,7 @@
 from colorama import Fore, Style
 from sentinel.utils import print_logo
 from simple_term_menu import TerminalMenu
-from sentinel.modules import IPGlobeTracker, SysInsider, PortBlitz, MACPhantom
+from sentinel.modules import IPGlobeTracker, SysInsider, PortBlitz, MACPhantom, KeyboardHandler
 from pynput import keyboard
 print(Fore.GREEN)
 
