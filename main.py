@@ -8,12 +8,12 @@ def main():
 
     while True:
         options = [
-            "[1] PortBlitz",
-            "[2] SysInsider",
-            "[3] IP GlobeTracker",
-            "[4] PacketHound",
-            "[5] MAC Phantom",
-            "[6] CVE Hunter",
+            "[1] - PortBlitz",
+            "[2] - SysInsider",
+            "[3] - IP GlobeTracker",
+            "[4] - PacketHound",
+            "[5] - MAC Phantom",
+            "[6] - CVE Hunter",
             "",
             "[x] Exit"
         ]
