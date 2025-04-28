@@ -39,7 +39,7 @@ class PortBlitz:
 
     def port_blitz_manager(self):
         terminal_width = shutil.get_terminal_size().columns #terminal width
-        print(f"\n{'='*40}{Fore.GREEN} PortBlitz{Style.RESET_ALL}{'='*40}")
+        print(f"\n{'='*40}{Fore.BLUE} PortBlitz{Style.RESET_ALL}{'='*40}")
 
         target = input("Enter IP or domain: ")
         ports = input("Enter ports to scan: ") or "1-1000"

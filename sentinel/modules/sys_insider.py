@@ -98,7 +98,7 @@ class SysInsider:
 
     def print_system_info(self):
         terminal_width = shutil.get_terminal_size().columns
-        print(f"\n{'='*40}{Fore.GREEN} SysInsider {Style.RESET_ALL}{'='*40}")
+        print(f"\n{'='*40}{Fore.BLUE} SysInsider {Style.RESET_ALL}{'='*40}")
         
         # OS Information
         os_details = self.get_os_details()

@@ -42,7 +42,7 @@ def print_dynamic_dots(key, value):
     cols = shutil.get_terminal_size().columns
     
     #Calcola la lunghezza disponibile per i puntini
-    availabl_space = cols - len(key) - len(str(value)) - 3  
+    available_space = cols - len(key) - len(str(value)) - 3  
     
     # Stampa la chiave, i puntini e il valore
     print(f"{Fore.BLUE}{key}{Style.RESET_ALL}: {'.' * available_space} {value}")

@@ -11,7 +11,7 @@ def check_cves_for_software(software_name):
         terminal_width = shutil.get_terminal_size().columns #terminal width
 
         if data.get("totalResults", 0) > 0:
-            print(f"\n{'='*40}{Fore.GREEN} CVE Hunter {Style.RESET_ALL}{'='*40}")
+            print(f"\n{'='*40}{Fore.BLUE} CVE Hunter {Style.RESET_ALL}{'='*40}")
             print(f"Found {Fore.RED}{data['totalResults']} CVE{Style.RESET_ALL} for {software_name}:")
             for vuln in data["vulnerabilities"]:
                 cve_id = vuln["cve"]["id"]
