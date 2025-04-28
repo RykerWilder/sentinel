@@ -39,8 +39,6 @@ python3 main.py
 
 ---
 
-**Please note**, only tools are present in the menu, to see all the other commands on sentinel, scroll down to [commands](#commands).
-
 ## Menu
 
 #### 1. PortBlitz
@@ -56,12 +54,3 @@ is a Python program that extends the functionality of SysInsider to provide deta
 ![IPGlobeTrackerOutput](./sentinel/assets/ip-globetracker-output.png)
 With IPGlobeTracker you can view the information relating to your IP address or by choosing the second option you can view another IP address.
 ![IPGlobeTrackerMenu](./sentinel/assets/ip-globetracker-menu.png)
-
----
-
-## Commands
-
-| Key         | Action              | Description                                |
-|------------ |---------------------|--------------------------------------------|
-| `+`         | Open new window     | Open new terminal window                   |
-| `Esc`       | Leave Sentinel      | Program execution block                    |
