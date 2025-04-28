@@ -2,7 +2,7 @@ import shutil
 from colorama import Style, Fore
 
 def clickable_link(url, text):
-    return f"{Fore.YELLOW}\033]8;;{url}\033\\{text}\033]8;;\033\\"
+    return f"{Fore.YELLOW}\033]8;;{url}\033\\{text}\033]8;;\033\\{Style.RESET_ALL}"
 
 def print_logo():
     logo = r"""
@@ -17,7 +17,7 @@ def print_logo():
 
     welcome_message = f"""{Fore.GREEN}Welcome to 
     {logo}  
-    If you want to learn more about Sentinel, go read {clickable_link('https://github.com/RykerWilder/sentinel', 'sentinel documentation')}.
+    If you want to learn more about Sentinel, go read {clickable_link('https://github.com/RykerWilder/sentinel', 'sentinel documentation')}{Fore.GREEN}.
     """
 
     return print(welcome_message)
