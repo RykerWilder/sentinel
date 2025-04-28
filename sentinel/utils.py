@@ -2,7 +2,7 @@ import shutil
 from colorama import Style, Fore
 
 def clickable_link(url, text):
-    return f"\033]8;;{url}\033\\{text}\033]8;;\033\\"
+    return f"{Fore.YELLOW}\033]8;;{url}\033\\{text}\033]8;;\033\\"
 
 def print_logo():
     logo = r"""
@@ -15,7 +15,7 @@ def print_logo():
          ░▒▓███████▓▒░░▒▓████████▓▒░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░   ░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓████████▓▒░▒▓████████▓▒░
     """
 
-    welcome_message = f"""Welcome to 
+    welcome_message = f"""{Fore.GREEN}Welcome to 
     {logo}  
     If you want to learn more about sentinel's features, go read the documentation {clickable_link('https://github.com/RykerWilder/sentinel', 'sentinel documentation')}
     """
