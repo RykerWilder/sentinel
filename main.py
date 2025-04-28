@@ -15,8 +15,7 @@ def main():
             "[5] MAC Phantom",
             "[6] CVE Hunter",
             "",
-            "",
-            "[x] Exit / Quit / Close"
+            "[x] Exit"
         ]
 
         terminal_menu = TerminalMenu(
