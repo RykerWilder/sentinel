@@ -31,7 +31,7 @@ def main():
         
         # Gestione uscita con ESC o selezione "Exit"
         if choice is None or (choice == len(options) - 1):
-            print(f'\n{Fore.GREEN}Thanks for using Sentinel, hope to see you soon!{Style.RESET_ALL}')
+            print(f'\n{Fore.RED}Thanks for using Sentinel, hope to see you soon!{Style.RESET_ALL}')
             break
 
         # Gestione scelte
