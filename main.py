@@ -1,10 +1,10 @@
 from colorama import Fore, Style
-from sentinel.utils import print_logo
+from sentinel.utils import print_welcome_message
 from simple_term_menu import TerminalMenu
 from sentinel.modules import IPGlobeTracker, SysInsider, PortBlitz, MACPhantom
 
 def main():
-    print_logo()
+    print_welcome_message()
 
     while True:
         options = [
