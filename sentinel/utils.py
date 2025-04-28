@@ -17,7 +17,7 @@ def print_logo():
 
     welcome_message = f"""{Fore.GREEN}Welcome to 
     {logo}  
-    If you want to learn more about sentinel's features, go read the documentation {clickable_link('https://github.com/RykerWilder/sentinel', 'sentinel documentation')}
+    If you want to learn more about Sentinel, go read {clickable_link('https://github.com/RykerWilder/sentinel', 'sentinel documentation')}.
     """
 
     return print(welcome_message)
