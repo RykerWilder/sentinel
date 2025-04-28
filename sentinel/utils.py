@@ -6,38 +6,30 @@ def clickable_link(url, text):
 
 def print_welcome_message():
     logo = r"""
-   _________              __  .__              .__           )      
- /   _____/ ____   _____/  |_|__| ____   ____ |  |          (       
- \_____  \_/ __ \ /    \   __\  |/    \_/ __ \|  |        '    }    
- /        \  ___/|   |  \  | |  |   |  \  ___/|  |__    (    '      
-/_______  /\___  >___|  /__| |__|___|  /\___  >____/   '      (     
-        \/     \/     \/             \/     \/          )  |    )   
-                                                      '   /|\    `  
-                                                     )   / | \  ` ) 
-                                                    {    | | |  {   
-                                                   }     | | |  .   
-                                                    '    | | |    ) 
-                                                   (    /| | |\    .
-                                                    .  / | | | \  ( 
-                                                  }    \ \ | / /  . 
-                                                   (    \ `-' /    }
-                                                   '    / ,-. \    '
-                                                    }  / / | \ \  } 
-                                                   '   \ | | | /   }
-                                                    (   \| | |/  (  
-                                                      )  | | |  )   
-                                                      .  | | |  '   
-                                                         J | L      
-                                                   /|    J_|_L    |\
-                                                   \ \___/ o \___/ /
-                                                    \_____ _ _____/ 
-                                                          |-|       
-                                                          |-|       
-                                                          |-|       
-                                                         ,'-'.      
+                                         _________              __  .__              .__  
+                   _.--.    .--._          _____/ ____   _____/  |_|__| ____   ____ |  |  
+                 ."  ."      ".  ".     _____  \_/ __ \ /    \ / __\  |/    \_/ __ \|  |  
+                ;  ."    /\    ".  ;            \  ___/|   |  \\ | |  |   |  \  ___/|  |__
+                ;  '._,-/  \-,_.`  ;    ______  /\___  >___|  /__| |__|___|  /\___  >____/
+                \  ,`  / /\ \  `,  /          \/     \/     \//_           \/     \/      
+                 \/    \/  \/    \/                                                       
+                 ,=_    \/\/    _=,                                                       
+                 |  "_   \/   _"  |                                                       
+                 |_   '"-..-"'   _|                         | Created by   : RykerWilder                           
+                 | "-.        .-" |                         | Version      : 0.1.0                              
+                 |    "\    /"    |                                                       
+                 |      |  |      |                                                       
+         ___     |      |  |      |     ___                                               
+     _,-",  ",   '_     |  |     _'   ,"  ,"-,_                                           
+   _(  \  \   \"=--"-.  |  |  .-"--="/   /  /  )_                                         
+ ,"  \  \  \   \      "-'--'-"      /   /  /  /  ".                                       
+!     \  \  \   \                  /   /  /  /     !                                      
+|      \  \  \   \                /   /  /  /      |                                      
 """
-    welcome_message = f"""{Fore.GREEN}Welcome to 
-    {logo}
+    logo_colored = logo.replace("RykerWilder", f"{Fore.BLUE}RykerWilder{Style.RESET_ALL}{Fore.RED}") \
+                      .replace("0.1.0", f"{Fore.BLUE}0.1.0{Style.RESET_ALL}{Fore.RED}")
+
+    welcome_message = f"""{Fore.RED}{logo_colored}
     If you want to learn more about Sentinel, go read {clickable_link('https://github.com/RykerWilder/sentinel', 'sentinel documentation')}{Fore.GREEN}.
     """
 
@@ -50,7 +42,7 @@ def print_dynamic_dots(key, value):
     cols = shutil.get_terminal_size().columns
     
     #Calcola la lunghezza disponibile per i puntini
-    available_space = cols - len(key) - len(str(value)) - 3  
+    availabl_space = cols - len(key) - len(str(value)) - 3  
     
     # Stampa la chiave, i puntini e il valore
     print(f"{Fore.BLUE}{key}{Style.RESET_ALL}: {'.' * available_space} {value}")
