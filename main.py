@@ -14,13 +14,13 @@ def main():
             "[4] PacketHound",
             "[5] MAC Phantom",
             "[6] CVE Hunter",
-            "[x] Exit"
+            "[x] Exit / Quit / Close"
         ]
 
         terminal_menu = TerminalMenu(
             options,
             menu_cursor=">",
-            menu_cursor_style=("fg_green", "bold"),
+            menu_cursor_style=("fg_red", "bold"),
             menu_highlight_style=("standout",)
         )
 
