@@ -14,7 +14,7 @@ def main():
             "[4] PacketHound",
             "[5] MAC Phantom",
             "[6] CVE Hunter",
-            "[esc] Exit"  # Aggiunta opzione esplicita per uscire
+            "[esc] Exit"
         ]
 
         terminal_menu = TerminalMenu(
