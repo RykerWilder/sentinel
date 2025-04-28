@@ -19,9 +19,10 @@ def main():
 
         terminal_menu = TerminalMenu(
             options,
-            menu_cursor=">",
+            menu_cursor="> ",
             menu_cursor_style=("fg_red", "bold"),
             menu_highlight_style=("standout",)
+            
         )
 
         choice = terminal_menu.show()
