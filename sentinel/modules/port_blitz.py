@@ -24,18 +24,33 @@ class PortBlitz:
             print(f"Error during the scanning: {e}")
 
     def print_scanned_port(self, arg):
-            # Stampa i risultati
-            for host in arg.all_hosts():
-                print_dynamic_dots('Host', host)
-                print_dynamic_dots('State', arg[host].state())
+
+        for host in arg.all_hosts():
+            print_dynamic_dots('Host', host)
+            print_dynamic_dots('State', arg[host].state())
+            
+            for proto in arg[host].all_protocols():
+                print_dynamic_dots('Protocol', proto)
+                ports = arg[host][proto].keys()
                 
-                for proto in arg[host].all_protocols():
-                    print_dynamic_dots('Protocol', proto)
-                    ports = arg[host][proto].keys()
+                for port in sorted(ports):
+                    port_info = arg[host][proto][port]
+                    state = port_info['state']
                     
-                    for port in sorted(ports):
-                        port_info = arg[host][proto][port]
-                        print(f"{Fore.BLUE}Port{Style.RESET_ALL}: {port:<10}\t| {Fore.BLUE}State{Style.RESET_ALL}: {port_info['state']:<10}\t| {Fore.BLUE}Service{Style.RESET_ALL}: {port_info['name']:<20}\t| {Fore.BLUE}Version{Style.RESET_ALL}: {port_info.get('version', 'N/A')}") 
+                    # Determina il colore in base allo stato
+                    if state == 'open':
+                        state_color = Fore.GREEN
+                    elif state == 'filtered':
+                        state_color = Fore.YELLOW
+                    elif state == 'closed':
+                        state_color = Fore.RED
+                    else:
+                        state_color = Fore.WHITE  # default per altri stati
+                    
+                    print(f"{Fore.BLUE}Port{Style.RESET_ALL}: {port:<10}\t| "
+                        f"{Fore.BLUE}State{Style.RESET_ALL}: {state_color}{state:<10}{Style.RESET_ALL}\t| "
+                        f"{Fore.BLUE}Service{Style.RESET_ALL}: {port_info['name']:<20}\t| "
+                        f"{Fore.BLUE}Version{Style.RESET_ALL}: {port_info.get('version', 'N/A')}")
 
     def port_blitz_manager(self):
         terminal_width = shutil.get_terminal_size().columns #terminal width
