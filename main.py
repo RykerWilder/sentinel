@@ -13,7 +13,6 @@ def main():
             "[3] - IP GlobeTracker",
             "[4] - PacketHound",
             "[5] - MAC Phantom",
-            "[6] - CVE Hunter",
             "",
             "[x] Exit"
         ]
