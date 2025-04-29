@@ -1,7 +1,7 @@
 from colorama import Fore, Style
 from sentinel.utils import print_welcome_message
 from simple_term_menu import TerminalMenu
-from sentinel.modules import IPGlobeTracker, SysInsider, PortBlitz, MACPhantom
+from sentinel.modules import IPGlobeTracker, SysInsider, PortBlitz, MACSpoofer
 
 def main():
     print_welcome_message()
@@ -43,7 +43,7 @@ def main():
         elif choice == 3:
             print('PacketHound (funzionalità non implementata)')
         elif choice == 4:
-            MACPhantom().mac_phantom_manager()
+            MACSpoofer().mac_spoofer_manager()
         elif choice == 5:
             print('CVE Hunter (funzionalità non implementata)')
 
