@@ -6,7 +6,7 @@ def clickable_link(url, text):
 
 def print_welcome_message():
     logo = r"""
-                                         _________              __  .__              .__  
+                                    _________              __  .__              .__       
                    _.--.    .--._          _____/ ____   _____/  |_|__| ____   ____ |  |  
                  ."  ."      ".  ".     _____  \_/ __ \ /    \ / __\  |/    \_/ __ \|  |  
                 ;  ."    /\    ".  ;            \  ___/|   |  \\ | |  |   |  \  ___/|  |__
@@ -14,17 +14,17 @@ def print_welcome_message():
                 \  ,`  / /\ \  `,  /          \/     \/     \//_           \/     \/      
                  \/    \/  \/    \/                                                       
                  ,=_    \/\/    _=,                                                       
-                 |  "_   \/   _"  |                                                       
-                 |_   '"-..-"'   _|                         | Created by   : RykerWilder                           
-                 | "-.        .-" |                         | Version      : 0.1.0                              
-                 |    "\    /"    |                                                       
-                 |      |  |      |                                                       
-         ___     |      |  |      |     ___                                               
-     _,-",  ",   '_     |  |     _'   ,"  ,"-,_                                           
-   _(  \  \   \"=--"-.  |  |  .-"--="/   /  /  )_                                         
+                 |xx"_   \/   _"xx|                                                       
+                 |xxxxx"-..-"xxxxx|                       | By        : RykerWilder                               
+                 | "-.xxxxxxxxx-" |                       | Version   : 0.1.0                               
+                 |    "\xxxx/"    |                                                       
+                 |      |xx|      |                                                       
+         ___     |      |xx|      |     ___                                               
+     _,-",  ",   '_     |xx|     _'   ,"  ,"-,_                                           
+   _(  \  \   \"=--"-.  |xx|  .-"--="/   /  /  )_                                         
  ,"  \  \  \   \      "-'--'-"      /   /  /  /  ".                                       
 !     \  \  \   \                  /   /  /  /     !                                      
-|      \  \  \   \                /   /  /  /      |                                      
+|      \  \  \   \                /   /  /  /      |                                                                        
 """
     logo_colored = logo.replace("RykerWilder", f"{Fore.BLUE}RykerWilder{Style.RESET_ALL}{Fore.RED}") \
                       .replace("0.1.0", f"{Fore.BLUE}0.1.0{Style.RESET_ALL}{Fore.RED}")
