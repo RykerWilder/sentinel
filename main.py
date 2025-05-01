@@ -26,7 +26,7 @@ def main():
         )
 
         choice = terminal_menu.show()
-        
+
         # Gestione uscita con ESC o selezione "Exit"
         if choice is None or (choice == len(options) - 1):
             print(f'\n{Fore.BLUE}Thanks for using Sentinel, hope to see you soon!{Style.RESET_ALL}')
@@ -36,7 +36,7 @@ def main():
         if choice == 0:
             PortBlitz().port_blitz_manager()
         elif choice == 1:
-            SysInsider().print_system_info()
+            SysInsider().sys_insider_manager()
         elif choice == 2:
             IPGlobeTracker().ip_globetracker_manager()
         elif choice == 3:
