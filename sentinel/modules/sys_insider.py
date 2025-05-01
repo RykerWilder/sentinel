@@ -11,7 +11,7 @@ class SysInsider:
     def __init__(self):
         # Verifica che il sistema sia Unix-like
         if platform.system() not in ['Linux', 'Darwin']:
-            raise SystemExit("❌ Questo script può essere eseguito solo su sistemi Unix-like (Linux/macOS)")
+            raise SystemExit("This script can only be run on Unix-like systems (Linux/macOS)")
 
     def get_public_ip(self):
         try:
@@ -118,7 +118,7 @@ class SysInsider:
 
     def sys_insider_manager(self):
         terminal_width = shutil.get_terminal_size().columns
-        print(f"\n{'='*40}{Fore.BLUE} SysInsider (Unix-only) {Style.RESET_ALL}{'='*40}")
+        print(f"\n{'='*40}{Fore.BLUE} SysInsider {Style.RESET_ALL}{'='*40}")
 
         # OS Information
         os_details = self.get_os_details()
