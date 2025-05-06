@@ -72,9 +72,9 @@ class SQLInjectionScanner:
                     print(f"[-] Error testing {target_url}: {e}")
         return False
     
-    def sql_injector_manager():
+    def sql_injector_manager(self):
         target_url = input('Insert an url: ')
-        is_vulnerable = scan_url(target_url)
+        is_vulnerable = self.scan_url(target_url)
 
         if is_vulnerable:
             print("Vulnerabilità SQL Injection trovata!")
