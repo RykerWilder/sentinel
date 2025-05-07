@@ -47,10 +47,10 @@ class PortBlitz:
                     else:
                         state_color = Fore.WHITE  # default per altri stati
                     
-                    print(f"{Fore.BLUE}Port{Style.RESET_ALL}: {port:<10}\t| "
+                    print(f"{Fore.BLUE}Port{Style.RESET_ALL}: {port}\t| "
                         f"{Fore.BLUE}State{Style.RESET_ALL}: {state_color}{state:<10}{Style.RESET_ALL}\t| "
-                        f"{Fore.BLUE}Service{Style.RESET_ALL}: {port_info['name']:<20}\t| "
-                        f"{Fore.BLUE}Version{Style.RESET_ALL}: {port_info.get('version', 'N/A')}")
+                        f"{Fore.BLUE}Service{Style.RESET_ALL}: {port_info['name']:<10}\t| "
+                        f"{Fore.BLUE}Version{Style.RESET_ALL}: {port_info.get('version')}")
 
     def port_blitz_manager(self):
         terminal_width = shutil.get_terminal_size().columns #terminal width
