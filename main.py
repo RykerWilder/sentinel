@@ -2,7 +2,7 @@
 from colorama import Fore, Style
 from sentinel.utils import print_welcome_message
 from simple_term_menu import TerminalMenu
-from sentinel.modules import IPGlobeTracker, SysInsider, PortBlitz, SQLInjectionScanner
+from sentinel.modules import IPGlobeTracker, SysInsider, PortBlitz, SQLInjectionTester
 
 def main():
     print_welcome_message()
@@ -44,7 +44,7 @@ def main():
         elif choice == 3:
             print('Pippo')
         elif choice == 4:
-            SQLInjectionScanner().sql_injector_manager()
+            SQLInjectionTester().sql_injector_manager()
         elif choice == 5:
             print('PacketHound (funzionalità non implementata)')
 

