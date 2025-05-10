@@ -137,23 +137,23 @@ class SQLInjectionTester:
         else:
             print("\nNessuna vulnerabilità SQL injection rilevata.")
 
-def sql_injector_manager():
-    parser = argparse.ArgumentParser(description='Tool semplice per testare vulnerabilità SQL Injection')
-    parser.add_argument('url', help='URL da testare (es: http://example.com/?id=1)')
-    parser.add_argument('-v', '--verbose', action='store_true', help='Mostra informazioni dettagliate')
-    parser.add_argument('-p', '--payloads', help='File contenente i payload SQL injection (uno per riga)')
-    
-    args = parser.parse_args()
-    
-    # Verifica che l'URL contenga lo schema
-    if not args.url.startswith(('http://', 'https://')):
-        print("L'URL deve iniziare con 'http://' o 'https://'")
-        sys.exit(1)
-    
-    # Esegui il test
-    tester = SQLInjectionTester(
-        verbose=args.verbose,
-        payloads_file=args.payloads
-    )
-    
-    tester.test_url(args.url)
+    def sql_injector_manager(self):
+        parser = argparse.ArgumentParser(description='Tool semplice per testare vulnerabilità SQL Injection')
+        parser.add_argument('url', help='URL da testare (es: http://example.com/?id=1)')
+        parser.add_argument('-v', '--verbose', action='store_true', help='Mostra informazioni dettagliate')
+        parser.add_argument('-p', '--payloads', help='File contenente i payload SQL injection (uno per riga)')
+        
+        args = parser.parse_args()
+        
+        # Verifica che l'URL contenga lo schema
+        if not args.url.startswith(('http://', 'https://')):
+            print("L'URL deve iniziare con 'http://' o 'https://'")
+            sys.exit(1)
+        
+        # Esegui il test
+        tester = SQLInjectionTester(
+            verbose=args.verbose,
+            payloads_file=args.payloads
+        )
+        
+        tester.test_url(args.url)
