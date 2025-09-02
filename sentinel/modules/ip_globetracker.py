@@ -3,9 +3,9 @@ import shutil
 from simple_term_menu import TerminalMenu
 from colorama import Style, Fore
 from sentinel import print_dynamic_dots
-from sentinel.modules.sys_insider import SysInsider
+from sentinel.modules.system_info import SystemInfo
 
-class IPGlobeTracker(SysInsider):
+class IPGlobeTracker(SystemInfo):
 
     def get_ip_info(self, ip_address):
         try:
