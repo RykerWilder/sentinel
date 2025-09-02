@@ -7,7 +7,7 @@ import uuid
 from colorama import Style, Fore
 from sentinel import print_dynamic_dots
 
-class SysInsider:
+class SystemInfo:
     def __init__(self):
         # Verifica che il sistema sia Unix-like
         if platform.system() not in ['Linux', 'Darwin']:
@@ -116,7 +116,7 @@ class SysInsider:
                         return addr.address
         return "Not available"
 
-    def sys_insider_manager(self):
+    def system_info_manager(self):
         terminal_width = shutil.get_terminal_size().columns
         print(f"\n{'='*40}{Fore.BLUE} SysInsider {Style.RESET_ALL}{'='*40}")
 

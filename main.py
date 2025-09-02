@@ -2,7 +2,7 @@
 from colorama import Fore, Style
 from sentinel.utils import print_welcome_message
 from simple_term_menu import TerminalMenu
-from sentinel.modules import IPGlobeTracker, SysInsider, PortBlitz
+from sentinel.modules import IPGlobeTracker, SystemInfo, PortBlitz
 
 def main():
     print_welcome_message()
@@ -10,7 +10,7 @@ def main():
     while True:
         options = [
             "[1] - PortBlitz",
-            "[2] - SysInsider",
+            "[2] - SystemInfo",
             "[3] - IP GlobeTracker",
             "",
             "[x] Exit"
@@ -35,7 +35,7 @@ def main():
         if choice == 0:
             PortBlitz().port_blitz_manager()
         elif choice == 1:
-            SysInsider().sys_insider_manager()
+            SystemInfo().system_info_manager()
         elif choice == 2:
             IPGlobeTracker().ip_globetracker_manager()
         elif choice == 3:
