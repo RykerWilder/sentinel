@@ -30,16 +30,16 @@ class PacketSniffer:
         try:
             ip_address = network.split('/')[0]
             
-            start_msg = f"{Fore.YELLOW}[INFO]{Style.RESET_ALL} Sniffing started on {ip_address} for {duration} seconds"
+            start_msg = f"{Fore.YELLOW}[INFO]{Style.RESET_ALL} Sniffing started on {ip_address} for {duration} seconds."
             print(start_msg)
             write_to_result_file(start_msg)
             
-            print(f"{Fore.YELLOW}[INFO]{Style.RESET_ALL} Loading... Sniffing in progress")
+            print(f"{Fore.YELLOW}[INFO]{Style.RESET_ALL} Sniffing in progress...")
             
             # Avvia lo sniffing con timeout
             sniff(prn=self.packet_callback, filter=f"host {ip_address}", store=0, timeout=duration)
             
-            completion_msg = f"{Fore.YELLOW}[INFO]{Style.RESET_ALL} Sniffing completed! Captured {self.packet_count} packets"
+            completion_msg = f"{Fore.YELLOW}[INFO]{Style.RESET_ALL} Sniffing completed, captured {self.packet_count} packets."
             print(completion_msg)
             write_to_result_file(completion_msg)
             

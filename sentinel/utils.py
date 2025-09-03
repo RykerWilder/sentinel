@@ -18,7 +18,7 @@ ______  /\___  >___|  /__| |__|___|  /\___  >____/
     welcome_message = f"""
 {logo}
 
-{Fore.YELLOW}[INFO]{Style.RESET_ALL} If you want to read more about Sentinel, go read {clickable_link('https://github.com/RykerWilder/sentinel', 'sentinel documentation')}.
+{Fore.YELLOW}[INFO]{Style.RESET_ALL} If you want to read more about Sentinel, go read {clickable_link('https://github.com/RykerWilder/sentinel', 'documentation')}.
 """
     print(welcome_message)
 
