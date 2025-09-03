@@ -9,6 +9,7 @@ pynput==1.8.1
 python-nmap==0.7.1
 python-xlib==0.33
 requests==2.32.3
+scapy==2.6.1
 simple-term-menu==1.6.6
 six==1.17.0
 soupsieve==2.7

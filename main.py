@@ -1,8 +1,8 @@
-#!/usr/bin/env python3
+#!/home/rykerwilder/Documents/code/sentinel/sentinel-venv/bin/python3
 from colorama import Fore, Style
 from sentinel.utils import print_welcome_message
 from simple_term_menu import TerminalMenu
-from sentinel.modules import IPGlobeTracker, SystemInfo, NetworkScanner
+from sentinel.modules import IPGlobeTracker, SystemInfo, NetworkScanner, PacketSniffer
 
 def main():
     print_welcome_message()
@@ -34,13 +34,14 @@ def main():
         
         # Gestione scelte
         if choice == 0:
-            print(PortScanner)
+            print("PortScanner")
         elif choice == 1:
             SystemInfo().system_info_manager()
         elif choice == 2:
             IPGlobeTracker().ip_globetracker_manager()
         elif choice == 3:
-            print("packet sniffer")
+            network = input("Insert network address to sniff ==> ")
+            PacketSniffer().packet_callback(network)
         elif choice == 4:
             pass
         elif choice == 5:
