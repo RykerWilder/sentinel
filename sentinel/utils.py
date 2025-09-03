@@ -14,19 +14,13 @@ _____  \_/ __ \ /    \ / __\  |/    \_/ __ \|  |
         \  ___/|   |  \\ | |  |   |  \  ___/|  |__
 ______  /\___  >___|  /__| |__|___|  /\___  >____/
       \/     \/     \//_           \/     \/                                 
-| By      : RykerWilder                               
-| Version : 0.1.0
 """
-    logo_colored = logo.replace("RykerWilder", f"{Fore.BLUE}RykerWilder{Style.RESET_ALL}{Fore.RED}") \
-                      .replace("0.1.0", f"{Fore.BLUE}0.1.0{Style.RESET_ALL}{Fore.RED}")
+    welcome_message = f"""
+{logo}
 
-    welcome_message = f"""{Fore.RED}{logo_colored}
-    If you want to learn more about Sentinel, go read {clickable_link('https://github.com/RykerWilder/sentinel', 'sentinel documentation')}{Fore.GREEN}.
-    """
-
-    return print(welcome_message)
-
-
+{Fore.YELLOW}[INFO]{Style.RESET_ALL} If you want to read more about Sentinel, go read {clickable_link('https://github.com/RykerWilder/sentinel', 'sentinel documentation')}.
+"""
+    print(welcome_message)
 
 def print_dynamic_dots(key, value):
     # Ottieni la larghezza corrente del terminale
@@ -37,8 +31,6 @@ def print_dynamic_dots(key, value):
     
     # Stampa la chiave, i puntini e il valore
     print(f"{Fore.BLUE}{key}{Style.RESET_ALL}: {'.' * available_space} {value}")
-
-
 
 def write_to_result_file(content):
     """
@@ -54,5 +46,5 @@ def write_to_result_file(content):
             f.write(content + '\n')
         return filename
     except Exception as e:
-        print(f"[-] Errore nella scrittura del file: {e}")
+        print(f"{Fore.RED}[X] Error writing file: {e}{Style.RESET_ALL}")
         return None
