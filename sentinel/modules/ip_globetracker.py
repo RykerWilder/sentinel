@@ -13,13 +13,13 @@ class IPGlobeTracker(SystemInfo):
             if data['status'] == 'success':
                 self.print_ip_info(data)
             else:
-                print(f"{Fore.RED}Unable to get information for this IP{Style.RESET_ALL}")
+                print(f"{Fore.RED}[X] Unable to get information for this IP{Style.RESET_ALL}")
         except Exception as e:
-            print(f"{Fore.RED}Error: {e}{Style.RESET_ALL}")
+            print(f"{Fore.RED}[X] Error: {e}{Style.RESET_ALL}")
 
     def print_ip_info(self, data):
         terminal_width = shutil.get_terminal_size().columns #terminal width
-        print(f'Your public IP address is: {Fore.YELLOW}{data.get('query')}{Style.RESET_ALL}')
+        print(f"{Fore.YELLOW}[INFO]{Style.RESET_ALL} Your public IP address is: {data.get('query')}")
         print_dynamic_dots('Country', data.get('country'))
         print_dynamic_dots('Country code', data.get('countryCode'))
         print_dynamic_dots('Region', data.get('regionName'))
@@ -52,5 +52,5 @@ class IPGlobeTracker(SystemInfo):
             my_ip_address = self.get_public_ip()
             self.get_ip_info(my_ip_address)
         if choice == 1:
-            ip_address = input('Insert IP address or domain ==> ')
+            ip_address = input(f"{Fore.GREEN}[?]{Style.RESET_ALL} Insert IP address or domain ==> ")
             self.get_ip_info(ip_address)

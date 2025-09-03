@@ -1,6 +1,7 @@
 from scapy.all import sniff, IP, TCP, UDP, ICMP
 from sentinel import write_to_result_file
 import time
+from colorama import Style, Fore
 
 class PacketSniffer:
     def __init__(self):
@@ -29,20 +30,20 @@ class PacketSniffer:
         try:
             ip_address = network.split('/')[0]
             
-            start_msg = f"[INFO] Sniffing started on {ip_address} for {duration} seconds"
+            start_msg = f"{Fore.YELLOW}[INFO]{Style.RESET_ALL} Sniffing started on {ip_address} for {duration} seconds"
             print(start_msg)
             write_to_result_file(start_msg)
             
-            print(f"[INFO] Loading... Sniffing in progress")
+            print(f"{Fore.YELLOW}[INFO]{Style.RESET_ALL} Loading... Sniffing in progress")
             
             # Avvia lo sniffing con timeout
             sniff(prn=self.packet_callback, filter=f"host {ip_address}", store=0, timeout=duration)
             
-            completion_msg = f"[INFO] Sniffing completed! Captured {self.packet_count} packets"
+            completion_msg = f"{Fore.YELLOW}[INFO]{Style.RESET_ALL} Sniffing completed! Captured {self.packet_count} packets"
             print(completion_msg)
             write_to_result_file(completion_msg)
             
         except Exception as e:
-            error_msg = f"[X] Sniffing error: {e}"
+            error_msg = f"{Fore.RED}[X] Sniffing error: {e}{Style.RESET_ALL}"
             print(error_msg)
             write_to_result_file(error_msg)
