@@ -1,7 +1,6 @@
 from scapy.all import ARP, Ether, srp
 
 class NetworkScanner:
-    print("network scanner")
     def arp_scan(ip_range):
         arp = ARP(pdst=ip_range)
         ether = Ether(dst="ff:ff:ff:ff:ff:ff")
@@ -15,7 +14,5 @@ class NetworkScanner:
 
     ip_range = "192.168.1.0/24"
     clients = arp_scan(ip_range)
-    print("Available devices in the network:")
-    print("IP" + " " * 18 + "MAC")
     for client in clients:
         print("{:16}    {}".format(client['ip'], client['mac']))

@@ -1,4 +1,3 @@
-#!/home/rykerwilder/Documents/code/sentinel/sentinel-venv/bin/python3
 from sentinel.utils import print_welcome_message
 from simple_term_menu import TerminalMenu
 from sentinel.modules import IPGlobeTracker, SystemInfo, NetworkScanner, PacketSniffer
@@ -30,7 +29,7 @@ def main():
         
         # Gestione uscita con ESC o selezione "Exit"
         if choice is None or (choice == len(options) - 1):
-            print(f'\n{Fore.BLUE}Thanks for using Sentinel, hope to see you soon!{Style.RESET_ALL}')
+            print(f"{Fore.YELLOW}[INFO]{Style.RESET_ALL} Thanks for using Sentinel, hope to see you soon!")
             break
         
         # Gestione scelte
