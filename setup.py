@@ -12,6 +12,6 @@ setup(
             'sentinel=sentinel.cli:cli',  
         ],
     },
-    author="Il Tuo Nome",
-    description="CLI tool per Sentinel",
+    author="RykerWilder",
+    description="CLI tool for Sentinel",
 )

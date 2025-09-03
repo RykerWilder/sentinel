@@ -20,14 +20,14 @@ def start():
         click.echo("ERRORE: Virtual environment non trovato!")
         sys.exit(1)
     
-    click.echo("🚀 Avvio di Sentinel...")
+    click.echo("Starting Sentinel...")
     try:
         subprocess.run(["sudo", "-E", venv_python, main_script], check=True)
     except subprocess.CalledProcessError as e:
-        click.echo(f"❌ Errore durante l'avvio: {e}")
+        click.echo(f"Errore durante l'avvio: {e}")
         sys.exit(1)
     except FileNotFoundError:
-        click.echo("❌ sudo non trovato o permessi insufficienti")
+        click.echo("sudo non trovato o permessi insufficienti")
         sys.exit(1)
 
 if __name__ == "__main__":
