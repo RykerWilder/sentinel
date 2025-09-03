@@ -11,7 +11,7 @@ class IPGlobeTracker(SystemInfo):
             response = requests.get(f"http://ip-api.com/json/{ip_address}")
             data = response.json()
             if data['status'] == 'success':
-                self.print_ip_info(data);
+                self.print_ip_info(data)
             else:
                 print(f"{Fore.RED}Unable to get information for this IP{Style.RESET_ALL}")
         except Exception as e:

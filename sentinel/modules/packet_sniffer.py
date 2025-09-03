@@ -1,9 +1,14 @@
 from scapy.all import sniff, IP, TCP, UDP, ICMP
 from sentinel import write_to_result_file
+import time
 
 class PacketSniffer:
+    def __init__(self):
+        self.packet_count = 0
+    
     def packet_callback(self, packet):
         if packet.haslayer(IP):
+            self.packet_count += 1
             ip_src = packet[IP].src
             ip_dst = packet[IP].dst
             protocol = ""
@@ -17,18 +22,27 @@ class PacketSniffer:
             else:
                 protocol = f"IP proto {packet[IP].proto}"
             
-            # Crea il messaggio da loggare
             log_message = f"{ip_src} -> {ip_dst} | {protocol}"
-            
             write_to_result_file(log_message)
             
-    def start_sniffing(self, network):
+    def start_sniffing(self, network, duration=30):
         try:
-            start_msg = f"[+] Sniffing started on {network}"
+            ip_address = network.split('/')[0]
+            
+            start_msg = f"[INFO] Sniffing started on {ip_address} for {duration} seconds"
+            print(start_msg)
             write_to_result_file(start_msg)
             
-            sniff(prn=self.packet_callback, filter=f"net {network}", store=0)
+            print(f"[INFO] Loading... Sniffing in progress")
+            
+            # Avvia lo sniffing con timeout
+            sniff(prn=self.packet_callback, filter=f"host {ip_address}", store=0, timeout=duration)
+            
+            completion_msg = f"[INFO] Sniffing completed! Captured {self.packet_count} packets"
+            print(completion_msg)
+            write_to_result_file(completion_msg)
             
         except Exception as e:
-            error_msg = f"[-] Sniffing error: {e}"
+            error_msg = f"[X] Sniffing error: {e}"
+            print(error_msg)
             write_to_result_file(error_msg)
