@@ -53,5 +53,5 @@ class IPGlobeTracker(SystemInfo):
             my_ip_address = self.get_public_ip()
             self.get_ip_info(my_ip_address)
         if choice == 1:
-            ip_address = input('Insert IP address or domain: ')
+            ip_address = input('Insert IP address or domain ==> ')
             self.get_ip_info(ip_address)
