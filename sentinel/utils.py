@@ -13,7 +13,7 @@ _____  \_/ __ \ /    \ / __\  |/    \_/ __ \|  |
 ______  /\___  >___|  /__| |__|___|  /\___  >____/
       \/     \/     \//_           \/     \/                                 
 | By      : RykerWilder                               
-| Version : 0.1.0                                                                                                   
+| Version : 0.1.0
 """
     logo_colored = logo.replace("RykerWilder", f"{Fore.BLUE}RykerWilder{Style.RESET_ALL}{Fore.RED}") \
                       .replace("0.1.0", f"{Fore.BLUE}0.1.0{Style.RESET_ALL}{Fore.RED}")
