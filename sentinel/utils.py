@@ -1,5 +1,7 @@
 import shutil
 from colorama import Style, Fore
+import os
+import datetime
 
 def clickable_link(url, text):
     return f"{Fore.YELLOW}\033]8;;{url}\033\\{text}\033]8;;\033\\{Style.RESET_ALL}"
@@ -35,3 +37,22 @@ def print_dynamic_dots(key, value):
     
     # Stampa la chiave, i puntini e il valore
     print(f"{Fore.BLUE}{key}{Style.RESET_ALL}: {'.' * available_space} {value}")
+
+
+
+def write_to_result_file(content):
+    """
+    Crea un file result_DATE.txt e scrive il contenuto
+    """
+    # Ottieni la data corrente nel formato YYYYMMDD
+    current_date = datetime.datetime.now().strftime("%Y%m%d")
+    filename = f"result{current_date}.txt"
+    
+    try:
+        # Scrivi il contenuto nel file (modalità append)
+        with open(filename, 'a', encoding='utf-8') as f:
+            f.write(content + '\n')
+        return filename
+    except Exception as e:
+        print(f"[-] Errore nella scrittura del file: {e}")
+        return None

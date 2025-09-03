@@ -4,6 +4,7 @@ __pycache__/
 *$py.class
 
 # Altri file/directory da ignorare
+result*
 *.egg-info/
 *.log
 *.sqlite3
