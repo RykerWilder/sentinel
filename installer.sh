@@ -69,7 +69,7 @@ main() {
     clone
     install_python_deps
     echo -e "${GREEN}Sentinel installed successfully!${NC}"
-    echo -e "${YELLOW}To use Sentinel:${NC}"
+    echo -e "${YELLOW}Now to use Sentinel run:${NC}"
     echo -e "1. cd sentinel"
     echo -e "2. source sentinel-venv/bin/activate"
     echo -e "3. sentinel start"
