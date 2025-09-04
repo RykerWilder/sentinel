@@ -10,7 +10,7 @@ def cli():
 
 @cli.command()
 def start():
-    """start Sentinel"""
+    """start sentinel"""
     # Trova il percorso assoluto
     base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     venv_python = os.path.join(base_dir, "sentinel-venv", "bin", "python")
@@ -20,7 +20,7 @@ def start():
         click.echo(f"{Fore.RED}[X] error: Virtual environment non trovato!{Style.RESET_ALL}")
         sys.exit(1)
     
-    click.echo("Starting Sentinel...")
+    click.echo("Starting sentinel...")
     try:
         subprocess.run(["sudo", "-E", venv_python, main_script], check=True)
     except subprocess.CalledProcessError as e:
