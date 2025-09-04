@@ -6,35 +6,14 @@ Sentinel is a Swiss Army knife for cybersecurity, available only for unix operat
 
 ---
 ## Installation
+To install sentinel you can copy and paste the command on terminal. If all went good you can run "sentinel start".
 
-1. clone repository from github
 ```bash
-git clone https://github.com/RykerWilder/sentinel.git
+curl -sSL https://github.com/RykerWilder/sentinel/blob/main/installer.sh | bash
 ```
-
-2. change directory in sentinel
+or
 ```bash
-cd sentinel
-```
-
-3. create a virtual environment (venv)
-```bash
-python3 -m venv venv
-```
-
-4. activate venv
-```bash
-source venv/bin/activate
-```
-
-5. install dependencies from requirements.txt
-```bash
-pip install -r requirements.txt
-```
-
-6. start project
-```bash
-python3 main.py
+wget -qO- https://github.com/RykerWilder/sentinel/blob/main/installer.sh | bash
 ```
 
 ---
@@ -44,10 +23,10 @@ python3 main.py
 #### 1. Network Scanner
 
 
-#### 2. SysstemInfo
+#### 2. System Info
 is a Python program designed to collect and display detailed information about the system on which it runs. It is useful for diagnosing hardware/software issues, monitoring system resources, or simply getting a comprehensive report of computer specifications. SysInsider reports system data such as OS, RAM usage, CPU information, all disk partitions and their space, network information such as public, private, and MAC address.
 
-#### 3. IPGlobeTracker
+#### 3. IP Globe Tracker
 is a Python program that extends the functionality of SysInsider to provide detailed information about public IP addresses and domains. Use the [ip-api.com](https://ip-api.com/) public API to get geographic data, ISPs, and other useful information.
 With IPGlobeTracker you can view the information relating to your IP address or by choosing the second option you can view another IP address.
 
