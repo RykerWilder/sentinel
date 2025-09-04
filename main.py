@@ -40,8 +40,7 @@ def main():
         elif choice == 2:
             IPGlobeTracker().ip_globetracker_manager()
         elif choice == 3:
-            network = input(f"{Fore.GREEN}[?]{Style.RESET_ALL} Insert network address to sniff ==> ")
-            PacketSniffer().start_sniffing(network)
+            PacketSniffer().start_sniffing()
         elif choice == 4:
             pass
         elif choice == 5:

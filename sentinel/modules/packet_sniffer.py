@@ -26,24 +26,19 @@ class PacketSniffer:
             log_message = f"{ip_src} -> {ip_dst} | {protocol}"
             write_to_result_file(log_message)
             
-    def start_sniffing(self, network, duration=30):
+    def start_sniffing(self, duration=30):
         try:
+            network = input(f"{Fore.GREEN}[?]{Style.RESET_ALL} Insert network address to sniff ==> ")
             ip_address = network.split('/')[0]
             
-            start_msg = f"{Fore.YELLOW}[INFO]{Style.RESET_ALL} Sniffing started on {ip_address} for {duration} seconds."
-            print(start_msg)
-            write_to_result_file(start_msg)
+            print(f"{Fore.YELLOW}[INFO]{Style.RESET_ALL} Sniffing started on {ip_address} for {duration} seconds.")
             
             print(f"{Fore.YELLOW}[INFO]{Style.RESET_ALL} Sniffing in progress...")
             
             # Avvia lo sniffing con timeout
             sniff(prn=self.packet_callback, filter=f"host {ip_address}", store=0, timeout=duration)
             
-            completion_msg = f"{Fore.YELLOW}[INFO]{Style.RESET_ALL} Sniffing completed, captured {self.packet_count} packets."
-            print(completion_msg)
-            write_to_result_file(completion_msg)
+            print(f"{Fore.YELLOW}[INFO]{Style.RESET_ALL} Sniffing completed, captured {self.packet_count} packets.")
             
         except Exception as e:
-            error_msg = f"{Fore.RED}[X] Sniffing error: {e}{Style.RESET_ALL}"
-            print(error_msg)
-            write_to_result_file(error_msg)
+            print(f"{Fore.RED}[X] Sniffing error: {e}{Style.RESET_ALL}")
