@@ -37,6 +37,7 @@ clone() {
 install_python_deps() {
     echo -e "${YELLOW}Installing python3 dependencies...${NC}"
     python3 -m venv sentinel-venv || error_exit "Virtual environment creation failed."
+    source sentinel-venv/bin/activate || error_exit "Virtual environment activation failed."
     pip install --upgrade pip || error_exit "Pip upgrade failed."
     
     # Check if requirements.txt exists
@@ -57,7 +58,7 @@ main() {
     echo -e "${GREEN}Sentinel installed successfully!"
     echo -e "cd sentinel"
     echo -e "source sentinel-venv/bin/activate"
-    echo -e "sentinel start"
+    echo -e "sentinel"
 }
 
 # Run main function only if script is executed directly
