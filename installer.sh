@@ -45,7 +45,7 @@ install_python_deps() {
 main() {
     check_dependencies
     install_python_deps
-    clone()
+    clone
     echo -e "Sentinel installed. Please run on terminal ${GREEN}sentinel start${NC}."
 }
 
