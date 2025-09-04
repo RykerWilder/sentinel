@@ -38,6 +38,7 @@ install_python_deps() {
     source sentinel-venv/bin/activate
     pip install --upgrade pip
     pip install -r requirements.txt || error_exit "Requirements installation failed."
+    pip install -e . || error_exit "Editable installation failed."
 }
 
 # MAIN
