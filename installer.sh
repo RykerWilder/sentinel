@@ -1,3 +1,5 @@
+#!/bin/bash
+
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
@@ -22,6 +24,13 @@ check_dependencies() {
     fi
 }
 
+# clone project (aggiunto questa funzione mancante)
+clone_project() {
+    echo -e "${YELLOW}Setting up project...${NC}"
+    # Qui va la logica per clonare o preparare il progetto
+    # Se il progetto è già scaricato, potresti saltare questa parte
+}
+
 # python3 dependencies
 install_python_deps() {
     cd sentinel
@@ -41,7 +50,7 @@ main() {
     clone_project
     install_python_deps
 
-    echo -e "${GREEN} Sentinel installed. Please run on terminal 'sentinel start'."
+    echo -e "${GREEN}Sentinel installed. Please run on terminal 'sentinel start'.${NC}"
 }
 
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
