@@ -49,3 +49,7 @@ main() {
 
     echo -e "${GREEN} Sentinel installed. Please run on terminal 'sentinel start'."
 }
+
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+    main
+fi
