@@ -24,9 +24,13 @@ check_dependencies() {
     fi
 }
 
+clone() {
+    git clone "https://github.com/RykerWilder/sentinel"
+    cd sentinel
+}
+
 # python3 dependencies
 install_python_deps() {
-    cd sentinel
     echo -e "${YELLOW}Installing python3 dependencies...${NC}"
     
     python3 -m venv sentinel-venv || error_exit "Virtual environment creation failed."
@@ -41,7 +45,7 @@ install_python_deps() {
 main() {
     check_dependencies
     install_python_deps
-
+    clone()
     echo -e "${GREEN}Sentinel installed. Please run on terminal 'sentinel start'.${NC}"
 }
 
