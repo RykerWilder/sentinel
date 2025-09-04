@@ -46,7 +46,7 @@ main() {
     check_dependencies
     install_python_deps
     clone()
-    echo -e "${GREEN}Sentinel installed. Please run on terminal 'sentinel start'.${NC}"
+    echo -e "Sentinel installed. Please run on terminal ${GREEN}sentinel start${NC}."
 }
 
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
