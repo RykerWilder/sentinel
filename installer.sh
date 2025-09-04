@@ -18,13 +18,13 @@ check_dependencies() {
     fi
     
     if ! command -v python3 &> /dev/null; then
-        error_exit "Python3 is ont installed. Please install it before proceeding."
+        error_exit "Python3 is not installed. Please install it before proceeding."
     fi
 }
 
 clone_project() {
     # cloning
-    git clone https://github.com/RykerWilder/sentinel || error_exit "Clone failed"
+    git clone https://github.com/RykerWilder/sentinel || error_exit "Clone failed."
 
     cd sentinel
 }
