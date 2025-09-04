@@ -9,11 +9,7 @@ Sentinel is a Swiss Army knife for cybersecurity, available only for unix operat
 To install sentinel you can copy and paste the command on terminal. If all went good you can run "sentinel start".
 
 ```bash
-curl -sSL https://github.com/RykerWilder/sentinel/blob/main/installer.sh | bash
-```
-or
-```bash
-wget -qO- https://github.com/RykerWilder/sentinel/blob/main/installer.sh | bash
+wget https://github.com/RykerWilder/sentinel/blob/main/installer.sh && chmod +x installer.sh && ./installer.sh
 ```
 
 ---

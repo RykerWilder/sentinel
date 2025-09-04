@@ -24,13 +24,6 @@ check_dependencies() {
     fi
 }
 
-# clone project (aggiunto questa funzione mancante)
-clone_project() {
-    echo -e "${YELLOW}Setting up project...${NC}"
-    # Qui va la logica per clonare o preparare il progetto
-    # Se il progetto è già scaricato, potresti saltare questa parte
-}
-
 # python3 dependencies
 install_python_deps() {
     cd sentinel
@@ -47,7 +40,6 @@ install_python_deps() {
 # MAIN
 main() {
     check_dependencies
-    clone_project
     install_python_deps
 
     echo -e "${GREEN}Sentinel installed. Please run on terminal 'sentinel start'.${NC}"
