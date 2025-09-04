@@ -1,5 +1,4 @@
 #!/bin/bash
-
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
@@ -20,6 +19,11 @@ check_dependencies() {
     if ! command -v python3 &> /dev/null; then
         error_exit "Python3 is not installed. Please install it before proceeding."
     fi
+    # Check if python3-venv is available
+    if ! python3 -c "import venv" &> /dev/null; then
+        echo -e "${YELLOW}python3-venv not found. Installing...${NC}"
+        sudo apt update && sudo apt install -y python3-venv python3-pip || error_exit "Failed to install python3-venv"
+    fi
 }
 
 # clone repository
@@ -36,16 +40,25 @@ clone() {
 # python3 dependencies
 install_python_deps() {
     echo -e "${YELLOW}Installing python3 dependencies...${NC}"
+    
+    # Create virtual environment
     python3 -m venv sentinel-venv || error_exit "Virtual environment creation failed."
+    
+    # Activate virtual environment
     source sentinel-venv/bin/activate || error_exit "Virtual environment activation failed."
-    pip install --upgrade pip || error_exit "Pip upgrade failed."
+    
+    # Upgrade pip within the virtual environment
+    python -m pip install --upgrade pip || error_exit "Pip upgrade failed."
     
     # Check if requirements.txt exists
     if [ ! -f "requirements.txt" ]; then
         error_exit "requirements.txt not found in the repository."
     fi
     
+    # Install requirements
     pip install -r requirements.txt || error_exit "Requirements installation failed."
+    
+    # Install in editable mode
     pip install -e . || error_exit "Editable installation failed."
 }
 
@@ -55,7 +68,8 @@ main() {
     check_dependencies
     clone
     install_python_deps
-    echo -e "${GREEN}Sentinel installed successfully!"
+    echo -e "${GREEN}Sentinel installed successfully!${NC}"
+    echo -e "${YELLOW}To use Sentinel:${NC}"
     echo -e "cd sentinel"
     echo -e "source sentinel-venv/bin/activate"
     echo -e "sentinel"
