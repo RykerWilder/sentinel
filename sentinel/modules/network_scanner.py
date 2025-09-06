@@ -2,6 +2,15 @@ from scapy.all import ARP, Ether, srp
 
 class NetworkScanner:
     def arp_scan(self, ip_add):
+        """
+        Esegue una scansione ARP sulla rete specificata
+        
+        Args:
+            ip_add (str): Indirizzo IP o range di IP da scansionare (es. "192.168.1.0/24")
+        
+        Returns:
+            list: Lista di dizionari con IP e MAC address trovati
+        """
         arp = ARP(pdst=ip_add)
         ether = Ether(dst="ff:ff:ff:ff:ff:ff")
         packet = ether / arp
@@ -12,14 +21,16 @@ class NetworkScanner:
             clients.append({'ip': received.psrc, 'mac': received.hwsrc})
         return clients
 
-    def network_scanner_manager():
-        user_ip = input("Insert IP to scan => ")
-        self.arp_scan(user_ip)
-
-# Utilizzo della classe
-if __name__ == "__main__":
-    
-    print("IP Address".ljust(16) + "    " + "MAC Address")
-    print("-" * 40)
-    for client in clients:
-        print("{:16}    {}".format(client['ip'], client['mac']))
+    def network_scanner_manager(self):
+        """
+        Gestisce l'interazione con l'utente per la scansione di rete
+        """
+        user_ip = input("Insert IP to scan (es. 192.168.1.0/24) => ")
+        clients = self.arp_scan(user_ip)
+        
+        print("\n" + "IP Address".ljust(16) + "    " + "MAC Address")
+        print("-" * 40)
+        for client in clients:
+            print("{:16}    {}".format(client['ip'], client['mac']))
+        
+        return clients
