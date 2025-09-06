@@ -25,7 +25,7 @@ class NetworkScanner:
         """
         Gestisce l'interazione con l'utente per la scansione di rete
         """
-        user_ip = input("Insert IP to scan (es. 192.168.1.0/24) => ")
+        user_ip = input(f"{Fore.GREEN}[?]{Style.RESET_ALL} Insert IP to scan (es. 192.168.1.0/24) => ")
         clients = self.arp_scan(user_ip)
         
         print("\n" + "IP Address".ljust(16) + "    " + "MAC Address")
