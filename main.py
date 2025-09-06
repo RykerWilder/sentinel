@@ -34,7 +34,7 @@ def main():
         
         # Gestione scelte
         if choice == 0:
-            print("PortScanner")
+            NetworkScanner()
         elif choice == 1:
             SystemInfo().system_info_manager()
         elif choice == 2:
