@@ -1,6 +1,7 @@
-from sentinel.utils import print_welcome_message
+from sentinel.utils import print_welcome_message, exit
 from sentinel.modules import IPGlobeTracker, SystemInfo, NetworkScanner, PacketSniffer
 from colorama import Fore, Style
+import signal
 
 
 def display_menu(options):
@@ -34,6 +35,9 @@ def get_user_choice(options):
 
 def main():
     print_welcome_message()
+
+    # ctrl+c handler
+    signal.signal(signal.SIGINT, exit)
     
     while True:
         options = [
@@ -41,8 +45,6 @@ def main():
             "[2] - SystemInfo",
             "[3] - IP tracker",
             "[4] - Packet sniffer",
-            "",
-            "[ctrl + c] Exit"
         ]
         
         display_menu(options)

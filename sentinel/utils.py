@@ -2,6 +2,7 @@ import shutil
 from colorama import Style, Fore
 import os
 import datetime
+import sys
 
 def clickable_link(url, text):
     return f"{Fore.YELLOW}\033]8;;{url}\033\\{text}\033]8;;\033\\{Style.RESET_ALL}"
@@ -48,3 +49,7 @@ def write_to_result_file(content):
     except Exception as e:
         print(f"{Fore.RED}[X] Error writing file: {e}{Style.RESET_ALL}")
         return None
+
+def exit(signum, frame):
+    print(f"\n{Fore.YELLOW}[INFO]{Style.RESET_ALL} Sentinel shutdown, thanks to using sentinel.")
+    sys.exit(0)
