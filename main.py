@@ -19,7 +19,7 @@ def main():
         
         
         try:
-            choice = input(f"{Fore.GREEN}[?]{Style.RESET_ALL} Insert yout choice => ")
+            choice = int(input(f"{Fore.GREEN}[?]{Style.RESET_ALL} Insert yout choice => "))
         except (ValueError, IndexError):
             print(f"{Fore.RED}[ERROR] Invalid input.{Style.RESET_ALL}")
 
