@@ -11,7 +11,6 @@ def display_menu(options):
             print(f"  {option}")
     
 
-
 def get_user_choice(options):
     """Get user choice with input validation"""
     while True:
@@ -43,16 +42,12 @@ def main():
             "[3] - IP tracker",
             "[4] - Packet sniffer",
             "",
-            "[x] Exit"
+            "[ctrl + c] Exit"
         ]
         
         display_menu(options)
         choice = get_user_choice(options)
         
-        # Gestione uscita con "x" o selezione "Exit"
-        if choice == len(options) - 1 or options[choice].lower().find('exit') != -1:
-            print(f"{Fore.YELLOW}[INFO]{Style.RESET_ALL} Thanks for using Sentinel, hope to see you soon!")
-            break
         
         # Gestione scelte
         if choice == 0:
