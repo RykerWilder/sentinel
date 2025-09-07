@@ -1,5 +1,5 @@
 from sentinel.utils import print_welcome_message, exit
-from sentinel.modules import IPGlobeTracker, SystemInfo, NetworkScanner, PacketSniffer
+from sentinel.modules import IPGlobeTracker, SystemInfo, NetworkScanner, PacketSniffer, P2P
 from colorama import Fore, Style
 import signal
 
@@ -15,6 +15,7 @@ def main():
             [{Fore.BLUE}2{Style.RESET_ALL}] - SystemInfo
             [{Fore.BLUE}3{Style.RESET_ALL}] - IP tracker
             [{Fore.BLUE}4{Style.RESET_ALL}] - Packet sniffer
+            [{Fore.BLUE}5{Style.RESET_ALL}] - Phantom chat (P2P)
         """)
         
         
@@ -35,7 +36,7 @@ def main():
         elif choice == 4:
             PacketSniffer().start_sniffing()
         elif choice == 5:
-            pass
+            P2P().p2p_manager()
         elif choice == 6:
             pass
 
