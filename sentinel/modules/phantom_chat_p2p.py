@@ -3,42 +3,67 @@ from sentinel import cleanup
 import rsa
 import socket
 import threading
+import sys 
+from sentinel.modules.system_info import SystemInfo
 
-class P2P:
+class P2P(SystemInfo):
     def __init__(self):
         self.public_key, self.private_key = rsa.newkeys(3072)
         self.client = None
         self.public_partner = None
         self.running = True
+        self.ip_address = None
         
+        self.get_local_ip()
         self.p2p_manager()
 
+    def get_local_ip(self):
+        """Ottiene l'IP locale"""
+        network_info = self.get_network_info()
+        for name, data in network_info.get("interfaces", {}).items():
+            if data.get("is_up", False) and data.get("addresses", []) and name != "lo":
+                self.ip_address = data['addresses'][0]
+                print(f"{Fore.BLUE}[INFO]{Style.RESET_ALL} Found interface {name}: {', '.join(data['addresses'])}")
+                break  # Prendi solo il primo IP valido
+        
+        if not self.ip_address:
+            print(f"{Fore.RED}[X] No valid IP address found!{Style.RESET_ALL}")
+
     def p2p_manager(self):
-        print(f"\n{Fore.BLUE}[INFO]{Style.RESET_ALL} Your local IP is: {Fore.BLUE}{get_local_ip()}{Style.RESET_ALL}")
+        # Mostra l'IP se trovato
+        if self.ip_address:
+            print(f"\n{Fore.YELLOW}[INFO]{Style.RESET_ALL} Your local IP is: {self.ip_address}")
+        else:
+            print(f"\n{Fore.RED}[X] Could not determine local IP{Style.RESET_ALL}")
         
         default_port = 9999
         try:
             port = int(input(f"{Fore.GREEN}[?]{Style.RESET_ALL} Insert port (default: {default_port}) => ") or default_port)
         except ValueError:
-            print(f"{Fore.RED}[X] Invalid port {default_port}{Style.RESET_ALL}")
+            print(f"{Fore.RED}[X] Invalid port, using default: {default_port}{Style.RESET_ALL}")
             port = default_port
 
         while True:
             choice = input(f"{Fore.GREEN}[?]{Style.RESET_ALL} Choose mode - Host [1] or Client [2] => ")
             if choice in ("1", "2"):
                 break
-            print(f"{Fore.RED}[X] Invalid choice{Style.RESET_ALL}")
+            print(f"{Fore.RED}[X] Invalid choice.{Style.RESET_ALL}")
 
         # START CONNECTION
-        ip_address = get_local_ip() if choice == "1" else input(f"{Fore.GREEN}[?] Enter host IP: {Style.RESET_ALL}")
+        if choice == "1":
+            if not self.ip_address:
+                # Se non abbiamo trovato l'IP automaticamente, chiedilo
+                self.ip_address = input(f"{Fore.GREEN}[?]{Style.RESET_ALL} Enter your IP address => ")
+            ip_address = self.ip_address
+        else:
+            ip_address = input(f"{Fore.GREEN}[?]{Style.RESET_ALL} Enter host IP => ")
         
         if choice == "1":
             self.client, self.public_partner = self.create_host(ip_address, port)
         else:
             self.client, self.public_partner = self.create_connection(ip_address, port)
 
-        print(f"\n{Fore.BLUE}[INFO]{Style.RESET_ALL} Connection established!")
-        print(f"{Fore.YELLOW}[!] Press Ctrl+C to quit{Style.RESET_ALL}\n")
+        print(f"\n{Fore.YELLOW}[INFO]{Style.RESET_ALL} Connection established!")
 
         # START THREAD
         self.start_chat_threads()
@@ -48,10 +73,10 @@ class P2P:
         try:
             server.bind((ip, port))
             server.listen()
-            print(f"{Fore.BLUE}[INFO]{Style.RESET_ALL} Server listening on {Fore.CYAN}{ip}:{port}{Style.RESET_ALL}")
+            print(f"{Fore.YELLOW}[INFO]{Style.RESET_ALL} Server listening on {ip}:{port}")
             
             client, addr = server.accept()
-            print(f"{Fore.BLUE}[INFO]{Style.RESET_ALL} Connection from {Fore.CYAN}{addr[0]}{Style.RESET_ALL}")
+            print(f"{Fore.YELLOW}[INFO]{Style.RESET_ALL} Connection from {addr[0]}")
             
             # KEYS CHANGE
             client.send(rsa.PublicKey.save_pkcs1(self.public_key, "PEM"))
@@ -66,11 +91,12 @@ class P2P:
         client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         try:
             client.connect((ip, port))
-            print(f"{Fore.BLUE}[INFO]{Style.RESET_ALL} Connected to {Fore.BLUE}{ip}:{port}{Style.RESET_ALL}")
+            print(f"{Fore.YELLOW}[INFO]{Style.RESET_ALL} Connected to {Fore.YELLOW}{ip}:{port}{Style.RESET_ALL}")
             
             # Scambio chiavi
+            partner_key_data = client.recv(1024)
             client.send(rsa.PublicKey.save_pkcs1(self.public_key, "PEM"))
-            partner_key = rsa.PublicKey.load_pkcs1(client.recv(1024), "PEM")
+            partner_key = rsa.PublicKey.load_pkcs1(partner_key_data, "PEM")
             
             return client, partner_key
         except Exception as e:
@@ -96,7 +122,7 @@ class P2P:
                 msg = input().strip()
 
                 if not msg:
-                    print(f"{Fore.RED}[!] Message can't be empty!{Style.RESET_ALL}")
+                    print(f"{Fore.RED}[X] Message can't be empty!{Style.RESET_ALL}")
                     continue
 
                 encrypted = rsa.encrypt(msg.encode(), self.public_partner)
