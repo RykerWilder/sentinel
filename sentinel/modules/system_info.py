@@ -74,6 +74,15 @@ class SystemInfo:
             "percent": mem.percent
         }
 
+    def get_local_ip(self):
+        network_info = self.get_network_info()
+        for name, data in network_info.get("interfaces", {}).items():
+            if data.get("is_up", False) and data.get("addresses", []) and name != "lo":
+                self.ip_address = data['addresses'][0]
+        
+        return self.ip_address
+        
+
     def get_disk_usage(self):
         disks = []
         for partition in psutil.disk_partitions():
@@ -133,10 +142,8 @@ class SystemInfo:
         print("Network:")
         print_dynamic_dots('  MAC Address', self.get_mac_address())
         print_dynamic_dots('  Public IP', self.get_public_ip())
-        network_info = self.get_network_info()
-        for name, data in network_info.get("interfaces", {}).items():
-            if data.get("is_up", False) and data.get("addresses", []) and name != "lo":
-                print_dynamic_dots(f"  {name}", f"{', '.join(data['addresses'])}")
+        print_dynamic_dots('  Local IP', self.get_local_ip())
+        
 
         # Storage Information
         print("Storage:")

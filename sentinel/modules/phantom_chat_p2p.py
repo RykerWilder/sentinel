@@ -12,29 +12,9 @@ class P2P(SystemInfo):
         self.client = None
         self.public_partner = None
         self.running = True
-        self.ip_address = None
-        
-        self.get_local_ip()
-        self.p2p_manager()
-
-    def get_local_ip(self):
-        """Ottiene l'IP locale"""
-        network_info = self.get_network_info()
-        for name, data in network_info.get("interfaces", {}).items():
-            if data.get("is_up", False) and data.get("addresses", []) and name != "lo":
-                self.ip_address = data['addresses'][0]
-                print(f"{Fore.BLUE}[INFO]{Style.RESET_ALL} Found interface {name}: {', '.join(data['addresses'])}")
-                break  # Prendi solo il primo IP valido
-        
-        if not self.ip_address:
-            print(f"{Fore.RED}[X] No valid IP address found.{Style.RESET_ALL}")
 
     def p2p_manager(self):
-        # Mostra l'IP se trovato
-        if self.ip_address:
-            print(f"\n{Fore.YELLOW}[INFO]{Style.RESET_ALL} Your local IP is: {self.ip_address}")
-        else:
-            print(f"\n{Fore.RED}[X] Could not determine local IP.{Style.RESET_ALL}")
+        print(f"\n{Fore.YELLOW}[INFO]{Style.RESET_ALL} Your local IP is: {self.get_local_ip()}")
         
         default_port = 9999
         try:
