@@ -27,14 +27,14 @@ class P2P(SystemInfo):
                 break  # Prendi solo il primo IP valido
         
         if not self.ip_address:
-            print(f"{Fore.RED}[X] No valid IP address found!{Style.RESET_ALL}")
+            print(f"{Fore.RED}[X] No valid IP address found.{Style.RESET_ALL}")
 
     def p2p_manager(self):
         # Mostra l'IP se trovato
         if self.ip_address:
             print(f"\n{Fore.YELLOW}[INFO]{Style.RESET_ALL} Your local IP is: {self.ip_address}")
         else:
-            print(f"\n{Fore.RED}[X] Could not determine local IP{Style.RESET_ALL}")
+            print(f"\n{Fore.RED}[X] Could not determine local IP.{Style.RESET_ALL}")
         
         default_port = 9999
         try:
@@ -63,7 +63,7 @@ class P2P(SystemInfo):
         else:
             self.client, self.public_partner = self.create_connection(ip_address, port)
 
-        print(f"\n{Fore.YELLOW}[INFO]{Style.RESET_ALL} Connection established!")
+        print(f"\n{Fore.YELLOW}[INFO]{Style.RESET_ALL} Connection established.")
 
         # START THREAD
         self.start_chat_threads()
@@ -122,7 +122,7 @@ class P2P(SystemInfo):
                 msg = input().strip()
 
                 if not msg:
-                    print(f"{Fore.RED}[X] Message can't be empty!{Style.RESET_ALL}")
+                    print(f"{Fore.RED}[X] Message can't be empty.{Style.RESET_ALL}")
                     continue
 
                 encrypted = rsa.encrypt(msg.encode(), self.public_partner)
