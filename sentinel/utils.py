@@ -3,6 +3,7 @@ from colorama import Style, Fore
 import os
 import datetime
 import sys
+import socket
 
 def clickable_link(url, text):
     return f"{Fore.YELLOW}\033]8;;{url}\033\\{text}\033]8;;\033\\{Style.RESET_ALL}"
@@ -52,4 +53,18 @@ def write_to_result_file(content):
 
 def exit(signum, frame):
     print(f"\n{Fore.YELLOW}[INFO]{Style.RESET_ALL} Sentinel shutdown, thanks to using sentinel.")
+    sys.exit(0)
+
+def cleanup(instance):
+    if not instance.running:
+        return
+            
+    instance.running = False
+    if instance.client:
+        try:
+            instance.client.shutdown(socket.SHUT_RDWR)
+            instance.client.close()
+        except:
+            pass
+    print(f"\n{Fore.BLUE}[INFO]{Style.RESET_ALL} Connection closed{Style.RESET_ALL}")
     sys.exit(0)

@@ -1,5 +1,5 @@
 from colorama import Style, Fore
-from phantom_chat.utils import get_local_ip, cleanup
+from sentinel import cleanup
 import rsa
 import socket
 import threading
