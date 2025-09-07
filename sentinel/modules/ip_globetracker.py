@@ -1,6 +1,5 @@
 import requests
 import shutil
-from simple_term_menu import TerminalMenu
 from colorama import Style, Fore
 from sentinel import print_dynamic_dots
 from sentinel.modules.system_info import SystemInfo
@@ -34,23 +33,16 @@ class IPGlobeTracker(SystemInfo):
 
     def ip_globetracker_manager(self):
         print(f"\n{'='*40}{Fore.BLUE} IP GlobeTracker {Style.RESET_ALL}{'='*40}")
-        options = [
-            "[1] Check my public IP",
-            "[2] Check a specific IP/domain"
-        ]
+        print(f""" 
+            [{Fore.BLUE}1{Style.RESET_ALL}] Check my public IP
+            [{Fore.BLUE}2{Style.RESET_ALL}] Check a specific IP/domain
+        """)
 
-        terminal_menu = TerminalMenu(
-            options,
-            menu_cursor=">",
-            menu_cursor_style=("fg_red", "bold"),
-            menu_highlight_style=("standout",)
-        )
-
-        choice = terminal_menu.show()
+        choice = int(input(f"{Fore.GREEN}[?]{Style.RESET_ALL} Insert yout choice => "))
         
-        if choice == 0:
+        if choice == 1:
             my_ip_address = self.get_public_ip()
             self.get_ip_info(my_ip_address)
-        if choice == 1:
+        if choice == 2:
             ip_address = input(f"{Fore.GREEN}[?]{Style.RESET_ALL} Insert IP address or domain ==> ")
             self.get_ip_info(ip_address)
