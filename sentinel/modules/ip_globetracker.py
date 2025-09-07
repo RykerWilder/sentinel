@@ -12,7 +12,7 @@ class IPGlobeTracker(SystemInfo):
             if data['status'] == 'success':
                 self.print_ip_info(data)
             else:
-                print(f"{Fore.RED}[X] Unable to get information for this IP{Style.RESET_ALL}")
+                print(f"{Fore.RED}[X] Unable to get information for this IP.{Style.RESET_ALL}")
         except Exception as e:
             print(f"{Fore.RED}[X] Error: {e}{Style.RESET_ALL}")
 

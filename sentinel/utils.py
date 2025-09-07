@@ -66,5 +66,5 @@ def cleanup(instance):
             instance.client.close()
         except:
             pass
-    print(f"\n{Fore.BLUE}[INFO]{Style.RESET_ALL} Connection closed{Style.RESET_ALL}")
+    print(f"\n{Fore.YELLOW}[INFO]{Style.RESET_ALL} Connection closed.{Style.RESET_ALL}")
     sys.exit(0)
