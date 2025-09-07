@@ -17,10 +17,9 @@ def start():
     main_script = os.path.join(base_dir, "main.py")
     
     if not os.path.exists(venv_python):
-        click.echo(f"{Fore.RED}[X] error: Virtual environment non trovato!{Style.RESET_ALL}")
+        click.echo(f"{Fore.RED}[X] Error: Virtual environment not found {Style.RESET_ALL}")
         sys.exit(1)
     
-    click.echo("Starting sentinel...")
     try:
         subprocess.run(["sudo", "-E", venv_python, main_script], check=True)
     except subprocess.CalledProcessError as e:
