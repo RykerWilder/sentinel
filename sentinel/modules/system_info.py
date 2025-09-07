@@ -32,7 +32,6 @@ class SystemInfo:
         if system == "Darwin":
             details["version"] = f"macOS {platform.mac_ver()[0]}"
         elif system == "Linux":
-            # Per Linux, possiamo ottenere informazioni più dettagliate
             try:
                 with open('/etc/os-release') as f:
                     os_info = {}
@@ -52,7 +51,6 @@ class SystemInfo:
             "threads": psutil.cpu_count(logical=True)
         }
 
-        # Metodi diversi per ottenere il nome del processore su Linux vs macOS
         if platform.system() == "Linux":
             try:
                 with open('/proc/cpuinfo') as f:
@@ -108,9 +106,8 @@ class SystemInfo:
         }
 
     def get_mac_address(self):
-        # Ottiene l'indirizzo MAC della prima interfaccia attiva
         for name, data in self.get_network_info()["interfaces"].items():
-            if data["is_up"] and name != "lo":  # esclude loopback
+            if data["is_up"] and name != "lo":  
                 for addr in psutil.net_if_addrs()[name]:
                     if addr.family == psutil.AF_LINK:
                         return addr.address
@@ -118,7 +115,7 @@ class SystemInfo:
 
     def system_info_manager(self):
         terminal_width = shutil.get_terminal_size().columns
-        print(f"\n{'='*40}{Fore.BLUE} SysInsider {Style.RESET_ALL}{'='*40}")
+        print(f"\n{'='*40}{Fore.BLUE} System Info {Style.RESET_ALL}{'='*40}")
 
         # OS Information
         os_details = self.get_os_details()
