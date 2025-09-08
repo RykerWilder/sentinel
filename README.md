@@ -6,10 +6,16 @@ Sentinel is a Swiss Army knife for cybersecurity, available only for unix operat
 
 ---
 ## Installation
-To install sentinel you can copy and paste the command on terminal. If all went good you can run "sentinel start".
+To install sentinel you can copy and paste the command on terminal.
 
 ```bash
-wget https://raw.githubusercontent.com/rykerwilder/sentinel/main/installer.sh && chmod +x installer.sh && ./installer.sh
+wget https://raw.githubusercontent.com/rykerwilder/sentinel/main/installer.sh && chmod +x installer.sh
+```
+
+**run installer**
+
+```bash
+bash ./installer.sh
 ```
 
 ---
@@ -28,3 +34,6 @@ With IPGlobeTracker you can view the information relating to your IP address or 
 
 #### 4. Packet Sniffer
 is a Python network analysis tool that captures and analyzes network traffic in real-time using the Scapy library. It allows users to monitor packets on a specific network address, displaying detailed information about IP communications including source and destination addresses, and protocol-specific data (TCP ports, UDP ports, or ICMP). The sniffer runs for a configurable duration (default 30 seconds) and logs all captured packets to a results file, making it ideal for network diagnostics, security analysis, and traffic monitoring.
+
+#### 5. Phantom Chat (P2P)
+is a secure peer-to-peer encrypted chat application that provides end-to-end encryption using RSA cryptography. This decentralized chat solution allows two users to communicate directly without intermediaries, ensuring privacy and security through 3072-bit key .
