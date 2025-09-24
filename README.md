@@ -18,12 +18,14 @@ wget https://raw.githubusercontent.com/rykerwilder/sentinel/main/installer.sh &&
 bash ./installer.sh
 ```
 
+After running the installer, follow the instructions in your terminal to activate Sentinel.
+
 ---
 
 ## Menu
 
 #### 1. Network Scanner
-
+is a Python network discovery tool that scans local networks to identify active hosts and their open services. Using multithreading for efficient parallel scanning, it checks common ports (FTP, SSH, HTTP, HTTPS, RDP, etc.) on all IP addresses in a specified network range. The tool provides real-time results showing which hosts are online and which services they are running.
 
 #### 2. System Info
 is a Python program designed to collect and display detailed information about the system on which it runs. It is useful for diagnosing hardware/software issues, monitoring system resources, or simply getting a comprehensive report of computer specifications. SysInsider reports system data such as OS, RAM usage, CPU information, all disk partitions and their space, network information such as public, private, and MAC address.
