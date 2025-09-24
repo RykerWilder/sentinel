@@ -1,5 +1,5 @@
 # Sentinel
-Sentinel is a Swiss Army knife for cybersecurity, available only for unix operating systems.
+Sentinel is a Swiss Army knife for cybersecurity, available only for unix based operating systems.
 
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
 ![sentinel](./assets/sentinel.png)
