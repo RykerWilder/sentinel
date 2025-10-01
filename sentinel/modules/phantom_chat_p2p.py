@@ -4,7 +4,7 @@ import rsa
 import socket
 import threading
 import sys 
-from modules.system_info import SystemInfo
+from sentinel.modules.system_info import SystemInfo
 
 class P2P(SystemInfo):
     def __init__(self):

@@ -1,8 +1,8 @@
 import requests
 import shutil
 from colorama import Style, Fore
-from modules import print_dynamic_dots
-from modules.system_info import SystemInfo
+from sentinel import print_dynamic_dots
+from sentinel.modules.system_info import SystemInfo
 class IPGlobeTracker(SystemInfo):
 
     def get_ip_info(self, ip_address):

@@ -1,5 +1,5 @@
-from modules.utils import print_welcome_message, exit
-from modules import IPGlobeTracker, SystemInfo, NetworkScanner, PacketSniffer, P2P
+from sentinel.utils import print_welcome_message, exit
+from sentinel.modules import IPGlobeTracker, SystemInfo, NetworkScanner, PacketSniffer, P2P
 from colorama import Fore, Style
 import signal
 
