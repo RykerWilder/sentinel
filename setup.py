@@ -13,5 +13,5 @@ setup(
         ],
     },
     author="RykerWilder",
-    description="CLI tool for Sentinel",
+    description="CLI tool for cybersecurity",
 )
