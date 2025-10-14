@@ -36,7 +36,7 @@ def print_dynamic_dots(key, value):
 
 def write_to_result_file(content):
     """
-    Crea un file result_DATE.txt e scrive il contenuto
+    create file result_DATE.txt and write into
     """
     # Ottieni la data corrente nel formato YYYYMMDD
     current_date = datetime.datetime.now().strftime("%Y%m%d")

@@ -1,13 +1,19 @@
-# Cartelle di cache Python
+# Python
 __pycache__/
 *.py[cod]
 *$py.class
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
 
-# Altri file/directory da ignorare
 result*
 *.egg-info/
+*.egg
 *.log
 *.sqlite3
 .env
-venv/
-.venv/
+.DS_Store
