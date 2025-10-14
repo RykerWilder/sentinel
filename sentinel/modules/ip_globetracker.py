@@ -38,11 +38,11 @@ class IPGlobeTracker(SystemInfo):
             [{Fore.BLUE}2{Style.RESET_ALL}] Check a specific IP/domain
         """)
 
-        choice = int(input(f"{Fore.GREEN}[?]{Style.RESET_ALL} Insert yout choice => "))
+        choice = int(input(f"{Fore.BLUE}[?]{Style.RESET_ALL} Insert yout choice => "))
         
         if choice == 1:
             my_ip_address = self.get_public_ip()
             self.get_ip_info(my_ip_address)
         if choice == 2:
-            ip_address = input(f"{Fore.GREEN}[?]{Style.RESET_ALL} Insert IP address or domain ==> ")
+            ip_address = input(f"{Fore.BLUE}[?]{Style.RESET_ALL} Insert IP address or domain ==> ")
             self.get_ip_info(ip_address)

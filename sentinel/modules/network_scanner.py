@@ -33,7 +33,7 @@ class NetworkScanner:
     def network_scanner_manager(self):
         """scan network and print open services"""
 
-        network = input(f"{Fore.GREEN}[?]{Style.RESET_ALL} Insert network address to scan ==> ")
+        network = input(f"{Fore.BLUE}[?]{Style.RESET_ALL} Insert network address to scan ==> ")
         try:
             net = ipaddress.IPv4Network(network, strict=False)
         except ValueError:

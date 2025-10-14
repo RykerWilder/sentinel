@@ -67,7 +67,7 @@ class WebsiteCookie:
             self.write_to_result_file(file_content)
 
     def get_website_cookies_manager(self):
-        url = input(f"{Fore.GREEN}[?]{Style.RESET_ALL} Enter URL ==> ")
+        url = input(f"{Fore.BLUE}[?]{Style.RESET_ALL} Enter URL ==> ")
 
         if not url:
             print(f"{Fore.RED}[X] URL cannot be empty.{Style.RESET_ALL}")
