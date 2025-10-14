@@ -36,14 +36,17 @@ def print_dynamic_dots(key, value):
 
 def write_to_result_file(content):
     """
-    create file result_DATE.txt and write into
+    create file result_DATE.txt in data folder and write into
     """
-    # Ottieni la data corrente nel formato YYYYMMDD
     current_date = datetime.datetime.now().strftime("%Y%m%d")
-    filename = f"result{current_date}.txt"
+
+    data_folder = "./data"
+    
+    # path
+    filename = os.path.join(data_folder, f"result_{current_date}.txt")
     
     try:
-        # Scrivi il contenuto nel file (modalità append)
+        # write content
         with open(filename, 'a', encoding='utf-8') as f:
             f.write(content + '\n')
         return filename
