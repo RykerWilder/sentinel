@@ -29,8 +29,13 @@ class PacketSniffer:
     def start_sniffing(self, duration=30):
         try:
             network = input(f"{Fore.BLUE}[?]{Style.RESET_ALL} Insert network address to sniff ==> ")
+            
+            if not network.strip():
+                print(f"{Fore.RED}[X] Input cannot be empty.{Style.RESET_ALL}")
+                return
+
         except (ValueError, IndexError):
-            print(f"{Fore.RED}[X] URL cannot be empty.{Style.RESET_ALL}")
+            print(f"{Fore.RED}[X] Input cannot be empty.{Style.RESET_ALL}")
             return
             
         try:
@@ -40,7 +45,7 @@ class PacketSniffer:
             
             print(f"{Fore.YELLOW}[INFO]{Style.RESET_ALL} Sniffing in progress...")
             
-            # Avvia lo sniffing con timeout
+            #start sniffing with timeout
             sniff(prn=self.packet_callback, filter=f"host {ip_address}", store=0, timeout=duration)
             
             print(f"{Fore.YELLOW}[INFO]{Style.RESET_ALL} Sniffing completed, captured {self.packet_count} packets.")

@@ -36,7 +36,7 @@ class NetworkScanner:
         try:
             network = input(f"{Fore.BLUE}[?]{Style.RESET_ALL} Insert network address to scan ==> ")
         except (ValueError, IndexError):
-            print(f"{Fore.RED}[X] URL cannot be empty.{Style.RESET_ALL}")
+            print(f"{Fore.RED}[X] Input cannot be empty.{Style.RESET_ALL}")
             return
 
         try:

@@ -41,7 +41,7 @@ class IPGlobeTracker(SystemInfo):
         try:
             choice = int(input(f"{Fore.BLUE}[?]{Style.RESET_ALL} Insert yout choice => "))
         except (ValueError, IndexError):
-            print(f"{Fore.RED}[X] URL cannot be empty.{Style.RESET_ALL}")
+            print(f"{Fore.RED}[X] Input cannot be empty.{Style.RESET_ALL}")
             return
             
         if choice == 1:
