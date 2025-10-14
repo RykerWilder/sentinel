@@ -32,7 +32,6 @@ class P2P(SystemInfo):
         # START CONNECTION
         if choice == "1":
             if not self.ip_address:
-                # Se non abbiamo trovato l'IP automaticamente, chiedilo
                 self.ip_address = input(f"{Fore.BLUE}[?]{Style.RESET_ALL} Enter your IP address => ")
             ip_address = self.ip_address
         else:

@@ -38,8 +38,12 @@ class IPGlobeTracker(SystemInfo):
             [{Fore.BLUE}2{Style.RESET_ALL}] Check a specific IP/domain
         """)
 
-        choice = int(input(f"{Fore.BLUE}[?]{Style.RESET_ALL} Insert yout choice => "))
-        
+        try:
+            choice = int(input(f"{Fore.BLUE}[?]{Style.RESET_ALL} Insert yout choice => "))
+        except (ValueError, IndexError):
+            print(f"{Fore.RED}[X] URL cannot be empty.{Style.RESET_ALL}")
+            return
+            
         if choice == 1:
             my_ip_address = self.get_public_ip()
             self.get_ip_info(my_ip_address)

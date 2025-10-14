@@ -29,6 +29,11 @@ class PacketSniffer:
     def start_sniffing(self, duration=30):
         try:
             network = input(f"{Fore.BLUE}[?]{Style.RESET_ALL} Insert network address to sniff ==> ")
+        except (ValueError, IndexError):
+            print(f"{Fore.RED}[X] URL cannot be empty.{Style.RESET_ALL}")
+            return
+            
+        try:
             ip_address = network.split('/')[0]
             
             print(f"{Fore.YELLOW}[INFO]{Style.RESET_ALL} Sniffing started on {ip_address} for {duration} seconds.")
