@@ -1,5 +1,5 @@
 from sentinel.utils import print_welcome_message, exit
-from sentinel.modules import IPGlobeTracker, SystemInfo, NetworkScanner, PacketSniffer, P2P
+from sentinel.modules import IPGlobeTracker, SystemInfo, NetworkScanner, PacketSniffer, P2P, WebsiteCookie
 from colorama import Fore, Style
 import signal
 
@@ -12,10 +12,11 @@ def main():
     while True:
         print(f"""
             [{Fore.BLUE}1{Style.RESET_ALL}] - Network scanner
-            [{Fore.BLUE}2{Style.RESET_ALL}] - SystemInfo
+            [{Fore.BLUE}2{Style.RESET_ALL}] - System info
             [{Fore.BLUE}3{Style.RESET_ALL}] - IP tracker
             [{Fore.BLUE}4{Style.RESET_ALL}] - Packet sniffer
-            [{Fore.BLUE}5{Style.RESET_ALL}] - Phantom chat (P2P)
+            [{Fore.BLUE}5{Style.RESET_ALL}] - Encrypted chat (P2P)
+            [{Fore.BLUE}6{Style.RESET_ALL}] - Get websites cookies
         """)
         
         
@@ -37,6 +38,8 @@ def main():
             PacketSniffer().start_sniffing()
         elif choice == 5:
             P2P().p2p_manager()
+        elif choice == 6:
+            WebsiteCookie().get_website_cookies_manager()
         elif choice == 6:
             pass
 
