@@ -17,7 +17,7 @@ class IPGlobeTracker(SystemInfo):
             print(f"{Fore.RED}[X] Error: {e}{Style.RESET_ALL}")
 
     def print_ip_info(self, data):
-        terminal_width = shutil.get_terminal_size().columns #terminal width
+        terminal_width = shutil.get_terminal_size().columns
         print(f"{Fore.YELLOW}[INFO]{Style.RESET_ALL} Your public IP address is: {data.get('query')}")
         print_dynamic_dots('Country', data.get('country'))
         print_dynamic_dots('Country code', data.get('countryCode'))

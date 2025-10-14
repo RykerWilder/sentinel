@@ -29,7 +29,7 @@ class P2P(SystemInfo):
                 break
             print(f"{Fore.RED}[X] Invalid choice.{Style.RESET_ALL}")
 
-        # START CONNECTION
+        #START CONNECTION
         if choice == "1":
             if not self.ip_address:
                 self.ip_address = input(f"{Fore.BLUE}[?]{Style.RESET_ALL} Enter your IP address => ")
@@ -44,7 +44,7 @@ class P2P(SystemInfo):
 
         print(f"\n{Fore.YELLOW}[INFO]{Style.RESET_ALL} Connection established.")
 
-        # START THREAD
+        #START THREAD
         self.start_chat_threads()
 
     def create_host(self, ip, port):
@@ -57,7 +57,7 @@ class P2P(SystemInfo):
             client, addr = server.accept()
             print(f"{Fore.YELLOW}[INFO]{Style.RESET_ALL} Connection from {addr[0]}")
             
-            # KEYS CHANGE
+            #KEYS CHANGE
             client.send(rsa.PublicKey.save_pkcs1(self.public_key, "PEM"))
             partner_key = rsa.PublicKey.load_pkcs1(client.recv(1024), "PEM")
             
@@ -72,7 +72,7 @@ class P2P(SystemInfo):
             client.connect((ip, port))
             print(f"{Fore.YELLOW}[INFO]{Style.RESET_ALL} Connected to {Fore.YELLOW}{ip}:{port}{Style.RESET_ALL}")
             
-            # Scambio chiavi
+            #KEYS CHANGE
             partner_key_data = client.recv(1024)
             client.send(rsa.PublicKey.save_pkcs1(self.public_key, "PEM"))
             partner_key = rsa.PublicKey.load_pkcs1(partner_key_data, "PEM")

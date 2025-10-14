@@ -50,7 +50,7 @@ class NetworkScanner:
         with ThreadPoolExecutor(max_workers=self.threads) as executor:
             futures = [executor.submit(self._scan_host, ip) for ip in net.hosts()]
             
-            # Attendi completamento
+            #WAIT
             active_hosts = sum(1 for future in futures if future.result())
         
         print(f"{Fore.YELLOW}[INFO]{Style.RESET_ALL}Scan completed. Active hosts {active_hosts}.")

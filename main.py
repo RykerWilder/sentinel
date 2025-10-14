@@ -6,7 +6,7 @@ import signal
 def main():
     print_welcome_message()
 
-    # ctrl+c handler
+    #CTRL+C HANDLER
     signal.signal(signal.SIGINT, exit)
     
     while True:
@@ -27,7 +27,7 @@ def main():
 
         
         
-        # Gestione scelte
+        #CHOICE MANAGEMENT
         if choice == 1:
             NetworkScanner().network_scanner_manager()
         elif choice == 2:

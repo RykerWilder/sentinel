@@ -9,7 +9,7 @@ from sentinel import print_dynamic_dots
 
 class SystemInfo:
     def __init__(self):
-        # Verifica che il sistema sia Unix-like
+        #VERIFY THAT THE SYSTEM IS UNIX-LIKE
         if platform.system() not in ['Linux', 'Darwin']:
             raise SystemExit("This script can only be run on Unix-like systems (Linux/macOS)")
 
@@ -60,7 +60,7 @@ class SystemInfo:
                             break
             except:
                 cpu_info["name"] = platform.processor()
-        else:  # macOS
+        else:  #macOS
             cpu_info["name"] = platform.processor()
 
         return cpu_info
@@ -86,7 +86,7 @@ class SystemInfo:
     def get_disk_usage(self):
         disks = []
         for partition in psutil.disk_partitions():
-            # Su Unix, escludiamo i filesystem speciali
+            #ON UNIX, AVOID FILESYSTEM
             if not partition.mountpoint.startswith(('/snap', '/dev', '/proc', '/run', '/sys')):
                 try:
                     usage = psutil.disk_usage(partition.mountpoint)
@@ -126,26 +126,26 @@ class SystemInfo:
         terminal_width = shutil.get_terminal_size().columns
         print(f"\n{'='*40}{Fore.BLUE} System Info {Style.RESET_ALL}{'='*40}")
 
-        # OS Information
+        #OS INFO
         os_details = self.get_os_details()
         print_dynamic_dots('OS', f"{os_details['version']} ({os_details['architecture']})")
         print_dynamic_dots('Hostname', socket.gethostname())
 
-        # Hardware Information
+        #HARDWARE INFO
         cpu = self.get_cpu_info()
         print_dynamic_dots('CPU', f"{cpu.get('name', 'Unknown')} ({cpu['cores']} cores, {cpu['threads']} threads)")
 
         ram = self.get_ram_info()
         print_dynamic_dots('RAM', f"{ram['total']} GB total, {ram['used']} GB used ({ram['percent']}%)")
 
-        # Network Information
+        #NETWORK INFO
         print("Network:")
         print_dynamic_dots('  MAC Address', self.get_mac_address())
         print_dynamic_dots('  Public IP', self.get_public_ip())
         print_dynamic_dots('  Local IP', self.get_local_ip())
         
 
-        # Storage Information
+        #STORAGE INFO
         print("Storage:")
         for disk in self.get_disk_usage():
             print(f"  {disk['device']} ({disk['mountpoint']}):")

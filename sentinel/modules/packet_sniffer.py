@@ -45,7 +45,7 @@ class PacketSniffer:
             
             print(f"{Fore.YELLOW}[INFO]{Style.RESET_ALL} Sniffing in progress...")
             
-            #start sniffing with timeout
+            #START SNIFFING WITH TIMEOUT
             sniff(prn=self.packet_callback, filter=f"host {ip_address}", store=0, timeout=duration)
             
             print(f"{Fore.YELLOW}[INFO]{Style.RESET_ALL} Sniffing completed, captured {self.packet_count} packets.")
