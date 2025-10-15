@@ -25,7 +25,7 @@ After running the installer, follow the instructions in your terminal to activat
 ## Menu
 
 #### 1. Network Scanner
-is a Python network discovery tool that scans local networks to identify active hosts and their open services. Using multithreading for efficient parallel scanning, it checks common ports (FTP, SSH, HTTP, HTTPS, RDP, etc.) on all IP addresses in a specified network range. The tool provides real-time results showing which hosts are online and which services they are running.
+is a Python network discovery tool that scans local networks to identify active hosts and their open services. Using multithreading for efficient parallel scanning, it checks common ports (FTP, SSH, HTTP, HTTPS, RDP, etc.) on all IP addresses in a specified network range.
 
 #### 2. System Info
 is a Python program designed to collect and display detailed information about the system on which it runs. It is useful for diagnosing hardware/software issues, monitoring system resources, or simply getting a comprehensive report of computer specifications. System info reports system data such as OS, RAM usage, CPU information, all disk partitions and their space, network information such as public, private, and MAC address.
@@ -42,3 +42,6 @@ is a secure peer-to-peer encrypted chat application that provides end-to-end enc
 
 #### 6. Get Websites Cookies
 is a web analysis tool that extracts and analyzes cookies from websites. It connects to any URL and retrieves detailed information about all cookies set by the server, including their names, values, domains, paths, security flags, and expiration dates. The tool handles redirects automatically and provides comprehensive reporting by saving all cookie data to a timestamped results file.
+
+#### 7. WHOIS Domain Lookup
+is a domain information tool that queries WHOIS databases to retrieve comprehensive registration details for any domain name. Using the python-whois library, it provides detailed information including domain ownership, registration dates, expiration dates, name servers, registrar information, and domain status.
