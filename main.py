@@ -11,13 +11,10 @@ def main():
     
     while True:
         print(f"""
-            [{Fore.BLUE}1{Style.RESET_ALL}] - Network scanner
-            [{Fore.BLUE}2{Style.RESET_ALL}] - System info
-            [{Fore.BLUE}3{Style.RESET_ALL}] - IP tracker
-            [{Fore.BLUE}4{Style.RESET_ALL}] - Packet sniffer
-            [{Fore.BLUE}5{Style.RESET_ALL}] - Encrypted chat (P2P)
-            [{Fore.BLUE}6{Style.RESET_ALL}] - Get websites cookies
-            [{Fore.BLUE}7{Style.RESET_ALL}] - WHOIS Domain Lookup
+        [{Fore.BLUE}1{Style.RESET_ALL}] - Network scanner        [{Fore.BLUE}5{Style.RESET_ALL}] - Encrypted chat (P2P)
+        [{Fore.BLUE}2{Style.RESET_ALL}] - System info            [{Fore.BLUE}6{Style.RESET_ALL}] - Get websites cookies
+        [{Fore.BLUE}3{Style.RESET_ALL}] - IP tracker             [{Fore.BLUE}7{Style.RESET_ALL}] - WHOIS Domain Lookup
+        [{Fore.BLUE}4{Style.RESET_ALL}] - Packet sniffer
         """)
         
         
