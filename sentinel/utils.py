@@ -36,9 +36,9 @@ def print_dynamic_dots(key, value):
 
 def write_to_result_file(content):
     """
-    Create file result_DATE.txt in data folder and write into it
+    Create file result_DATE_TIME.txt in data folder and write into it
     """
-    current_date = datetime.datetime.now().strftime("%Y%m%d")
+    current_datetime = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
     data_folder = "./data"
         
     #CREATE FOLDER IF NOT EXISTS
@@ -46,7 +46,7 @@ def write_to_result_file(content):
         os.makedirs(data_folder)
         
     #PATH
-    filename = os.path.join(data_folder, f"result_{current_date}.txt")
+    filename = os.path.join(data_folder, f"result_{current_datetime}.txt")
         
     try:
         #WRITE CONTENT
