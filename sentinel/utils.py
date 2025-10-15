@@ -36,19 +36,23 @@ def print_dynamic_dots(key, value):
 
 def write_to_result_file(content):
     """
-    create file result_DATE.txt in data folder and write into
+    Create file result_DATE.txt in data folder and write into it
     """
     current_date = datetime.datetime.now().strftime("%Y%m%d")
-
     data_folder = "./data"
-    
-    # path
+        
+    #CREATE FOLDER IF NOT EXISTS
+    if not os.path.exists(data_folder):
+        os.makedirs(data_folder)
+        
+    #PATH
     filename = os.path.join(data_folder, f"result_{current_date}.txt")
-    
+        
     try:
-        # write content
+        #WRITE CONTENT
+        timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         with open(filename, 'a', encoding='utf-8') as f:
-            f.write(content + '\n')
+            f.write(f"[{timestamp}] {content}\n")
         return filename
     except Exception as e:
         print(f"{Fore.RED}[X] Error writing file: {e}{Style.RESET_ALL}")
