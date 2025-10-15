@@ -5,8 +5,11 @@ colorama==0.4.6
 idna==3.10
 psutil==7.0.0
 pyasn1==0.6.1
+python-dateutil==2.9.0.post0
+python-whois==0.9.6
 requests==2.32.4
 rsa==4.9.1
 scapy==2.6.1
--e git+https://github.com/RykerWilder/sentinel.git@07858769a23b74a77cb034fe18fe822d5669760f#egg=sentinel
+-e git+https://github.com/RykerWilder/sentinel.git@08ecd21ffc3fc3b249670d3b8ef323c355c2b2cc#egg=sentinel
+six==1.17.0
 urllib3==2.5.0

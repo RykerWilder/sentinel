@@ -1,5 +1,5 @@
 from sentinel.utils import print_welcome_message, exit
-from sentinel.modules import IPGlobeTracker, SystemInfo, NetworkScanner, PacketSniffer, P2P, WebsiteCookie
+from sentinel.modules import IPGlobeTracker, SystemInfo, NetworkScanner, PacketSniffer, P2P, WebsiteCookie, WhoisDomainLookup
 from colorama import Fore, Style
 import signal
 
@@ -17,6 +17,7 @@ def main():
             [{Fore.BLUE}4{Style.RESET_ALL}] - Packet sniffer
             [{Fore.BLUE}5{Style.RESET_ALL}] - Encrypted chat (P2P)
             [{Fore.BLUE}6{Style.RESET_ALL}] - Get websites cookies
+            [{Fore.BLUE}7{Style.RESET_ALL}] - WHOIS Domain Lookup
         """)
         
         
@@ -40,7 +41,9 @@ def main():
             P2P().p2p_manager()
         elif choice == 6:
             WebsiteCookie().get_website_cookies_manager()
-        elif choice == 6:
+        elif choice == 7:
+            WhoisDomainLookup().whois_lookup_manager()
+        else:
             pass
 
 if __name__ == "__main__":
