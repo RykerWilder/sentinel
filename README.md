@@ -45,3 +45,7 @@ is a web analysis tool that extracts and analyzes cookies from websites. It conn
 
 #### 7. WHOIS Domain Lookup
 is a domain information tool that queries WHOIS databases to retrieve comprehensive registration details for any domain name. Using the python-whois library, it provides detailed information including domain ownership, registration dates, expiration dates, name servers, registrar information, and domain status.
+
+#### 8. DNS Inspector
+
+is a DNS analysis tool that performs comprehensive DNS record lookups for any domain name. Using the dnspython library, it queries multiple DNS record types including A (IPv4), AAAA (IPv6), MX (mail servers), TXT (text records), NS (name servers), and CNAME (canonical names). The tool provides detailed information about domain configuration and DNS infrastructure, handling various DNS response scenarios such as non-existent domains, timeouts, and server errors.
