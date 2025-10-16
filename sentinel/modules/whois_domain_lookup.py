@@ -33,7 +33,7 @@ class WhoisDomainLookup:
 
     def whois_lookup_manager(self):
         try:
-            domain = input(f"{Fore.BLUE}[?]{Style.RESET_ALL} Enter domain name ==> ").strip()
+            domain = input(f"{Fore.BLUE}[?]{Style.RESET_ALL} Insert domain name ==> ").strip()
             if not domain:
                 print(f"{Fore.RED}[X] Domain name cannot be empty.{Style.RESET_ALL}")
                 return

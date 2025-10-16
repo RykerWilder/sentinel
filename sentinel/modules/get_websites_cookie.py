@@ -68,7 +68,7 @@ class WebsiteCookie:
 
     def get_website_cookies_manager(self):
         try:
-            url = input(f"{Fore.BLUE}[?]{Style.RESET_ALL} Enter URL ==> ")
+            url = input(f"{Fore.BLUE}[?]{Style.RESET_ALL} Insert URL ==> ")
         except (ValueError, IndexError):
             print(f"{Fore.RED}[X] URL cannot be empty.{Style.RESET_ALL}")
             return
