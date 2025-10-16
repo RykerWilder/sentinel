@@ -1,7 +1,5 @@
 from colorama import Style, Fore
 import dns.resolver
-import datetime
-import os
 from sentinel import write_to_result_file
 
 class DNSInspector:
@@ -9,16 +7,15 @@ class DNSInspector:
         record_types = ['A', 'AAAA', 'MX', 'TXT', 'NS', 'CNAME']
         print(f"{Fore.YELLOW}[INFO]{Style.RESET_ALL} Querying DNS records for {Fore.YELLOW}{domain}{Style.RESET_ALL}.")
         
-        #HEADER
-        write_to_result_file(f"DNS Lookup results for {domain}")
-        write_to_result_file("=" * 50)
+        # HEADER
+        header = f"DNS Lookup results for {domain}"
 
         for rtype in record_types:
             try:
-                print(f"{Fore.CYAN}Querying {rtype} records...{Style.RESET_ALL}")
+                print(f"{Fore.YELLOW}[INFO]{Style.RESET_ALL} Querying {rtype} records.")
                 answers = dns.resolver.resolve(domain, rtype)
                 
-                #WRITE RESULTS
+                # WRITE RESULTS
                 write_to_result_file(f"--- {rtype} Records ---")
                 for rdata in answers:
                     write_to_result_file(f"  {rdata.to_text()}")
