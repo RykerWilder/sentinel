@@ -18,10 +18,13 @@ def main():
         """)
         
         
-        try:
-            choice = int(input(f"\n{Fore.BLUE}┌─[Insert your choice] \n└──> {Style.RESET_ALL}"))
-        except (ValueError, IndexError):
-            print(f"{Fore.RED}[X] Invalid input.{Style.RESET_ALL}")
+        user_choice = input(f"\n{Fore.BLUE}┌─[Insert your choice] \n└──> {Style.RESET_ALL}")
+        
+        if not user_choice.strip():
+            print(f"{Fore.RED}[X] Input cannot be empty.{Style.RESET_ALL}")
+            continue
+        else:
+            choice = int(user_choice)
 
         
         
