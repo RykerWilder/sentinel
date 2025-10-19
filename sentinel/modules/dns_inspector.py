@@ -46,7 +46,7 @@ class DNSInspector:
             write_to_result_file(result)
     
     def dns_inspector_manager(self):
-        domain = input(f"{Fore.BLUE}[?]{Style.RESET_ALL} Insert domain name ==> ")
+        domain = input(f"\n{Fore.BLUE}┌─[Insert domain name] \n└──> {Style.RESET_ALL}")
         if not domain:
             print(f"{Fore.RED}[X] Domain name cannot be empty.{Style.RESET_ALL}")
             return

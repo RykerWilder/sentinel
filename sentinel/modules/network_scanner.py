@@ -34,7 +34,7 @@ class NetworkScanner:
         """scan network and print open services"""
 
         try:
-            network = input(f"{Fore.BLUE}[?]{Style.RESET_ALL} Insert network address to scan ==> ")
+            network = input(f"\n{Fore.BLUE}┌─[Insert network adress to scan] \n└──> {Style.RESET_ALL}")
         except (ValueError, IndexError):
             print(f"{Fore.RED}[X] Input cannot be empty.{Style.RESET_ALL}")
             return

@@ -10,6 +10,7 @@ env/
 venv/
 .venv/
 
+data/
 result*
 *.egg-info/
 *.egg

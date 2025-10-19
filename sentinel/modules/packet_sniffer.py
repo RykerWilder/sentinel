@@ -28,7 +28,7 @@ class PacketSniffer:
             
     def start_sniffing(self, duration=30):
         try:
-            network = input(f"{Fore.BLUE}[?]{Style.RESET_ALL} Insert network address to sniff ==> ")
+            network = input(f"\n{Fore.BLUE}┌─[Insert network address to sniff] \n└──> {Style.RESET_ALL}")
             
             if not network.strip():
                 print(f"{Fore.RED}[X] Input cannot be empty.{Style.RESET_ALL}")

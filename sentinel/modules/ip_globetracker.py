@@ -39,7 +39,7 @@ class IPGlobeTracker(SystemInfo):
         """)
 
         try:
-            choice = int(input(f"{Fore.BLUE}[?]{Style.RESET_ALL} Insert yout choice => "))
+            choice = input(f"\n{Fore.BLUE}┌─[Insert your choice] \n└──> {Style.RESET_ALL}")
         except (ValueError, IndexError):
             print(f"{Fore.RED}[X] Input cannot be empty.{Style.RESET_ALL}")
             return
@@ -48,5 +48,5 @@ class IPGlobeTracker(SystemInfo):
             my_ip_address = self.get_public_ip()
             self.get_ip_info(my_ip_address)
         if choice == 2:
-            ip_address = input(f"{Fore.BLUE}[?]{Style.RESET_ALL} Insert IP address or domain ==> ")
+            ip_address = input(f"\n{Fore.BLUE}┌─[Insert IP address or domain] \n└──> {Style.RESET_ALL}")
             self.get_ip_info(ip_address)
