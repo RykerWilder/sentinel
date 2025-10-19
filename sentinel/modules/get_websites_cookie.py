@@ -58,13 +58,13 @@ class WebsiteCookie:
             print(f"{Fore.RED}[X] {error_msg}{Style.RESET_ALL}")
             #SAVE ERRORS IN FILE
             file_content += f"ERROR: {error_msg}"
-            self.write_to_result_file(file_content)
+            write_to_result_file(file_content)
         except Exception as e:
             error_msg = f"An unexpected error occurred: {e}\n"
             print(f"{Fore.RED}[X] {error_msg}{Style.RESET_ALL}")
             #SAVE ERRORS IN FILE
             file_content += f"ERROR: {error_msg}"
-            self.write_to_result_file(file_content)
+            write_to_result_file(file_content)
 
     def get_website_cookies_manager(self):
         try:
