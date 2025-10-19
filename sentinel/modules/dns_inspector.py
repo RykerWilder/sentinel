@@ -17,7 +17,7 @@ class DNSInspector:
                 print(f"{Fore.YELLOW}[INFO]{Style.RESET_ALL} Querying {rtype} records.")
                 answers = dns.resolver.resolve(domain, rtype)
                 
-                # Aggiungi i risultati alla lista
+                # ADD RESULTS INTO LIST
                 all_results.append(f"--- {rtype} Records ---")
                 for rdata in answers:
                     all_results.append(f"  {rdata.to_text()}")

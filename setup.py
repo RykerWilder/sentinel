@@ -13,5 +13,5 @@ setup(
         ],
     },
     author="RykerWilder",
-    description="CLI tool for cybersecurity",
+    description="CLI multi tool for cybersecurity",
 )
