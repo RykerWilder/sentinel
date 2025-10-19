@@ -32,15 +32,9 @@ class WhoisDomainLookup:
             write_to_result_file(error_msg)
 
     def whois_lookup_manager(self):
-        try:
-            domain = input(f"\n{Fore.BLUE}┌─[Insert domain name] \n└──> {Style.RESET_ALL}")
-            if not domain:
-                print(f"{Fore.RED}[X] Domain name cannot be empty.{Style.RESET_ALL}")
-                return
+        domain = input(f"\n{Fore.BLUE}┌─[Insert domain name] \n└──> {Style.RESET_ALL}")
+        if not domain:
+            print(f"{Fore.RED}[X] Domain name cannot be empty.{Style.RESET_ALL}")
+            return
                 
-            self.whois_lookup(domain)
-            
-        except KeyboardInterrupt:
-            print(f"\n{Fore.RED}[X] Operation cancelled by user.{Style.RESET_ALL}")
-        except Exception as e:
-            print(f"{Fore.RED}[X] An unexpected error occurred: {e}{Style.RESET_ALL}")
+        self.whois_lookup(domain)

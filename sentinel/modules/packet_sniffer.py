@@ -27,14 +27,9 @@ class PacketSniffer:
             write_to_result_file(log_message)
             
     def start_sniffing(self, duration=30):
-        try:
-            network = input(f"\n{Fore.BLUE}┌─[Insert network address to sniff] \n└──> {Style.RESET_ALL}")
+        network = input(f"\n{Fore.BLUE}┌─[Insert network address to sniff] \n└──> {Style.RESET_ALL}")
             
-            if not network.strip():
-                print(f"{Fore.RED}[X] Input cannot be empty.{Style.RESET_ALL}")
-                return
-
-        except (ValueError, IndexError):
+        if not network.strip():
             print(f"{Fore.RED}[X] Input cannot be empty.{Style.RESET_ALL}")
             return
             

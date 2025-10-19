@@ -33,16 +33,15 @@ class NetworkScanner:
     def network_scanner_manager(self):
         """scan network and print open services"""
 
-        try:
-            network = input(f"\n{Fore.BLUE}┌─[Insert network adress to scan] \n└──> {Style.RESET_ALL}")
-        except (ValueError, IndexError):
+        network = input(f"\n{Fore.BLUE}┌─[Insert network adress to scan] \n└──> {Style.RESET_ALL}")
+        if not network:
             print(f"{Fore.RED}[X] Input cannot be empty.{Style.RESET_ALL}")
             return
 
         try:
             net = ipaddress.IPv4Network(network, strict=False)
         except ValueError:
-            print(f"{Fore.RED}[X] Error: Network invalid.{Style.RESET_ALL}")
+            print(f"{Fore.RED}[X] Error: Invalid network{Style.RESET_ALL}")
             return
         
         print(f"{Fore.YELLOW}[INFO]{Style.RESET_ALL} Scanning network {Fore.YELLOW}{network}{Style.RESET_ALL}...")

@@ -38,9 +38,10 @@ class IPGlobeTracker(SystemInfo):
             [{Fore.BLUE}2{Style.RESET_ALL}] Check a specific IP/domain
         """)
 
-        try:
-            choice = input(f"\n{Fore.BLUE}┌─[Insert your choice] \n└──> {Style.RESET_ALL}")
-        except (ValueError, IndexError):
+        
+        choice = input(f"\n{Fore.BLUE}┌─[Insert your choice] \n└──> {Style.RESET_ALL}")
+
+        if not choice:
             print(f"{Fore.RED}[X] Input cannot be empty.{Style.RESET_ALL}")
             return
             
