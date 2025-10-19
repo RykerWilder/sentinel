@@ -59,7 +59,7 @@ def write_to_result_file(content):
         return None
 
 def exit(signum, frame):
-    print(f"\n{Fore.YELLOW}[INFO]{Style.RESET_ALL} Sentinel shutdown, thanks to using sentinel.")
+    print(f"\n{Fore.YELLOW}[INFO]{Style.RESET_ALL} Sentinel stopped.")
     sys.exit(0)
 
 def cleanup(instance):
