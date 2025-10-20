@@ -4,7 +4,7 @@ from sentinel import write_to_result_file
 
 class WhoisDomainLookup:
     def whois_lookup(self, domain):
-        print(f"{Fore.YELLOW}[INFO]{Style.RESET_ALL} Querying WHOIS for {Fore.YELLOW}{domain}{Style.RESET_ALL}.")
+        print(f"{Fore.CYAN}[INFO]{Style.RESET_ALL} Querying WHOIS for {Fore.CYAN}{domain}{Style.RESET_ALL}.")
         try:
             w = whois.whois(domain)
             
@@ -15,7 +15,7 @@ class WhoisDomainLookup:
                 
             #WRITE RESULT INTO FILE
             success_msg = f"--- WHOIS Information for {domain} ---"
-            print(f"{Fore.YELLOW}[INFO]{Style.RESET_ALL} WHOIS data retrieved successfully. Writing to file...")
+            print(f"{Fore.CYAN}[INFO]{Style.RESET_ALL} WHOIS data retrieved successfully. Writing to file...")
             write_to_result_file(success_msg)
             
             for key, value in w.items():
@@ -32,7 +32,7 @@ class WhoisDomainLookup:
             write_to_result_file(error_msg)
 
     def whois_lookup_manager(self):
-        domain = input(f"\n{Fore.BLUE}┌─[Insert domain name] \n└──> {Style.RESET_ALL}")
+        domain = input(f"\n{Fore.CYAN}┌─[Insert domain name] \n└──> {Style.RESET_ALL}")
         if not domain:
             print(f"{Fore.RED}[X] Domain name cannot be empty.{Style.RESET_ALL}")
             return

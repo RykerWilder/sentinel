@@ -124,7 +124,7 @@ class SystemInfo:
 
     def system_info_manager(self):
         terminal_width = shutil.get_terminal_size().columns
-        print(f"\n{'='*40}{Fore.BLUE} System Info {Style.RESET_ALL}{'='*40}")
+        print(f"\n{'='*40}{Fore.MAGENTA} System Info {Style.RESET_ALL}{'='*40}")
 
         #OS INFO
         os_details = self.get_os_details()

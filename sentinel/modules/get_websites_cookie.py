@@ -8,7 +8,7 @@ from sentinel import write_to_result_file
 class WebsiteCookie:
     def get_cookies(self, url):
         headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'}
-        print(f"{Fore.YELLOW}[INFO]{Style.RESET_ALL} Attempting connection to {Fore.YELLOW}{url}{Style.RESET_ALL} to check cookies.")
+        print(f"{Fore.CYAN}[INFO]{Style.RESET_ALL} Attempting connection to {Fore.CYAN}{url}{Style.RESET_ALL} to check cookies.")
 
         #INIT FILE CONTENT
         file_content = f"Cookies analysis for: {url}\n"
@@ -19,7 +19,7 @@ class WebsiteCookie:
             response.raise_for_status() 
 
             if response.cookies:
-                print(f"{Fore.YELLOW}[INFO]{Style.RESET_ALL} Cookies received from {Fore.YELLOW}{response.url}{Style.RESET_ALL} (Status: {response.status_code})")
+                print(f"{Fore.CYAN}[INFO]{Style.RESET_ALL} Cookies received from {Fore.CYAN}{response.url}{Style.RESET_ALL} (Status: {response.status_code})")
                 
                 for cookie in response.cookies:
                     expires_str = "Session"
@@ -41,7 +41,7 @@ class WebsiteCookie:
                 #SAVE FILE CONTENT
                 filename = write_to_result_file(file_content)
                 if filename:
-                    print(f"{Fore.YELLOW}[INFO]{Style.RESET_ALL} Cookies saved to file: {filename}")
+                    print(f"{Fore.CYAN}[INFO]{Style.RESET_ALL} Cookies saved to file: {filename}")
                 else:
                     print(f"{Fore.RED}[X] Failed to save cookies to file {Style.RESET_ALL}")
 
@@ -49,7 +49,7 @@ class WebsiteCookie:
                 file_content += "No cookies found.\n"
                 filename = write_to_result_file(file_content)
                 if filename:
-                    print(f"{Fore.YELLOW}[INFO]{Style.RESET_ALL} Report saved to file: {filename} (no cookies found)")
+                    print(f"{Fore.CYAN}[INFO]{Style.RESET_ALL} Report saved to file: {filename} (no cookies found)")
                 else:
                     print(f"{Fore.RED}[X] Failed to save report to file{Style.RESET_ALL}")
 

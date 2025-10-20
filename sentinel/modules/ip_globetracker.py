@@ -18,7 +18,7 @@ class IPGlobeTracker(SystemInfo):
 
     def print_ip_info(self, data):
         terminal_width = shutil.get_terminal_size().columns
-        print(f"{Fore.YELLOW}[INFO]{Style.RESET_ALL} Your public IP address is: {data.get('query')}")
+        print(f"{Fore.CYAN}[INFO]{Style.RESET_ALL} Your public IP address is: {data.get('query')}")
         print_dynamic_dots('Country', data.get('country'))
         print_dynamic_dots('Country code', data.get('countryCode'))
         print_dynamic_dots('Region', data.get('regionName'))
@@ -32,14 +32,14 @@ class IPGlobeTracker(SystemInfo):
         print("=" * terminal_width + "\n")
 
     def ip_globetracker_manager(self):
-        print(f"\n{'='*40}{Fore.BLUE} IP GlobeTracker {Style.RESET_ALL}{'='*40}")
+        print(f"\n{'='*40}{Fore.MAGENTA} IP GlobeTracker {Style.RESET_ALL}{'='*40}")
         print(f""" 
-            [{Fore.BLUE}1{Style.RESET_ALL}] Check my public IP
-            [{Fore.BLUE}2{Style.RESET_ALL}] Check a specific IP/domain
+            [{Fore.CYAN}1{Style.RESET_ALL}] Check my public IP
+            [{Fore.CYAN}2{Style.RESET_ALL}] Check a specific IP/domain
         """)
 
         
-        choice = input(f"\n{Fore.BLUE}┌─[Insert your choice] \n└──> {Style.RESET_ALL}")
+        choice = input(f"\n{Fore.CYAN}┌─[Insert your choice] \n└──> {Style.RESET_ALL}")
 
         if not choice:
             print(f"{Fore.RED}[X] Input cannot be empty.{Style.RESET_ALL}")
@@ -49,5 +49,5 @@ class IPGlobeTracker(SystemInfo):
             my_ip_address = self.get_public_ip()
             self.get_ip_info(my_ip_address)
         if choice == 2:
-            ip_address = input(f"\n{Fore.BLUE}┌─[Insert IP address or domain] \n└──> {Style.RESET_ALL}")
+            ip_address = input(f"\n{Fore.CYAN}┌─[Insert IP address or domain] \n└──> {Style.RESET_ALL}")
             self.get_ip_info(ip_address)

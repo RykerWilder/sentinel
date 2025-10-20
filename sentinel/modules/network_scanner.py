@@ -33,7 +33,7 @@ class NetworkScanner:
     def network_scanner_manager(self):
         """scan network and print open services"""
 
-        network = input(f"\n{Fore.BLUE}┌─[Insert network adress to scan] \n└──> {Style.RESET_ALL}")
+        network = input(f"\n{Fore.CYAN}┌─[Insert network adress to scan] \n└──> {Style.RESET_ALL}")
         if not network:
             print(f"{Fore.RED}[X] Input cannot be empty.{Style.RESET_ALL}")
             return
@@ -44,7 +44,7 @@ class NetworkScanner:
             print(f"{Fore.RED}[X] Error: Invalid network{Style.RESET_ALL}")
             return
         
-        print(f"{Fore.YELLOW}[INFO]{Style.RESET_ALL} Scanning network {Fore.YELLOW}{network}{Style.RESET_ALL}...")
+        print(f"{Fore.CYAN}[INFO]{Style.RESET_ALL} Scanning network {Fore.CYAN}{network}{Style.RESET_ALL}...")
         
         with ThreadPoolExecutor(max_workers=self.threads) as executor:
             futures = [executor.submit(self._scan_host, ip) for ip in net.hosts()]
@@ -52,4 +52,4 @@ class NetworkScanner:
             #WAIT
             active_hosts = sum(1 for future in futures if future.result())
         
-        print(f"{Fore.YELLOW}[INFO]{Style.RESET_ALL}Scan completed. Active hosts {active_hosts}.")
+        print(f"{Fore.CYAN}[INFO]{Style.RESET_ALL}Scan completed. Active hosts {active_hosts}.")

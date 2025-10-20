@@ -5,7 +5,7 @@ from sentinel import write_to_result_file
 class DNSInspector:
     def perform_dns_lookup(self, domain):
         record_types = ['A', 'AAAA', 'MX', 'TXT', 'NS', 'CNAME']
-        print(f"{Fore.YELLOW}[INFO]{Style.RESET_ALL} Querying DNS records for {Fore.YELLOW}{domain}{Style.RESET_ALL}.")
+        print(f"{Fore.CYAN}[INFO]{Style.RESET_ALL} Querying DNS records for {Fore.CYAN}{domain}{Style.RESET_ALL}.")
         
         #RESULTS LIST
         all_results = []
@@ -14,7 +14,7 @@ class DNSInspector:
 
         for rtype in record_types:
             try:
-                print(f"{Fore.YELLOW}[INFO]{Style.RESET_ALL} Querying {rtype} records.")
+                print(f"{Fore.CYAN}[INFO]{Style.RESET_ALL} Querying {rtype} records.")
                 answers = dns.resolver.resolve(domain, rtype)
                 
                 # ADD RESULTS INTO LIST
@@ -46,7 +46,7 @@ class DNSInspector:
             write_to_result_file(result)
     
     def dns_inspector_manager(self):
-        domain = input(f"\n{Fore.BLUE}┌─[Insert domain name] \n└──> {Style.RESET_ALL}")
+        domain = input(f"\n{Fore.CYAN}┌─[Insert domain name] \n└──> {Style.RESET_ALL}")
         if not domain:
             print(f"{Fore.RED}[X] Domain name cannot be empty.{Style.RESET_ALL}")
             return

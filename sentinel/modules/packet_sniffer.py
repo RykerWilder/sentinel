@@ -27,7 +27,7 @@ class PacketSniffer:
             write_to_result_file(log_message)
             
     def start_sniffing(self, duration=30):
-        network = input(f"\n{Fore.BLUE}┌─[Insert network address to sniff] \n└──> {Style.RESET_ALL}")
+        network = input(f"\n{Fore.CYAN}┌─[Insert network address to sniff] \n└──> {Style.RESET_ALL}")
             
         if not network.strip():
             print(f"{Fore.RED}[X] Input cannot be empty.{Style.RESET_ALL}")
@@ -36,14 +36,14 @@ class PacketSniffer:
         try:
             ip_address = network.split('/')[0]
             
-            print(f"{Fore.YELLOW}[INFO]{Style.RESET_ALL} Sniffing started on {ip_address} for {duration} seconds.")
+            print(f"{Fore.CYAN}[INFO]{Style.RESET_ALL} Sniffing started on {ip_address} for {duration} seconds.")
             
-            print(f"{Fore.YELLOW}[INFO]{Style.RESET_ALL} Sniffing in progress...")
+            print(f"{Fore.CYAN}[INFO]{Style.RESET_ALL} Sniffing in progress...")
             
             #START SNIFFING WITH TIMEOUT
             sniff(prn=self.packet_callback, filter=f"host {ip_address}", store=0, timeout=duration)
             
-            print(f"{Fore.YELLOW}[INFO]{Style.RESET_ALL} Sniffing completed, captured {self.packet_count} packets.")
+            print(f"{Fore.CYAN}[INFO]{Style.RESET_ALL} Sniffing completed, captured {self.packet_count} packets.")
             
         except Exception as e:
             print(f"{Fore.RED}[X] Sniffing error: {e}{Style.RESET_ALL}")
