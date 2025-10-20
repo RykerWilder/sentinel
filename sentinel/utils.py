@@ -25,13 +25,12 @@ def print_welcome_message():
     print(welcome_message)
 
 def print_dynamic_dots(key, value):
-    # Ottieni la larghezza corrente del terminale
+    #TERMINAL WIDTH
     cols = shutil.get_terminal_size().columns
     
-    #Calcola la lunghezza disponibile per i puntini
+    #DOTS LENGTH
     available_space = cols - len(key) - len(str(value)) - 3  
     
-    # Stampa la chiave, i puntini e il valore
     print(f"{Fore.MAGENTA}{key}{Style.RESET_ALL}: {'.' * available_space} {value}")
 
 def write_to_result_file(content):
