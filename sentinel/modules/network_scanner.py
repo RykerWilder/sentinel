@@ -44,7 +44,7 @@ class NetworkScanner:
             print(f"{Fore.RED}[X] Error: Invalid network{Style.RESET_ALL}")
             return
         
-        print(f"{Fore.CYAN}[INFO]{Style.RESET_ALL} Scanning network {Fore.CYAN}{network}{Style.RESET_ALL}...")
+        print(f"{Fore.MAGENTA}[INFO]{Style.RESET_ALL} Scanning network {Fore.MAGENTA}{network}{Style.RESET_ALL}...")
         
         with ThreadPoolExecutor(max_workers=self.threads) as executor:
             futures = [executor.submit(self._scan_host, ip) for ip in net.hosts()]
@@ -52,4 +52,4 @@ class NetworkScanner:
             #WAIT
             active_hosts = sum(1 for future in futures if future.result())
         
-        print(f"{Fore.CYAN}[INFO]{Style.RESET_ALL}Scan completed. Active hosts {active_hosts}.")
+        print(f"{Fore.MAGENTA}[INFO]{Style.RESET_ALL}Scan completed. Active hosts {active_hosts}.")

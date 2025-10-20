@@ -14,7 +14,7 @@ class P2P(SystemInfo):
         self.running = True
 
     def p2p_manager(self):
-        print(f"\n{Fore.CYAN}[INFO]{Style.RESET_ALL} Your local IP is: {self.get_local_ip()}")
+        print(f"\n{Fore.MAGENTA}[INFO]{Style.RESET_ALL} Your local IP is: {self.get_local_ip()}")
         
         default_port = 9999
         try:
@@ -42,7 +42,7 @@ class P2P(SystemInfo):
         else:
             self.client, self.public_partner = self.create_connection(ip_address, port)
 
-        print(f"\n{Fore.CYAN}[INFO]{Style.RESET_ALL} Connection established.")
+        print(f"\n{Fore.MAGENTA}[INFO]{Style.RESET_ALL} Connection established.")
 
         #START THREAD
         self.start_chat_threads()
@@ -52,10 +52,10 @@ class P2P(SystemInfo):
         try:
             server.bind((ip, port))
             server.listen()
-            print(f"{Fore.CYAN}[INFO]{Style.RESET_ALL} Server listening on {ip}:{port}")
+            print(f"{Fore.MAGENTA}[INFO]{Style.RESET_ALL} Server listening on {ip}:{port}")
             
             client, addr = server.accept()
-            print(f"{Fore.CYAN}[INFO]{Style.RESET_ALL} Connection from {addr[0]}")
+            print(f"{Fore.MAGENTA}[INFO]{Style.RESET_ALL} Connection from {addr[0]}")
             
             #KEYS CHANGE
             client.send(rsa.PublicKey.save_pkcs1(self.public_key, "PEM"))
@@ -70,7 +70,7 @@ class P2P(SystemInfo):
         client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         try:
             client.connect((ip, port))
-            print(f"{Fore.CYAN}[INFO]{Style.RESET_ALL} Connected to {Fore.CYAN}{ip}:{port}{Style.RESET_ALL}")
+            print(f"{Fore.MAGENTA}[INFO]{Style.RESET_ALL} Connected to {Fore.MAGENTA}{ip}:{port}{Style.RESET_ALL}")
             
             #KEYS CHANGE
             partner_key_data = client.recv(1024)
@@ -106,7 +106,7 @@ class P2P(SystemInfo):
 
                 encrypted = rsa.encrypt(msg.encode(), self.public_partner)
                 self.client.send(encrypted)
-                print(f"{Fore.CYAN}You:{Style.RESET_ALL} {msg}")
+                print(f"{Fore.MAGENTA}You:{Style.RESET_ALL} {msg}")
         except Exception as e:
             if self.running:
                 print(f"{Fore.RED}[X] Send error: {e}{Style.RESET_ALL}")
@@ -121,7 +121,7 @@ class P2P(SystemInfo):
                     break
                     
                 msg = rsa.decrypt(encrypted, self.private_key).decode()
-                print(f"\n{Fore.CYAN}Partner:{Style.RESET_ALL} {msg}\nYou: ", end="", flush=True)
+                print(f"\n{Fore.MAGENTA}Partner:{Style.RESET_ALL} {msg}\nYou: ", end="", flush=True)
         except Exception as e:
             if self.running:
                 print(f"{Fore.RED}[X] Receive error: {e}{Style.RESET_ALL}")
