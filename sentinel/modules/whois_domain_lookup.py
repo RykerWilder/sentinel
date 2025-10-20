@@ -4,7 +4,7 @@ from sentinel import write_to_result_file
 
 class WhoisDomainLookup:
     def whois_lookup(self, domain):
-        print(f"{Fore.MAGENTA}[INFO]{Style.RESET_ALL} Querying WHOIS for {Fore.MAGENTA}{domain}{Style.RESET_ALL}.")
+        print(f"{Fore.MAGENTA}[INFO]{Style.RESET_ALL} Querying WHOIS for {Fore.MAGENTA}{domain}{Style.RESET_ALL}")
         try:
             w = whois.whois(domain)
             
@@ -15,7 +15,7 @@ class WhoisDomainLookup:
                 
             #WRITE RESULT INTO FILE
             success_msg = f"--- WHOIS Information for {domain} ---"
-            print(f"{Fore.MAGENTA}[INFO]{Style.RESET_ALL} WHOIS data retrieved successfully. Writing to file...")
+            print(f"{Fore.MAGENTA}[INFO]{Style.RESET_ALL} WHOIS data retrieved successfully. Writing to file.")
             write_to_result_file(success_msg)
             
             for key, value in w.items():

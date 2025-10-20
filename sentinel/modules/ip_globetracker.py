@@ -18,7 +18,7 @@ class IPGlobeTracker(SystemInfo):
 
     def print_ip_info(self, data):
         terminal_width = shutil.get_terminal_size().columns
-        print(f"{Fore.MAGENTA}[INFO]{Style.RESET_ALL} Your public IP address is: {data.get('query')}")
+        print(f"{Fore.MAGENTA}[INFO]{Style.RESET_ALL} Your public IP address is: {Fore.MAGENTA}{data.get('query')}{Style.RESET_ALL}")
         print_dynamic_dots('Country', data.get('country'))
         print_dynamic_dots('Country code', data.get('countryCode'))
         print_dynamic_dots('Region', data.get('regionName'))
@@ -39,7 +39,7 @@ class IPGlobeTracker(SystemInfo):
         """)
 
         
-        choice = input(f"\n{Fore.CYAN}┌─[Insert your choice] \n└──> {Style.RESET_ALL}")
+        choice = int(input(f"\n{Fore.CYAN}┌─[Insert your choice] \n└──> {Style.RESET_ALL}"))
 
         if not choice:
             print(f"{Fore.RED}[X] Input cannot be empty.{Style.RESET_ALL}")

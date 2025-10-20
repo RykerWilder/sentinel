@@ -14,7 +14,7 @@ class P2P(SystemInfo):
         self.running = True
 
     def p2p_manager(self):
-        print(f"\n{Fore.MAGENTA}[INFO]{Style.RESET_ALL} Your local IP is: {self.get_local_ip()}")
+        print(f"\n{Fore.MAGENTA}[INFO]{Style.RESET_ALL} Your local IP is: {Fore.MAGENTA}{self.get_local_ip()}{Style.RESET_ALL}")
         
         default_port = 9999
         try:
