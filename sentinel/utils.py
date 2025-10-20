@@ -6,22 +6,22 @@ import sys
 import socket
 
 def clickable_link(url, text):
-    return f"{Fore.YELLOW}\033]8;;{url}\033\\{text}\033]8;;\033\\{Style.RESET_ALL}"
+    return f"{Fore.CYAN}\033]8;;{url}\033\\{text}\033]8;;\033\\{Style.RESET_ALL}"
 
 def print_welcome_message():
+    os.system('clear' if os.name == 'posix' else 'cls')
     logo = r"""
-_________              __  .__              .__   
-   _____/ ____   _____/  |_|__| ____   ____ |  |  
-_____  \_/ __ \ /    \ / __\  |/    \_/ __ \|  |  
-        \  ___/|   |  \\ | |  |   |  \  ___/|  |__
-______  /\___  >___|  /__| |__|___|  /\___  >____/
-      \/     \/     \//_           \/     \/                                 
-"""
+        _________              __  .__              .__   
+        _____/ ____   _____/  |_|__| ____   ____ |  |  
+        _____  \_/ __ \ /    \ / __\  |/    \_/ __ \|  |  
+                \  ___/|   |  \\ | |  |   |  \  ___/|  |__
+        ______  /\___  >___|  /__| |__|___|  /\___  >____/
+            \/     \/     \//_           \/     \/                                 
+    """
     welcome_message = f"""
-{logo}
-
-{Fore.YELLOW}[INFO]{Style.RESET_ALL} If you want to read more about Sentinel, go read {clickable_link('https://github.com/RykerWilder/sentinel', 'documentation')}.
-"""
+        {Fore.MAGENTA}{logo}{Style.RESET_ALL}
+        {Fore.CYAN}[INFO]{Style.RESET_ALL} If you want to read more about Sentinel, go read {clickable_link('https://github.com/RykerWilder/sentinel', 'documentation')}.
+    """
     print(welcome_message)
 
 def print_dynamic_dots(key, value):
@@ -32,7 +32,7 @@ def print_dynamic_dots(key, value):
     available_space = cols - len(key) - len(str(value)) - 3  
     
     # Stampa la chiave, i puntini e il valore
-    print(f"{Fore.BLUE}{key}{Style.RESET_ALL}: {'.' * available_space} {value}")
+    print(f"{Fore.MAGENTA}{key}{Style.RESET_ALL}: {'.' * available_space} {value}")
 
 def write_to_result_file(content):
     """
@@ -59,7 +59,7 @@ def write_to_result_file(content):
         return None
 
 def exit(signum, frame):
-    print(f"\n{Fore.YELLOW}[INFO]{Style.RESET_ALL} Sentinel stopped.")
+    print(f"\n{Fore.CYAN}[INFO]{Style.RESET_ALL} Sentinel stopped.")
     sys.exit(0)
 
 def cleanup(instance):
@@ -73,5 +73,5 @@ def cleanup(instance):
             instance.client.close()
         except:
             pass
-    print(f"\n{Fore.YELLOW}[INFO]{Style.RESET_ALL} Connection closed.{Style.RESET_ALL}")
+    print(f"\n{Fore.CYAN}[INFO]{Style.RESET_ALL} Connection closed.{Style.RESET_ALL}")
     sys.exit(0)

@@ -11,14 +11,14 @@ def main():
     
     while True:
         print(f"""
-        [{Fore.BLUE}1{Style.RESET_ALL}] - Network scanner        [{Fore.BLUE}5{Style.RESET_ALL}] - Encrypted chat (P2P)
-        [{Fore.BLUE}2{Style.RESET_ALL}] - System info            [{Fore.BLUE}6{Style.RESET_ALL}] - Get websites cookies
-        [{Fore.BLUE}3{Style.RESET_ALL}] - IP tracker             [{Fore.BLUE}7{Style.RESET_ALL}] - WHOIS Domain Lookup
-        [{Fore.BLUE}4{Style.RESET_ALL}] - Packet sniffer         [{Fore.BLUE}8{Style.RESET_ALL}] - DNS Inspector
+        [{Fore.CYAN}1{Style.RESET_ALL}] - Network scanner        [{Fore.CYAN}5{Style.RESET_ALL}] - Encrypted chat (P2P)
+        [{Fore.CYAN}2{Style.RESET_ALL}] - System info            [{Fore.CYAN}6{Style.RESET_ALL}] - Get websites cookies
+        [{Fore.CYAN}3{Style.RESET_ALL}] - IP tracker             [{Fore.CYAN}7{Style.RESET_ALL}] - WHOIS Domain Lookup
+        [{Fore.CYAN}4{Style.RESET_ALL}] - Packet sniffer         [{Fore.CYAN}8{Style.RESET_ALL}] - DNS Inspector
         """)
         
         
-        user_choice = input(f"\n{Fore.BLUE}┌─[Insert your choice] \n└──> {Style.RESET_ALL}")
+        user_choice = input(f"\n{Fore.CYAN}┌─[Insert your choice] \n└──> {Style.RESET_ALL}")
         
         if not user_choice.strip():
             print(f"{Fore.RED}[X] Input cannot be empty.{Style.RESET_ALL}")
