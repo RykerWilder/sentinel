@@ -1,6 +1,7 @@
 from scapy.all import sniff, IP, TCP, UDP, ICMP
 from sentinel import write_to_result_file
 import time
+import shutil
 from colorama import Style, Fore
 
 class PacketSniffer:
@@ -27,6 +28,7 @@ class PacketSniffer:
             write_to_result_file(log_message)
             
     def start_sniffing(self, duration=30):
+        print(f"\n{'='*40}{Fore.MAGENTA} Packet Sniffer {Style.RESET_ALL}{'='*40}")
         network = input(f"\n{Fore.CYAN}┌─[Insert network address to sniff] \n└──> {Style.RESET_ALL}")
             
         if not network.strip():
@@ -44,6 +46,8 @@ class PacketSniffer:
             sniff(prn=self.packet_callback, filter=f"host {ip_address}", store=0, timeout=duration)
             
             print(f"{Fore.MAGENTA}[INFO]{Style.RESET_ALL} Sniffing completed, captured {self.packet_count} packets.")
+            terminal_width = shutil.get_terminal_size().columns
+            print("=" * terminal_width + "\n")
             
         except Exception as e:
             print(f"{Fore.RED}[X] Sniffing error: {e}{Style.RESET_ALL}")

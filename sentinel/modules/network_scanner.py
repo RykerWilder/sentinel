@@ -1,6 +1,7 @@
 import socket
 import ipaddress
 import threading
+import shutil
 from concurrent.futures import ThreadPoolExecutor
 from colorama import Style, Fore
 
@@ -32,6 +33,7 @@ class NetworkScanner:
     
     def network_scanner_manager(self):
         """scan network and print open services"""
+        print(f"\n{'='*40}{Fore.MAGENTA} Network Scanner {Style.RESET_ALL}{'='*40}")
 
         network = input(f"\n{Fore.CYAN}┌─[Insert network adress to scan] \n└──> {Style.RESET_ALL}")
         if not network:
@@ -53,3 +55,5 @@ class NetworkScanner:
             active_hosts = sum(1 for future in futures if future.result())
         
         print(f"{Fore.MAGENTA}[INFO]{Style.RESET_ALL}Scan completed. Active hosts {active_hosts}.")
+        terminal_width = shutil.get_terminal_size().columns
+        print("=" * terminal_width + "\n")

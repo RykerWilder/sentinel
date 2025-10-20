@@ -1,6 +1,7 @@
 from colorama import Style, Fore
 import dns.resolver
 from sentinel import write_to_result_file
+import shutil
 
 class DNSInspector:
     def perform_dns_lookup(self, domain):
@@ -46,9 +47,12 @@ class DNSInspector:
             write_to_result_file(result)
     
     def dns_inspector_manager(self):
+        print(f"\n{'='*40}{Fore.MAGENTA} WHOIS Domain Lookup {Style.RESET_ALL}{'='*40}")
         domain = input(f"\n{Fore.CYAN}┌─[Insert domain name] \n└──> {Style.RESET_ALL}")
         if not domain:
             print(f"{Fore.RED}[X] Domain name cannot be empty.{Style.RESET_ALL}")
             return
         
         self.perform_dns_lookup(domain)
+        terminal_width = shutil.get_terminal_size().columns
+        print("=" * terminal_width + "\n")

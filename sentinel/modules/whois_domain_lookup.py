@@ -1,6 +1,7 @@
 import whois
 from colorama import Fore, Style
 from sentinel import write_to_result_file
+import shutil
 
 class WhoisDomainLookup:
     def whois_lookup(self, domain):
@@ -32,9 +33,12 @@ class WhoisDomainLookup:
             write_to_result_file(error_msg)
 
     def whois_lookup_manager(self):
+        print(f"\n{'='*40}{Fore.MAGENTA} WHOIS Domain Lookup {Style.RESET_ALL}{'='*40}")
         domain = input(f"\n{Fore.CYAN}┌─[Insert domain name] \n└──> {Style.RESET_ALL}")
         if not domain:
             print(f"{Fore.RED}[X] Domain name cannot be empty.{Style.RESET_ALL}")
             return
                 
         self.whois_lookup(domain)
+        terminal_width = shutil.get_terminal_size().columns
+        print("=" * terminal_width + "\n")

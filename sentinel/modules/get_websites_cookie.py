@@ -1,4 +1,5 @@
 import requests
+import shutil
 from requests.exceptions import RequestException
 from datetime import datetime
 import datetime as dt
@@ -67,6 +68,7 @@ class WebsiteCookie:
             write_to_result_file(file_content)
 
     def get_website_cookies_manager(self):
+        print(f"\n{'='*40}{Fore.MAGENTA} WHOIS Domain Lookup {Style.RESET_ALL}{'='*40}")
         url = input(f"\n{Fore.CYAN}┌─[Insert URL] \n└──> {Style.RESET_ALL}")
         
         if not url:
@@ -74,3 +76,5 @@ class WebsiteCookie:
             return
 
         self.get_cookies(url)
+        terminal_width = shutil.get_terminal_size().columns
+        print("=" * terminal_width + "\n")
