@@ -18,13 +18,13 @@ class P2P(SystemInfo):
         
         default_port = 9999
         try:
-            port = int(input(f"{Fore.CYAN}[?]{Style.RESET_ALL} Insert port (default: {default_port}) => ") or default_port)
+            port = int(input(f"\n{Fore.CYAN}┌─[Insert port (default: {default_port}] \n└──> {Style.RESET_ALL}") or default_port)
         except ValueError:
             print(f"{Fore.RED}[X] Invalid port, using default: {default_port}{Style.RESET_ALL}")
             port = default_port
 
         while True:
-            choice = input(f"{Fore.CYAN}[?]{Style.RESET_ALL} Choose mode - Host [1] or Client [2] => ")
+            choice = input(f"\n{Fore.CYAN}┌─[Choose mode - Host (1) or Client (2)] \n└──> {Style.RESET_ALL}")
             if choice in ("1", "2"):
                 break
             print(f"{Fore.RED}[X] Invalid choice.{Style.RESET_ALL}")
@@ -32,10 +32,10 @@ class P2P(SystemInfo):
         #START CONNECTION
         if choice == "1":
             if not self.ip_address:
-                self.ip_address = input(f"{Fore.CYAN}[?]{Style.RESET_ALL} Enter your IP address => ")
+                self.ip_address = input(f"\n{Fore.CYAN}┌─[Enter your IP address] \n└──> {Style.RESET_ALL}")
             ip_address = self.ip_address
         else:
-            ip_address = input(f"{Fore.CYAN}[?]{Style.RESET_ALL} Enter host IP => ")
+            ip_address = input(f"\n{Fore.CYAN}┌─[Enter host IP] \n└──> {Style.RESET_ALL}")
         
         if choice == "1":
             self.client, self.public_partner = self.create_host(ip_address, port)
