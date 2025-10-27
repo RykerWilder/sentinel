@@ -10,6 +10,7 @@ class Sherlock:
             result = subprocess.run([
                 'sherlock',  
                 '--timeout', timeout,
+                '--output', './data/' + username + '.txt',
                 username
             ], capture_output=True, text=False, timeout=120)
             
