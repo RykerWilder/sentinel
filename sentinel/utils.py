@@ -58,7 +58,7 @@ def write_to_result_file(content):
         return None
 
 def exit(signum, frame):
-    print(f"\n{Fore.CYAN}[INFO]{Style.RESET_ALL} Sentinel stopped.")
+    print(f"\n{Fore.MAGENTA}[INFO]{Style.RESET_ALL} Aborted")
     sys.exit(0)
 
 def cleanup(instance):
