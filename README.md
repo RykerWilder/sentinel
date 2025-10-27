@@ -24,7 +24,9 @@ After running the installer, follow the instructions in your terminal to activat
 
 ## Menu
 
-#### 1. 
+#### 1. Sherlock
+
+is a Python-based OSINT (Open Source Intelligence) tool that searches for usernames across multiple social media platforms and websites. You can read more on their repo [sherlock-project](https://github.com/sherlock-project/sherlock).
 
 #### 2. System Info
 is a Python program designed to collect and display detailed information about the system on which it runs. It is useful for diagnosing hardware/software issues, monitoring system resources, or simply getting a comprehensive report of computer specifications. System info reports system data such as OS, RAM usage, CPU information, all disk partitions and their space, network information such as public, private, and MAC address.
