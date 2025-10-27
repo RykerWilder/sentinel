@@ -35,8 +35,9 @@ is a Python program designed to collect and display detailed information about t
 is a Python program that extends the functionality of System info to provide detailed information about public IP addresses and domains. Use the [ip-api.com](https://ip-api.com/) public API to get geographic data, ISPs, and other useful information.
 With IP Tracker you can view the information relating to your IP address or by choosing the second option you can view another IP address.
 
-#### 4. Packet Sniffer
-is a Python network analysis tool that captures and analyzes network traffic in real-time using the Scapy library. It allows users to monitor packets on a specific network address, displaying detailed information about IP communications including source and destination addresses, and protocol-specific data (TCP ports, UDP ports, or ICMP). The sniffer runs for a configurable duration (default 30 seconds) and logs all captured packets to a results file, making it ideal for network diagnostics, security analysis, and traffic monitoring.
+#### 4. Olehe
+
+is an email OSINT tool that checks if an email address is associated with various online services and platforms. By querying multiple websites and social media platforms, Holehe reveals where a given email has been registered without requiring authentication. The tool provides a comprehensive report showing which services (social networks, forums, dating sites, etc.) are linked to the investigated email address. You can read more on their repo [olehe](https://github.com/megadose/holehe).
 
 #### 5. Encrypted Chat (P2P)
 is a secure peer-to-peer encrypted chat application that provides end-to-end encryption using RSA cryptography. This decentralized chat solution allows two users to communicate directly without intermediaries, ensuring privacy and security through 3072-bit key.
