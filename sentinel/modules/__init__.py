@@ -5,5 +5,6 @@ from sentinel.modules.get_websites_cookie import WebsiteCookie
 from sentinel.modules.whois_domain_lookup import WhoisDomainLookup
 from sentinel.modules.dns_inspector import DNSInspector
 from sentinel.modules.sherlock import Sherlock
+from sentinel.modules.holehe import Holehe
 
-__all__ = ["IPGlobeTracker", "SysInsider", "P2P", "WebsiteCookie", "DNSInspector", "Sherlock"]
+__all__ = ["IPGlobeTracker", "SysInsider", "P2P", "WebsiteCookie", "DNSInspector", "Sherlock", "Holehe"]
