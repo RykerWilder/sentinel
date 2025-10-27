@@ -2,10 +2,14 @@ from colorama import Fore, Style
 import subprocess
 import sys
 import shutil
+from datetime import datetime
+from sentinel import write_to_result_file
 
 class Holehe:
     def check_email(self, email):
         terminal_width = shutil.get_terminal_size().columns
+        file_content = f"Scan date: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n"
+
         try:
             print(f"{Fore.MAGENTA}[INFO]{Style.RESET_ALL} Checking: {email}")
             
@@ -14,19 +18,21 @@ class Holehe:
             ], capture_output=True, text=False, timeout=120)
             
             if result.returncode == 0:
-                # Decodifica bytes in stringa e poi split
+                #DECODE BYTES
                 lines = result.stdout.decode('utf-8').split('\n')
                 found_count = 0
                 
                 for line in lines:
-                    if '[+]' in line or 'Found' in line:
+                    if '[+]' in line:
                         found_count += 1
-                        print(f"{Fore.GREEN}{line}{Style.RESET_ALL}")
+                        file_content += f"{line}\n"
                 
-                print(f"\n{Fore.MAGENTA}[INFO]{Style.RESET_ALL} Found in {found_count} services")
+                file = write_to_result_file(file_content)
+                print(f"\n{Fore.MAGENTA}[INFO]{Style.RESET_ALL} Found in {found_count - 1} services")
+                print(f"\n{Fore.MAGENTA}[INFO]{Style.RESET_ALL} View results in data folder")
             else:
                 print(f"{Fore.RED}[X] Error running holehe{Style.RESET_ALL}")
-                # Decodifica anche stderr
+                #DECODE stderr
                 print(result.stderr.decode('utf-8'))
                 
         except FileNotFoundError:
