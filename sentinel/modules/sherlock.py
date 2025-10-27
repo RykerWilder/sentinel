@@ -9,17 +9,17 @@ class Sherlock:
                 'sherlock',  
                 '--timeout', timeout,
                 username
-            ], capture_output=True, text=True, timeout=120)
+            ], capture_output=True, text=False, timeout=120)
             
             if result.returncode == 0:
-                print(f"{Fore.CYAN}[INFO]{Style.RESET_ALL} Research completed")
+                print(f"{Fore.MAGENTA}[INFO]{Style.RESET_ALL} Research completed")
                 print(result.stdout)
             else:
                 print(f"{Fore.RED}[X] Error searching{Style.RESET_ALL}")
                 print(result.stderr)
                 
         except subprocess.TimeoutExpired:
-            print(f"{Fore.CYAN}[INFO]{Style.RESET_ALL} Timeout")
+            print(f"{Fore.MAGENTA}[INFO]{Style.RESET_ALL} Timeout")
         except Exception as e:
             print(f"{Fore.RED}[X] Error: {e}{Style.RESET_ALL}")
 
@@ -29,6 +29,7 @@ class Sherlock:
         timeout = input(f"\n{Fore.CYAN}┌─[Insert timeout] \n└──> {Style.RESET_ALL}")
 
         if username:
+            print(f"{Fore.MAGENTA}[INFO]{Style.RESET_ALL} Searching: {username}")
             self.find(username, timeout)
         else:
             print(f"{Fore.RED}[X] Insert valid username{Style.RESET_ALL}")
