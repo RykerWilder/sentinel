@@ -30,7 +30,7 @@ class DNSInspector:
                 all_results.append(error_msg)
                 print(f"{Fore.RED}{error_msg}{Style.RESET_ALL}")
                 for result in all_results:
-                    write_to_result_file(result)
+                    write_to_result_file(result, "dns_inspector")
                 return 
             except dns.resolver.Timeout:
                 error_msg = f"DNS query timed out for {rtype} records."
@@ -44,7 +44,7 @@ class DNSInspector:
         
         #WRITE ALL RESULTS
         for result in all_results:
-            write_to_result_file(result)
+            write_to_result_file(result, "dns_inspector")
     
     def dns_inspector_manager(self):
         print(f"\n{'='*40}{Fore.MAGENTA} WHOIS Domain Lookup {Style.RESET_ALL}{'='*40}")

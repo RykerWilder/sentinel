@@ -27,7 +27,7 @@ class Holehe:
                         found_count += 1
                         file_content += f"{line}\n"
                 
-                file = write_to_result_file(file_content)
+                file = write_to_result_file(file_content, "olehe")
                 print(f"\n{Fore.MAGENTA}[INFO]{Style.RESET_ALL} Found in {found_count - 1} services")
                 print(f"\n{Fore.MAGENTA}[INFO]{Style.RESET_ALL} View results in data folder")
             else:

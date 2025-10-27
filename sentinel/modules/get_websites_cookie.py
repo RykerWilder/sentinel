@@ -40,7 +40,7 @@ class WebsiteCookie:
                     file_content += f"Expires: {expires_str}\n"
 
                 #SAVE FILE CONTENT
-                filename = write_to_result_file(file_content)
+                filename = write_to_result_file(file_content, "get_cookies")
                 if filename:
                     print(f"{Fore.MAGENTA}[INFO]{Style.RESET_ALL} Cookies saved to file: {filename}")
                 else:
@@ -48,7 +48,7 @@ class WebsiteCookie:
 
             else:
                 file_content += "No cookies found.\n"
-                filename = write_to_result_file(file_content)
+                filename = write_to_result_file(file_content, "get_cookies")
                 if filename:
                     print(f"{Fore.MAGENTA}[INFO]{Style.RESET_ALL} Report saved to file: {filename} (no cookies found)")
                 else:
@@ -59,13 +59,13 @@ class WebsiteCookie:
             print(f"{Fore.RED}[X] {error_msg}{Style.RESET_ALL}")
             #SAVE ERRORS IN FILE
             file_content += f"ERROR: {error_msg}"
-            write_to_result_file(file_content)
+            write_to_result_file(file_content, "get_cookies")
         except Exception as e:
             error_msg = f"An unexpected error occurred: {e}\n"
             print(f"{Fore.RED}[X] {error_msg}{Style.RESET_ALL}")
             #SAVE ERRORS IN FILE
             file_content += f"ERROR: {error_msg}"
-            write_to_result_file(file_content)
+            write_to_result_file(file_content, "get_cookies")
 
     def get_website_cookies_manager(self):
         print(f"\n{'='*40}{Fore.MAGENTA} WHOIS Domain Lookup {Style.RESET_ALL}{'='*40}")

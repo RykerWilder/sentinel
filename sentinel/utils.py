@@ -33,7 +33,7 @@ def print_dynamic_dots(key, value):
     
     print(f"{Fore.MAGENTA}{key}{Style.RESET_ALL}: {'.' * available_space} {value}")
 
-def write_to_result_file(content):
+def write_to_result_file(content, tool=""):
     """
     Create file result_DATE_TIME.txt in data folder and write into it
     """
@@ -45,7 +45,7 @@ def write_to_result_file(content):
         os.makedirs(data_folder)
         
     #PATH
-    filename = os.path.join(data_folder, f"result_{current_datetime}.txt")
+    filename = os.path.join(data_folder, f"result_{tool}_{current_datetime}.txt")
         
     try:
         #WRITE CONTENT

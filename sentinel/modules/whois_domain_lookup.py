@@ -15,9 +15,9 @@ class WhoisDomainLookup:
                 write_to_result_file(error_msg)
                 
             #WRITE RESULT INTO FILE
-            success_msg = f"--- WHOIS Information for {domain} ---"
+            success_msg = f"--- WHOIS Information for {domain} --- \n"
             print(f"{Fore.MAGENTA}[INFO]{Style.RESET_ALL} WHOIS data retrieved successfully. Writing to file.")
-            write_to_result_file(success_msg)
+            
             
             for key, value in w.items():
                 if key != 'text' and value:
@@ -25,7 +25,9 @@ class WhoisDomainLookup:
                         line = f"{key.replace('_', ' ').title():<25}: {', '.join(map(str, value))}"
                     else:
                         line = f"{key.replace('_', ' ').title():<25}: {value}"
-                    write_to_result_file(line)
+                    success_msg += f"{line} \n"
+            
+            write_to_result_file(success_msg, "domain_lookup")
                     
         except Exception as e:
             error_msg = f"An unexpected error occurred during WHOIS lookup for {domain}: {str(e)}"
