@@ -3,14 +3,24 @@ charset-normalizer==3.4.3
 click==8.2.1
 colorama==0.4.6
 dnspython==2.8.0
+et_xmlfile==2.0.0
 idna==3.10
+numpy==2.3.4
+openpyxl==3.1.5
+pandas==2.3.3
 psutil==7.0.0
 pyasn1==0.6.1
+PySocks==1.7.1
 python-dateutil==2.9.0.post0
 python-whois==0.9.6
+pytz==2025.2
 requests==2.32.4
+requests-futures==1.0.2
 rsa==4.9.1
 scapy==2.6.1
--e git+https://github.com/RykerWilder/sentinel.git@a3e3bf4dede163b0e2d5b97358a836b9c4326b2f#egg=sentinel
+-e git+https://github.com/RykerWilder/sentinel.git@0da3bd4d37257f6ee2bf40053f1fb7f2a3bc75c7#egg=sentinel
+sherlock-project==0.16.0
 six==1.17.0
+stem==1.8.2
+tzdata==2025.2
 urllib3==2.5.0

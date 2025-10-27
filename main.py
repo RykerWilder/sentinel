@@ -1,5 +1,5 @@
 from sentinel.utils import print_welcome_message, exit
-from sentinel.modules import IPGlobeTracker, SystemInfo, PacketSniffer, P2P, WebsiteCookie, WhoisDomainLookup, DNSInspector
+from sentinel.modules import IPGlobeTracker, SystemInfo, PacketSniffer, P2P, WebsiteCookie, WhoisDomainLookup, DNSInspector, Sherlock
 from colorama import Fore, Style
 import signal
 
@@ -30,7 +30,7 @@ def main():
         
         #CHOICE MANAGEMENT
         if choice == 1:
-            pass
+            Sherlock().sherlock_manager()
         elif choice == 2:
             SystemInfo().system_info_manager()
         elif choice == 3:
