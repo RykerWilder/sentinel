@@ -1,5 +1,5 @@
 from sentinel.utils import print_welcome_message, exit
-from sentinel.modules import IPGlobeTracker, SystemInfo, PacketSniffer, P2P, WebsiteCookie, WhoisDomainLookup, DNSInspector, Sherlock
+from sentinel.modules import IPGlobeTracker, SystemInfo, P2P, WebsiteCookie, WhoisDomainLookup, DNSInspector, Sherlock
 from colorama import Fore, Style
 import signal
 
@@ -36,7 +36,7 @@ def main():
         elif choice == 3:
             IPGlobeTracker().ip_globetracker_manager()
         elif choice == 4:
-            PacketSniffer().start_sniffing()
+            pass
         elif choice == 5:
             P2P().p2p_manager()
         elif choice == 6:
