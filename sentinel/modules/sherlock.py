@@ -15,7 +15,6 @@ class Sherlock:
             
             if result.returncode == 0:
                 print(f"{Fore.MAGENTA}[INFO]{Style.RESET_ALL} Research completed")
-                print(result.stdout)
             else:
                 print(f"{Fore.RED}[X] Error searching{Style.RESET_ALL}")
                 print(result.stderr)
