@@ -1,5 +1,5 @@
 from sentinel.utils import print_welcome_message, exit
-from sentinel.modules import IPGlobeTracker, SystemInfo, NetworkScanner, PacketSniffer, P2P, WebsiteCookie, WhoisDomainLookup, DNSInspector
+from sentinel.modules import IPGlobeTracker, SystemInfo, PacketSniffer, P2P, WebsiteCookie, WhoisDomainLookup, DNSInspector
 from colorama import Fore, Style
 import signal
 
@@ -11,7 +11,7 @@ def main():
     
     while True:
         print(f"""
-        [{Fore.CYAN}1{Style.RESET_ALL}] - Network scanner        [{Fore.CYAN}5{Style.RESET_ALL}] - Encrypted chat (P2P)
+        [{Fore.CYAN}1{Style.RESET_ALL}] - Sherlock               [{Fore.CYAN}5{Style.RESET_ALL}] - Encrypted chat (P2P)
         [{Fore.CYAN}2{Style.RESET_ALL}] - System info            [{Fore.CYAN}6{Style.RESET_ALL}] - Get websites cookies
         [{Fore.CYAN}3{Style.RESET_ALL}] - IP tracker             [{Fore.CYAN}7{Style.RESET_ALL}] - WHOIS Domain Lookup
         [{Fore.CYAN}4{Style.RESET_ALL}] - Packet sniffer         [{Fore.CYAN}8{Style.RESET_ALL}] - DNS Inspector
@@ -30,7 +30,7 @@ def main():
         
         #CHOICE MANAGEMENT
         if choice == 1:
-            NetworkScanner().network_scanner_manager()
+            pass
         elif choice == 2:
             SystemInfo().system_info_manager()
         elif choice == 3:
