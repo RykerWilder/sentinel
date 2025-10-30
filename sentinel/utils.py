@@ -21,6 +21,7 @@ def print_welcome_message():
     welcome_message = f"""
         {Fore.MAGENTA}{logo}{Style.RESET_ALL}
         {Fore.CYAN}[INFO]{Style.RESET_ALL} If you want to read more about Sentinel, go read {clickable_link('https://github.com/RykerWilder/sentinel', 'documentation')}.
+        {Fore.CYAN}[INFO]{Style.RESET_ALL} Press CTRL+C to abort
     """
     print(welcome_message)
 
@@ -34,9 +35,6 @@ def print_dynamic_dots(key, value):
     print(f"{Fore.MAGENTA}{key}{Style.RESET_ALL}: {'.' * available_space} {value}")
 
 def write_to_result_file(content, tool=""):
-    """
-    Create file result_DATE_TIME.txt in data folder and write into it
-    """
     current_datetime = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
     data_folder = "./data"
         
