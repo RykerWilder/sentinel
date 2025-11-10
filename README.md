@@ -26,7 +26,9 @@ After running the installer, follow the instructions in your terminal to activat
 
 #### 1. Sherlock
 
-is a Python-based OSINT (Open Source Intelligence) tool that searches for usernames across multiple social media platforms and websites. You can read more on their repo [sherlock-project](https://github.com/sherlock-project/sherlock).
+#### 1. Sherlock
+
+is a Python-based OSINT (Open Source Intelligence) tool that searches for usernames across multiple social media platforms and websites. The tool runs asynchronously using a thread pool executor to perform searches without blocking the main application. When executed, it prompts for a target username and an optional timeout value (default: 10 seconds), then searches across hundreds of websites simultaneously. Results are automatically saved to a text file in the `./data/` directory with the format `username.txt`, containing all discovered profiles and their URLs. The search process runs in a separate thread, allowing the main menu to remain responsive. You can read more on their repo [sherlock-project](https://github.com/sherlock-project/sherlock).
 
 #### 2. System Info
 is a Python program designed to collect and display detailed information about the system on which it runs. It is useful for diagnosing hardware/software issues, monitoring system resources, or simply getting a comprehensive report of computer specifications. System info reports system data such as OS, RAM usage, CPU information, all disk partitions and their space, network information such as public, private, and MAC address.
