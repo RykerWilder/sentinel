@@ -1,13 +1,14 @@
 import sublist3r
 from colorama import Fore, Style
 import shutil
+from sentinel import write_to_result_file
 
 class Sublist3r:
     def find_domain(self, domain):
         terminal_width = shutil.get_terminal_size().columns
         try:
             subdomains = sublist3r.main(domain, 100, None, ports=None, silent=False, verbose=False, enable_bruteforce=False, engines=None)
-            print(f"\n Found {len(subdomains)} subdomains")
+            print(f"\n {Fore.MAGENTA}[INFO]{Style.RESET_ALL} Found {len(subdomains)} subdomains")
             for subdomain in subdomains:
                 print(subdomain)
         except Exception as e:
