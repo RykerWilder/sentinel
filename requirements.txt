@@ -29,13 +29,14 @@ requests==2.32.5
 requests-futures==1.0.2
 rsa==4.9.1
 scapy==2.6.1
-sentinel==1.0.0
+-e git+https://github.com/RykerWilder/sentinel.git@b7bd4107373f7237d5941f2b4db216914c77be44#egg=sentinel
 sherlock-project==0.16.0
 six==1.17.0
 sniffio==1.3.1
 sortedcontainers==2.4.0
 soupsieve==2.8
 stem==1.8.2
+Sublist3r==1.0
 termcolor==3.2.0
 tqdm==4.67.1
 trio==0.31.0
