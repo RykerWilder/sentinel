@@ -47,7 +47,7 @@ def main():
         elif choice == 8:
             DNSInspector().dns_inspector_manager()
         elif choice == 9:
-            Sublist3r.sublist3r_manager()
+            Sublist3r().sublist3r_manager()
         else:
             pass
 
