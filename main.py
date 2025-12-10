@@ -1,5 +1,5 @@
 from sentinel.utils import print_welcome_message, exit
-from sentinel.modules import IPGlobeTracker, SystemInfo, P2P, WebsiteCookie, WhoisDomainLookup, DNSInspector, Sherlock, Holehe
+from sentinel.modules import IPGlobeTracker, SystemInfo, P2P, WebsiteCookie, WhoisDomainLookup, DNSInspector, Sherlock, Holehe, ExtractMetaData
 from colorama import Fore, Style
 import signal
 
@@ -14,7 +14,7 @@ def main():
         [{Fore.CYAN}1{Style.RESET_ALL}] - Sherlock               [{Fore.CYAN}6{Style.RESET_ALL}] - Get websites cookies
         [{Fore.CYAN}2{Style.RESET_ALL}] - System info            [{Fore.CYAN}7{Style.RESET_ALL}] - WHOIS Domain Lookup
         [{Fore.CYAN}3{Style.RESET_ALL}] - IP tracker             [{Fore.CYAN}8{Style.RESET_ALL}] - DNS Inspector
-        [{Fore.CYAN}4{Style.RESET_ALL}] - Olehe                  
+        [{Fore.CYAN}4{Style.RESET_ALL}] - Olehe                  [{Fore.CYAN}9{Style.RESET_ALL}] - Metadata Extractor
         [{Fore.CYAN}5{Style.RESET_ALL}] - Encrypted chat (P2P)   
         """)
         
@@ -47,7 +47,7 @@ def main():
         elif choice == 8:
             DNSInspector().dns_inspector_manager()
         elif choice == 9:
-            Sublist3r().sublist3r_manager()
+            ExtractMetaData().get_metadata_manager()
         else:
             pass
 

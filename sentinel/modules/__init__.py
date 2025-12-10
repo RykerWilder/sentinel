@@ -6,5 +6,6 @@ from sentinel.modules.whois_domain_lookup import WhoisDomainLookup
 from sentinel.modules.dns_inspector import DNSInspector
 from sentinel.modules.sherlock import Sherlock
 from sentinel.modules.holehe import Holehe
+from sentinel.modules.get_metadata import ExtractMetaData
 
-__all__ = ["IPGlobeTracker", "SysInsider", "P2P", "WebsiteCookie", "DNSInspector", "Sherlock", "Holehe"]
+__all__ = ["IPGlobeTracker", "SysInsider", "P2P", "WebsiteCookie", "DNSInspector", "Sherlock", "Holehe", "ExtractMetaData"]
