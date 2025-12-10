@@ -3,6 +3,7 @@ import sys
 from colorama import Style, Fore
 from pathlib import Path
 from datetime import datetime, timedelta
+from sentinel import write_to_result_file
 import mimetypes
 
 class ExtractMetaData:
@@ -38,7 +39,7 @@ class ExtractMetaData:
                 'height': img.height
             }
             
-            # EXTRACT EXIF DATA IF EXISTS
+            #EXTRACT EXIF DATA IF EXISTS
             exif_data = img._getexif()
             if exif_data:
                 metadata['exif'] = {}
@@ -48,7 +49,7 @@ class ExtractMetaData:
             
             return metadata
         except Exception as e:
-            print(f"{Fore.RED}[X] Error: {e}{Style.RESET_ALL}")
+            return {'error': str(e)}
 
     def extract_video_metadata(self, filepath):
         try:
@@ -75,7 +76,7 @@ class ExtractMetaData:
             
             return metadata
         except Exception as e:
-            print(f"{Fore.RED}[X] Error: {e}{Style.RESET_ALL}")
+            return {'error': str(e)}
 
     def extract_audio_metadata(self, filepath):
         try:
@@ -91,13 +92,13 @@ class ExtractMetaData:
                 'sample_rate': f"{audio.info.sample_rate} Hz" if hasattr(audio, 'info') and hasattr(audio.info, 'sample_rate') else None
             }
             
-            # COMMON TAGS
+            #COMMON TAGS
             if audio.tags:
                 metadata['tags'] = dict(audio.tags)
             
             return metadata
         except Exception as e:
-            print(f"{Fore.RED}[X] Error: {e}{Style.RESET_ALL}")
+            return {'error': str(e)}
 
     def extract_pdf_metadata(self, filepath):
         try:
@@ -115,7 +116,7 @@ class ExtractMetaData:
             
             return metadata
         except Exception as e:
-            print(f"{Fore.RED}[X] Error: {e}{Style.RESET_ALL}")
+            return {'error': str(e)}
 
     def extract_docx_metadata(self, filepath):
         try:
@@ -137,14 +138,14 @@ class ExtractMetaData:
             
             return metadata
         except Exception as e:
-            print(f"{Fore.RED}[X] Error: {e}{Style.RESET_ALL}")
+            return {'error': str(e)}
 
     def extract_metadata(self, filepath):
         if not os.path.exists(filepath):
-            print(f"{Fore.RED}[X] Error: File not found{Style.RESET_ALL}")
+            return {'error': 'File not found'}
         
         if not os.path.isfile(filepath):
-            print(f"{Fore.RED}[X] Error: The path does not point to a file'{Style.RESET_ALL}")
+            return {'error': 'The path does not point to a file'}
         
         metadata = {'basic_metadata': self.get_basic_metadata(filepath)}
         
@@ -166,14 +167,17 @@ class ExtractMetaData:
         
         return metadata
 
-    def print_metadata(self, metadata, indent=0):
+    def format_metadata_to_string(self, metadata, indent=0):
+        """Converte i metadata in una stringa formattata"""
+        result = []
         spacing = "  " * indent
         for key, value in metadata.items():
             if isinstance(value, dict):
-                print(f"{spacing}{key}:")
-                self.print_metadata(value, indent + 1)
+                result.append(f"{spacing}{key}:")
+                result.append(self.format_metadata_to_string(value, indent + 1))
             else:
-                print(f"{spacing}{key}: {value}")
+                result.append(f"{spacing}{key}: {value}")
+        return "\n".join(result)
 
     def get_metadata_manager(self):
         print(f"\n{'='*40}{Fore.MAGENTA} METADATA EXTRACTOR {Style.RESET_ALL}{'='*40}")
@@ -181,8 +185,20 @@ class ExtractMetaData:
         filepath = input(f"\n{Fore.CYAN}┌─[Enter the absolute path to the file] \n└──> {Style.RESET_ALL}").strip()
         
         filepath = filepath.strip('"').strip("'")
-
-        print(f"{Fore.MAGENTA}[INFO]Analyzing... {Style.RESET_ALL}")
         
         metadata = self.extract_metadata(filepath)
-        self.print_metadata(metadata)
+        
+        #CONVERT METADAT IN STRING
+        metadata_string = self.format_metadata_to_string(metadata)
+
+        content = f"\nMETADATA EXTRACTION RESULTS"
+        content += f"File path: {filepath}\n"
+        content += metadata_string
+        
+        #SAVE ON FILE
+        result_file = write_to_result_file(content, "MetadataExtractor")
+        
+        if result_file:
+            print(f"\n{Fore.MAGENTA}[INFO]{Style.RESET_ALL} Metadata extracted successfully and saved to: {result_file}")
+        else:
+            print(f"\n{Fore.RED}[X] Error saving metadata to file{Style.RESET_ALL}")
