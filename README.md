@@ -1,5 +1,5 @@
 # Sentinel
-Sentinel is a Swiss Army knife for cybersecurity, available only for unix based operating systems.
+Sentinel is a CLI multitool for cybersecurity, available only for unix based operating systems.
 
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
 ![sentinel](./assets/sentinel.jpeg)
@@ -23,8 +23,6 @@ After running the installer, follow the instructions in your terminal to activat
 ---
 
 ## Menu
-
-#### 1. Sherlock
 
 #### 1. Sherlock
 
@@ -53,3 +51,6 @@ is a domain information tool that queries WHOIS databases to retrieve comprehens
 #### 8. DNS Inspector
 
 is a DNS analysis tool that performs comprehensive DNS record lookups for any domain name. Using the dnspython library, it queries multiple DNS record types including A (IPv4), AAAA (IPv6), MX (mail servers), TXT (text records), NS (name servers), and CNAME (canonical names). The tool provides detailed information about domain configuration and DNS infrastructure, handling various DNS response scenarios such as non-existent domains, timeouts, and server errors.
+
+#### 9. Metadata Extractor
+
