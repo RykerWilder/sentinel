@@ -65,8 +65,8 @@ class PhoneNumberLookup:
     def display_results(self, info):
         print("RESULTS")
 
-        print(f"   Valid number: {'yes' if info['valid'] else 'No'}")
-        print(f"   Possible number: {'✓ Sì' if info['possible'] else 'No'}")
+        print(f"   Valid number: {'yes' if info['valid'] else 'no'}")
+        print(f"   Possible number: {'yes' if info['possible'] else 'no'}")
 
         print(f"   International: {info['international']}")
         print(f"   National: {info['national']}")
