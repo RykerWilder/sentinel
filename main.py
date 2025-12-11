@@ -1,5 +1,5 @@
 from sentinel.utils import print_welcome_message, exit
-from sentinel.modules import IPGlobeTracker, SystemInfo, P2P, WebsiteCookie, WhoisDomainLookup, DNSInspector, Sherlock, Holehe, ExtractMetaData
+from sentinel.modules import IPGlobeTracker, SystemInfo, P2P, WebsiteCookie, WhoisDomainLookup, DNSInspector, Sherlock, Holehe, ExtractMetaData, PhoneNumberLookup
 from colorama import Fore, Style
 import signal
 
@@ -15,7 +15,7 @@ def main():
         [{Fore.CYAN}2{Style.RESET_ALL}] - System info            [{Fore.CYAN}7{Style.RESET_ALL}] - WHOIS Domain Lookup
         [{Fore.CYAN}3{Style.RESET_ALL}] - IP tracker             [{Fore.CYAN}8{Style.RESET_ALL}] - DNS Inspector
         [{Fore.CYAN}4{Style.RESET_ALL}] - Olehe                  [{Fore.CYAN}9{Style.RESET_ALL}] - Metadata Extractor
-        [{Fore.CYAN}5{Style.RESET_ALL}] - Encrypted chat (P2P)   
+        [{Fore.CYAN}5{Style.RESET_ALL}] - Encrypted chat (P2P)   [{Fore.CYAN}10{Style.RESET_ALL}] - Phone Number Lookup
         """)
         
         
@@ -48,6 +48,8 @@ def main():
             DNSInspector().dns_inspector_manager()
         elif choice == 9:
             ExtractMetaData().get_metadata_manager()
+        elif choice == 10:
+            PhoneNumberLookup().phone_number_lookup_manager()
         else:
             pass
 
