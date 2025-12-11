@@ -20,7 +20,7 @@ def print_welcome_message():
     """
     welcome_message = f"""
         {Fore.MAGENTA}{logo}{Style.RESET_ALL}
-        {Fore.CYAN}[INFO]{Style.RESET_ALL} If you want to read more about Sentinel, go read {clickable_link('https://github.com/RykerWilder/sentinel', 'documentation')}.
+        {Fore.CYAN}[INFO]{Style.RESET_ALL} If you want to read more about Falcon, go read {clickable_link('https://github.com/RykerWilder/sentinel', 'documentation')}.
         {Fore.CYAN}[INFO]{Style.RESET_ALL} Press CTRL+C to abort
     """
     print(welcome_message)

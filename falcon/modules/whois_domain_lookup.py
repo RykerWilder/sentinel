@@ -1,6 +1,6 @@
 import whois
 from colorama import Fore, Style
-from sentinel import write_to_result_file
+from falcon import write_to_result_file
 import shutil
 
 class WhoisDomainLookup:

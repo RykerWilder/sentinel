@@ -1,15 +1,15 @@
-# Sentinel
-Sentinel is a CLI multitool for cybersecurity, available only for unix based operating systems.
+# Falcon
+Falcon is a CLI multitool for cybersecurity, available only for unix based operating systems.
 
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
 ![sentinel](./assets/sentinel.jpeg)
 
 ---
 ## Installation
-To install sentinel you can copy and paste the command on terminal.
+To install falcon you can copy and paste the command on terminal.
 
 ```bash
-wget https://raw.githubusercontent.com/rykerwilder/sentinel/main/installer.sh && chmod +x installer.sh
+wget https://raw.githubusercontent.com/rykerwilder/falcon/main/installer.sh && chmod +x installer.sh
 ```
 
 **run installer**

@@ -4,7 +4,7 @@ from requests.exceptions import RequestException
 from datetime import datetime
 import datetime as dt
 from colorama import Style, Fore
-from sentinel import write_to_result_file
+from falcon import write_to_result_file
 
 class WebsiteCookie:
     def get_cookies(self, url):

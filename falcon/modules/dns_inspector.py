@@ -1,6 +1,6 @@
 from colorama import Style, Fore
 import dns.resolver
-from sentinel import write_to_result_file
+from falcon import write_to_result_file
 import shutil
 
 class DNSInspector:

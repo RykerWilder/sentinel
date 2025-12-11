@@ -29,12 +29,12 @@ check_dependencies() {
 # clone repository
 clone() {
     echo -e "${YELLOW}Cloning repository...${NC}"
-    if [ -d "sentinel" ]; then
-        echo -e "${YELLOW}Directory 'sentinel' already exists. Removing it...${NC}"
-        rm -rf sentinel
+    if [ -d "falcon" ]; then
+        echo -e "${YELLOW}Directory 'falcon' already exists. Removing it...${NC}"
+        rm -rf falcon
     fi
-    git clone "https://github.com/RykerWilder/sentinel" || error_exit "Repository cloning failed."
-    cd sentinel || error_exit "Failed to enter sentinel directory."
+    git clone "https://github.com/RykerWilder/falcon" || error_exit "Repository cloning failed."
+    cd falcon || error_exit "Failed to enter falcon directory."
 }
 
 # python3 dependencies
@@ -42,10 +42,10 @@ install_python_deps() {
     echo -e "${YELLOW}Installing python3 dependencies...${NC}"
     
     # Create virtual environment
-    python3 -m venv sentinel-venv || error_exit "Virtual environment creation failed."
+    python3 -m venv falcon-venv || error_exit "Virtual environment creation failed."
     
     # Activate virtual environment
-    source sentinel-venv/bin/activate || error_exit "Virtual environment activation failed."
+    source falcon-venv/bin/activate || error_exit "Virtual environment activation failed."
     
     # Upgrade pip within the virtual environment
     python -m pip install --upgrade pip || error_exit "Pip upgrade failed."
@@ -64,15 +64,15 @@ install_python_deps() {
 
 # MAIN
 main() {
-    echo -e "${GREEN}Starting Sentinel installation...${NC}"
+    echo -e "${GREEN}Starting falcon installation...${NC}"
     check_dependencies
     clone
     install_python_deps
-    echo -e "${GREEN}Sentinel installed successfully!${NC}"
-    echo -e "${YELLOW}Now to use Sentinel run:${NC}"
-    echo -e "1. cd sentinel"
-    echo -e "2. source sentinel-venv/bin/activate"
-    echo -e "3. sentinel start"
+    echo -e "${GREEN}falcon installed successfully!${NC}"
+    echo -e "${YELLOW}Now to use falcon run:${NC}"
+    echo -e "1. cd falcon"
+    echo -e "2. source falcon-venv/bin/activate"
+    echo -e "3. falcon start"
 }
 
 # Run main function only if script is executed directly

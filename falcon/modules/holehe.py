@@ -3,7 +3,7 @@ import subprocess
 import sys
 import shutil
 from datetime import datetime
-from sentinel import write_to_result_file
+from falcon import write_to_result_file
 
 class Holehe:
     def check_email(self, email):

@@ -1,5 +1,5 @@
-from sentinel.utils import print_welcome_message, exit
-from sentinel.modules import IPGlobeTracker, SystemInfo, P2P, WebsiteCookie, WhoisDomainLookup, DNSInspector, Sherlock, Holehe, ExtractMetaData, PhoneNumberLookup
+from falcon.utils import print_welcome_message, exit
+from falcon.modules import IPGlobeTracker, SystemInfo, P2P, WebsiteCookie, WhoisDomainLookup, DNSInspector, Sherlock, Holehe, ExtractMetaData, PhoneNumberLookup
 from colorama import Fore, Style
 import signal
 

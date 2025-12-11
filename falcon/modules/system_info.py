@@ -5,7 +5,7 @@ import requests
 import shutil
 import uuid
 from colorama import Style, Fore
-from sentinel import print_dynamic_dots
+from falcon import print_dynamic_dots
 
 class SystemInfo:
     def __init__(self):

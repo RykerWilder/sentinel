@@ -3,7 +3,7 @@ import sys
 from colorama import Style, Fore
 from pathlib import Path
 from datetime import datetime, timedelta
-from sentinel import write_to_result_file
+from falcon import write_to_result_file
 import mimetypes
 
 class ExtractMetaData:

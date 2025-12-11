@@ -10,10 +10,10 @@ def cli():
 
 @cli.command()
 def start():
-    """sentinel start"""
+    """falcon start"""
     # Trova il percorso assoluto
     base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    venv_python = os.path.join(base_dir, "sentinel-venv", "bin", "python")
+    venv_python = os.path.join(base_dir, "falcon-venv", "bin", "python")
     main_script = os.path.join(base_dir, "main.py")
     
     if not os.path.exists(venv_python):
