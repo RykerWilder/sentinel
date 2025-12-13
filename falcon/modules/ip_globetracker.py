@@ -1,7 +1,7 @@
 import requests
 import shutil
 from colorama import Style, Fore
-from falcon import print_dynamic_dots
+from falcon import print_dynamic_dots, create_map
 from falcon.modules.system_info import SystemInfo
 class IPGlobeTracker(SystemInfo):
 
@@ -30,6 +30,7 @@ class IPGlobeTracker(SystemInfo):
         print_dynamic_dots('Organization', data.get('org'))
         print_dynamic_dots('AS', data.get('as'))
         print("=" * terminal_width + "\n")
+        create_map(position=data.get('city'))
 
     def ip_globetracker_manager(self):
         print(f"\n{'='*40}{Fore.MAGENTA} IP GlobeTracker {Style.RESET_ALL}{'='*40}")
