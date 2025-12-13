@@ -83,14 +83,14 @@ def create_map(position=None, lat=None, lon=None, zoom=10, output_file="data/map
             location = geolocator.geocode(position, timeout=10)
             
             if location is None:
-                raise ValueError(f"Unable find position: {position}")
+                raise ValueError(f"{Fore.RED}[X] Unable find position: {position}{Style.RESET_ALL}")
             
             lat = location.latitude
             lon = location.longitude
             location_address = location.address
             
         except (GeocoderTimedOut, GeocoderServiceError) as e:
-            raise Exception(f"Geodecoding error: {e}")
+            raise Exception(f"{Fore.RED}[X] Geodecoding error: {e}{Style.RESET_ALL}")
     else:
         location_address = f"Lat: {lat}, Lon: {lon}"
     
@@ -105,7 +105,7 @@ def create_map(position=None, lat=None, lon=None, zoom=10, output_file="data/map
     folium.Marker(
         location=[lat, lon],
         popup=location_address,
-        tooltip="Clicca per info",
+        tooltip="Click for more info",
         icon=folium.Icon(color='red', icon='info-sign')
     ).add_to(mappa)
     
@@ -116,11 +116,11 @@ def create_map(position=None, lat=None, lon=None, zoom=10, output_file="data/map
         fill=True,
         fillColor='blue',
         fillOpacity=0.2,
-        popup=f'Area intorno a {location_address}'
+        popup=f'Area around {location_address}'
     ).add_to(mappa)
     
     #SAVE FILE
     mappa.save(output_file)
-    print(f"Map saved in: {output_file}")
+    print(f"{Fore.MAGENTA}[INFO]{Style.RESET_ALL} Map saved in: {output_file}")
     
     return output_file
