@@ -4,6 +4,9 @@ import os
 import datetime
 import sys
 import socket
+import folium
+from geopy.geocoders import Nominatim
+from geopy.exc import GeocoderTimedOut, GeocoderServiceError
 
 def clickable_link(url, text):
     return f"{Fore.CYAN}\033]8;;{url}\033\\{text}\033]8;;\033\\{Style.RESET_ALL}"
@@ -72,3 +75,52 @@ def cleanup(instance):
             pass
     print(f"\n{Fore.CYAN}[INFO]{Style.RESET_ALL} Connection closed.{Style.RESET_ALL}")
     sys.exit(0)
+
+def create_map(position=None, lat=None, lon=None, zoom=10, output_file="data/map.html"):
+    if position:
+        try:
+            geolocator = Nominatim(user_agent="mappa_generator")
+            location = geolocator.geocode(position, timeout=10)
+            
+            if location is None:
+                raise ValueError(f"Unable find position: {position}")
+            
+            lat = location.latitude
+            lon = location.longitude
+            location_address = location.address
+            
+        except (GeocoderTimedOut, GeocoderServiceError) as e:
+            raise Exception(f"Geodecoding error: {e}")
+    else:
+        location_address = f"Lat: {lat}, Lon: {lon}"
+    
+    #CREATE MAP
+    mappa = folium.Map(
+        location=[lat, lon],
+        zoom_start=zoom,
+        tiles='OpenStreetMap'
+    )
+    
+    #ADD MARKER
+    folium.Marker(
+        location=[lat, lon],
+        popup=location_address,
+        tooltip="Clicca per info",
+        icon=folium.Icon(color='red', icon='info-sign')
+    ).add_to(mappa)
+    
+    folium.Circle(
+        location=[lat, lon],
+        radius=300,
+        color='blue',
+        fill=True,
+        fillColor='blue',
+        fillOpacity=0.2,
+        popup=f'Area intorno a {location_address}'
+    ).add_to(mappa)
+    
+    #SAVE FILE
+    mappa.save(output_file)
+    print(f"Map saved in: {output_file}")
+    
+    return output_file
