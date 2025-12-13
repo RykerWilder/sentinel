@@ -1,7 +1,7 @@
 import phonenumbers
 from phonenumbers import geocoder, carrier, timezone
 from colorama import Fore, Style
-from falcon import write_to_result_file, create_map
+from falcon import write_to_result_file
 
 class PhoneNumberLookup:
     def validate_phone_number(self, number):
@@ -55,9 +55,7 @@ class PhoneNumberLookup:
         info['type'] = type_map.get(number_type, "UNKNOWN")
         info['country_code'] = f"+{phone_number.country_code}"
         info['national_number'] = phone_number.national_number
-        
-        location = info['country']
-        create_map(position=location)
+
         return info
     
     def format_results(self, info):
