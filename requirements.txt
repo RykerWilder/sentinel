@@ -1,6 +1,8 @@
 backports.tarfile==1.2.0
 colorclass==2.2.2
 docopt==0.6.2
+folium==0.20.0
+geopy==2.4.1
 holehe==1.61
 importlib-metadata==8.0.0
 inflect==7.3.1
