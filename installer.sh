@@ -20,7 +20,6 @@ calculate_hash() {
     echo -e "${YELLOW}Calculating hash for: $DIR${NC}"
     local HASH=$(find "$DIR" -type f -exec sha256sum {} \; | awk '{print $1}' | sort | sha256sum | cut -d ' ' -f 1)
     echo -e "${GREEN}Directory hash${NC}: $HASH"
-    echo "$HASH"
 }
 
 
