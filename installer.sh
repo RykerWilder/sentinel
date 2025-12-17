@@ -4,11 +4,13 @@ GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m'
 
+
 # error handler
 error_exit() {
     echo -e "${RED}Error: $1${NC}" >&2
     exit 1
 }
+
 
 # check dependencies
 check_dependencies() {
@@ -26,6 +28,7 @@ check_dependencies() {
     fi
 }
 
+
 # clone repository
 clone() {
     echo -e "${YELLOW}Cloning repository...${NC}"
@@ -36,6 +39,15 @@ clone() {
     git clone "https://github.com/RykerWilder/falcon" || error_exit "Repository cloning failed."
     cd falcon || error_exit "Failed to enter falcon directory."
 }
+
+
+# create data directory
+create_data_directory() {
+    echo -e "${YELLOW}Creating data directory...${NC}"
+    mkdir -p data || error_exit "Failed to create data directory."
+    echo -e "${GREEN}Data directory created successfully!${NC}"
+}
+
 
 # python3 dependencies
 install_python_deps() {
@@ -62,11 +74,13 @@ install_python_deps() {
     pip install -e . || error_exit "Editable installation failed."
 }
 
+
 # MAIN
 main() {
     echo -e "${GREEN}Starting falcon installation...${NC}"
     check_dependencies
     clone
+    create_data_directory
     
     install_python_deps
     echo -e "${GREEN}Falcon installed successfully!${NC}"
@@ -76,6 +90,7 @@ main() {
     echo -e "2. source falcon-venv/bin/activate"
     echo -e "3. falcon start"
 }
+
 
 # Run main function only if script is executed directly
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
