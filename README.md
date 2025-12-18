@@ -32,7 +32,7 @@ is a Python program designed to collect and display detailed information about t
 is a Python program that extends the functionality of System info to provide detailed information about public IP addresses and domains. Use the [ip-api.com](https://ip-api.com/) public API to get geographic data, ISPs, and other useful information.
 With IP Tracker you can view the information relating to your IP address or by choosing the second option you can view another IP address.
 
-#### 4. Olehe
+#### 4. Holehe
 
 is an email OSINT tool that checks if an email address is associated with various online services and platforms. By querying multiple websites and social media platforms, Holehe reveals where a given email has been registered without requiring authentication. The tool provides a comprehensive report showing which services (social networks, forums, dating sites, etc.) are linked to the investigated email address. You can read more on their repo [olehe](https://github.com/megadose/holehe).
 

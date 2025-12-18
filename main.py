@@ -14,7 +14,7 @@ def main():
         [{Fore.CYAN}1{Style.RESET_ALL}] - Sherlock               [{Fore.CYAN}6{Style.RESET_ALL}] - Get websites cookies
         [{Fore.CYAN}2{Style.RESET_ALL}] - System info            [{Fore.CYAN}7{Style.RESET_ALL}] - WHOIS Domain Lookup
         [{Fore.CYAN}3{Style.RESET_ALL}] - IP tracker             [{Fore.CYAN}8{Style.RESET_ALL}] - DNS Inspector
-        [{Fore.CYAN}4{Style.RESET_ALL}] - Olehe                  [{Fore.CYAN}9{Style.RESET_ALL}] - Metadata Extractor
+        [{Fore.CYAN}4{Style.RESET_ALL}] - Holehe                  [{Fore.CYAN}9{Style.RESET_ALL}] - Metadata Extractor
         [{Fore.CYAN}5{Style.RESET_ALL}] - Encrypted chat (P2P)   [{Fore.CYAN}10{Style.RESET_ALL}] - Phone Number Lookup
         """)
         
