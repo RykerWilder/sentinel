@@ -1,5 +1,5 @@
 from falcon.utils import print_welcome_message, exit
-from falcon.modules import IPGlobeTracker, SystemInfo, P2P, WebsiteCookie, WhoisDomainLookup, DNSInspector, Sherlock, Holehe, ExtractMetaData, PhoneNumberLookup
+from falcon.modules import IPGlobeTracker, P2P, WebsiteCookie, WhoisDomainLookup, DNSInspector, Sherlock, Holehe, ExtractMetaData, PhoneNumberLookup
 from colorama import Fore, Style
 import signal
 
@@ -12,10 +12,10 @@ def main():
     while True:
         print(f"""
         [{Fore.CYAN}1{Style.RESET_ALL}] - Sherlock               [{Fore.CYAN}6{Style.RESET_ALL}] - Get websites cookies
-        [{Fore.CYAN}2{Style.RESET_ALL}] - System info            [{Fore.CYAN}7{Style.RESET_ALL}] - WHOIS Domain Lookup
+        [{Fore.CYAN}2{Style.RESET_ALL}] - Phone Number Lookup    [{Fore.CYAN}7{Style.RESET_ALL}] - WHOIS Domain Lookup
         [{Fore.CYAN}3{Style.RESET_ALL}] - IP tracker             [{Fore.CYAN}8{Style.RESET_ALL}] - DNS Inspector
-        [{Fore.CYAN}4{Style.RESET_ALL}] - Holehe                  [{Fore.CYAN}9{Style.RESET_ALL}] - Metadata Extractor
-        [{Fore.CYAN}5{Style.RESET_ALL}] - Encrypted chat (P2P)   [{Fore.CYAN}10{Style.RESET_ALL}] - Phone Number Lookup
+        [{Fore.CYAN}4{Style.RESET_ALL}] - Holehe                 [{Fore.CYAN}9{Style.RESET_ALL}] - Metadata Extractor
+        [{Fore.CYAN}5{Style.RESET_ALL}] - Encrypted chat (P2P)   
         """)
         
         
@@ -33,7 +33,7 @@ def main():
         if choice == 1:
             Sherlock().sherlock_manager()
         elif choice == 2:
-            SystemInfo().system_info_manager()
+            PhoneNumberLookup().phone_number_lookup_manager()
         elif choice == 3:
             IPGlobeTracker().ip_globetracker_manager()
         elif choice == 4:
@@ -48,8 +48,6 @@ def main():
             DNSInspector().dns_inspector_manager()
         elif choice == 9:
             ExtractMetaData().get_metadata_manager()
-        elif choice == 10:
-            PhoneNumberLookup().phone_number_lookup_manager()
         else:
             pass
 
